@@ -32,7 +32,6 @@
                         <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="usuario" name="usuario" placeholder="Digite seu CPF" required="required"/></div>
                         <div class="form__line"><button class="btn__buscar" type="submit">Buscar Usuário</button></div>
                     </form>
-                    <?php include_once '../includes/novousuario.php'?>
                 </div>
             </div>
             <div class="container__login-buttom">
