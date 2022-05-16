@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <title>Login</title>
 </head>
 
@@ -47,7 +47,7 @@
 </body>
 
 <!-- page JS -->
-<?php include_once 'config/jsPadrao.php' ?>
+<?php include_once './assets/includes/jsPadrao.php' ?>
 </html>
 
 
