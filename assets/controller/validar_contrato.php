@@ -17,11 +17,11 @@ if (isset($_POST['search']) && isset($_POST['cpf'])) {
         $_SESSION['cpf'] = $_POST['cpf'];
         header('Location: login');
     }
-    else
-        echo "Include de usuario";
-        $_SESSION['parametro'] = md5("seu pai de calcinha");
+    else{
+        $_SESSION['condicao'] = true;
         $_SESSION['cpf'] = $_POST['cpf'];
         header('Location: login');
+    }    
 }
 else
     header('Location: logout');
