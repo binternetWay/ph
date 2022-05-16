@@ -13,6 +13,7 @@ RewriteRule ^demanda demanda.php [NC]
 
 
 RewriteRule ^formulario$ assets/controller/buscar_contrato.php [NC]
+RewriteRule ^login$ assets/view/login.php [NC]
 
 
 RewriteCond %{REQUEST_FILENAME} !-f
