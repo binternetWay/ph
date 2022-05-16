@@ -3,7 +3,7 @@ session_name(md5('ph'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
 if (!isset($_REQUEST['cod']) || $_SESSION['token'] != md5(date('l jS \of F Y')).$_REQUEST['cod']) {
-    header('Location: ../../index.php');
+    header('Location: logout');
 }
 
 require_once '../modal/Contratos.php'
