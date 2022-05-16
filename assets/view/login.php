@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <title>Login</title>
 </head>
 
@@ -24,7 +24,7 @@
         <div class="container__login">
             <div class="container__login-top">
                 <div class="logo"><img class="logo__img-white" src="https://www.internetway.com.br/assets/img/whiteLogo.svg" alt="logo com a escrita internet way"></div>
-                <div class="logo"><img class="logo__img-black" src="../img/logo/bLogo.png" alt="logo com a escrita internet way"></div>
+                <div class="logo"><img class="logo__img-black" src="assets/img/logo/bLogo.png" alt="logo com a escrita internet way"></div>
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
