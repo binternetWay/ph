@@ -39,7 +39,6 @@
                         <div class="form__line"><button class="btn__buscar" type="submit">Buscar Usuário</button></div>
 >>>>>>> 009f78207471e1e41b3288992fcf53f2b39e9e14
                     </form>
-                    <?php include_once '../includes/novousuario.php'?>
                 </div>
             </div>
             <div class="container__login-buttom">
