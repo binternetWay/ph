@@ -75,6 +75,7 @@ session_destroy();
 
 <!-- page JS -->
 <?php include_once '../includes/jsPadrao.php' ?>
+<script src="assets/js/login.js" type="text/javascript"></script>
 </html>
 
 

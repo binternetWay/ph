@@ -19,6 +19,9 @@ if (isset($_POST['search']) && isset($_POST['cpf'])) {
     }
     else
         echo "Include de usuario";
+        $_SESSION['parametro'] = md5("seu pai de calcinha");
+        $_SESSION['cpf'] = $_POST['cpf'];
+        header('Location: login');
 }
 else
     header('Location: logout');
