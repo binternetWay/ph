@@ -1,3 +1,27 @@
+<?php
+session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
+session_start();
+
+if (isset($_SESSION['parametro']) && $_SESSION['parametro'] === md5("seu pai de calcinha")) {
+    $post = '<div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" value="'.$_SESSION['cpf'].'" required="required"/></div>
+        <div class="form__line"><i class="fa-solid fa-key"></i><input type="password" id="primeira__senha" name="primeira__senha" placeholder="Escolha uma senha" required="required" /></div>
+        <div class="form__line"><i class="fa-solid fa-key"></i><input type="password" id="segunda__senha" name="segunda__senha" placeholder="Confirmação de senha" required="required" /></div>
+        <div class="form__line"><button type="submit">Cadastrar usuário</button></div>
+        
+        <style>
+        .btn__buscar{
+            display: none;
+        }
+        </style>
+        ';
+    
+}
+else {
+    $post = '<div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required="required"/></div>';
+}
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
@@ -28,8 +52,8 @@
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
-                    <form method="POST" action="assets/controller/buscar_contrato.php">
-                        <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required="required"/></div>
+                    <form method="POST" action="assets/controller/validar_contrato.php">
+                        <?= $post ?>
                         <div class="form__line"><button class="btn__buscar" type="submit" name="search">Buscar Usuário</button></div>
                     </form>
                 </div>

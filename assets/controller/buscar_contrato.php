@@ -18,7 +18,7 @@ if (isset($_POST['search']) && isset($_POST['cpf'])) {
         $_SESSION['cpf'] = $_POST['cpf'];
         $_SESSION['contrato'] = $contrato;
         
-        //header('Location: ../view/streaming.php?cod='.md5($contrato));
+        header('Location: ../view/streaming.php?cod='.md5($contrato));
     }
     elseif ($v->rowCount() > 1) {
         $_SESSION['token'] = md5(date('l jS \of F Y')).md5($cpf);
