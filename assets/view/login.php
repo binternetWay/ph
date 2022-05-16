@@ -30,8 +30,8 @@
                 <div class="form__logins">
                     <form method="POST" action="/ph/assets/modal/fLogin.php">
                         <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="usuario" name="usuario" placeholder="Usuário" required="required"/></div>
-                        <div class="form__line"><i class="fa-solid fa-key"></i><input type="password" id="senha" name="senha" placeholder="Senha" required="required" /></div>
-                        <div class="form__line"><button type="submit">Iniciar Sessão</button></div>
+                        <!-- <div class="form__line"><i class="fa-solid fa-key"></i><input type="password" id="senha" name="senha" placeholder="Senha" required="required" /></div> -->
+                        <div class="form__line"><button type="submit">Buscar Usuário</button></div>
                     </form>
                 </div>
             </div>
