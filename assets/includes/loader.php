@@ -38,7 +38,7 @@
   }
 </style>
 
-<?php include_once './assets/config/jsPadrao.php'?>
+<?php include_once './config/jsPadrao.php'?>
 <script>
     jQuery(window).load(function () {
       $(".loader").delay(1500).fadeOut("slow");

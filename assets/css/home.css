@@ -9,29 +9,41 @@ body{
     margin: 0;
     font-family: 'DM Sans', sans-serif;
     background: var(--bg1-grad);
+    /* background: linear-gradient(222deg, var(--bg1-grad) 0%, var(--bg2-grad) 100%); */
 }
 
+.banner{
+    display: flex;
+    flex-direction: column;
+
+    top: 0;
+    width: 100%;
+    height: 55%;
+}
 
 .banner__select{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
-    margin-top: 60px;
+    top: 0;
     width: 100%;
-    height: 75%;
-    background-image: url('/assets/img/banner/hbomax.jpg');
+    height: 100%;    
+    background-image: url('/img/banner/hbomax.jpg');
+
     background-repeat: no-repeat;
-    /* background-attachment: fixed; */
     background-position: center;
     background-size: cover; 
+    transition: 0.5s;
+    z-index: 10 ;
 }
 .border__grd--top{
+    margin: -2px;
     width: 100%;
     height: 140px;
     background: linear-gradient(180deg, var(--bg1-grad) 0%, rgba(241,241,241,0) 100%);
 }
 .border__grd--bottom{
+    margin: -2px;
     width: 100%;
     height: 140px;
     background: linear-gradient(180deg, rgba(241,241,241,0) 0%, var(--bg1-grad) 100%);
@@ -48,43 +60,95 @@ body{
 .container__categoria{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
 }
 .cetegoria__name{
-    font-size: 20px;
-    padding-left: 10px;
     color: var(--bg1-default);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 0px 10px;
 }
+.arrow__right{
+    left: 0;
+    padding: 30px 10px;
+
+    position: absolute;
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--bg1-default);
+    z-index: 100;
+}
+.arrow__left{
+    right: 0;
+    padding: 30px 10px;
+    transform: rotate(180deg);
+
+    position: absolute;
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--bg1-default);
+    z-index: 100;
+}
+
 .service__list{
+    margin: 0px 35px;
+
     display: flex;
     flex-direction: row;
-    width: 100%;
+    align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    scroll-behavior: smooth;
 }
 
 .service_item img{
-    width: 300px;
-    height: 170px;
+    width: 250px;
+    height: 140px;
+    border-radius:  10px;
+    margin: 5px;
+    background-color: var(--bg2-contracts);
+    box-shadow: 0 4px 12px 0 rgba(146, 146, 146, 0.16);
+    transition: 0.3s;
+}
+.service_item img:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+
+.service__list-full{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    white-space: nowrap;
+    flex-wrap: wrap;
+}
+
+.service__list-full img{
+    width: 250px;
+    height: 140px;
     border-radius:  20px;
     margin: 10px;
     background-color: var(--bg2-contracts);
     box-shadow: 0 4px 12px 0 rgba(146, 146, 146, 0.16);
-    transition: 0.5s;
+    transition: 0.3s;
     z-index: 100;
 }
 .service_item img:hover{
-    transform: scale(1.10);
-    transition: 0.5s;
+    transform: scale(1.05);
+    transition: 0.3s;
 }
+
 
 
 
 /* tablet layout*/
 @media only screen and (max-width: 930px) {
-    .banner__select{
-        height: 50%;
+    .banner{
+        height: 45%;
     }
     .border__grd--top{
         height: 140px;
@@ -96,7 +160,7 @@ body{
 
 /* Mobile layout */
 @media only screen and (max-width: 430px) {
-    .banner__select{
+    .banner{
         height: 30%;
     }
     .border__grd--top{
@@ -109,7 +173,7 @@ body{
 
 /* Mobile layout */
 @media only screen and (max-width: 380px) {
-    .banner__select{
+    .banner{
         height: 35%;
     }
     .border__grd--top{
