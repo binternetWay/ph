@@ -5,9 +5,5 @@
 .btn__buscar{
     display: none;
 }
-.erroPass{
-    border: 3px solid var(--main-dange);
-}
-
 </style>
 
