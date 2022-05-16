@@ -8,7 +8,6 @@ session_start();
 
 if (isset($_POST['search']) && isset($_POST['cpf'])) {
     $v = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
-
     $cpf = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
 
     $v->execute(array(':cpf' => $cpf));
@@ -19,17 +18,17 @@ if (isset($_POST['search']) && isset($_POST['cpf'])) {
         $_SESSION['cpf'] = $_POST['cpf'];
         $_SESSION['contrato'] = $contrato;
         
-        //header('Location: assets/view/streaming.php?cod='.md5($contrato));
+        //header('Location: ../view/streaming.php?cod='.md5($contrato));
     }
     elseif ($v->rowCount() > 1) {
         $_SESSION['token'] = md5(date('l jS \of F Y')).md5($cpf);
         $_SESSION['cpf'] = $cpf;
         
-        //header('Location: assets/view/usuarios.php?cod='.md5($cpf));
+        header('Location: ../view/usuarios.php?cod='.md5($cpf));
     }
     else
-        header('Location: logout.php');
+        header('Location: logout');
 }
 else
-        header('Location: logout.php');
+        header('Location: logout');
 

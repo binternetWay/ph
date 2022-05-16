@@ -28,9 +28,15 @@
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
+<<<<<<< HEAD
                     <form method="POST" action="/ph/assets/modal/fLogin.php">
                         <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="usuario" name="usuario" placeholder="Digite seu CPF" required="required"/></div>
                         <div class="form__line"><button class="btn__buscar" type="submit">Buscar Usuário</button></div>
+=======
+                    <form method="POST" action="assets/controller/buscar_contrato.php">
+                        <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required="required"/></div>
+                        <div class="form__line"><button class="btn__buscar" type="submit" name="search">Buscar Usuário</button></div>
+>>>>>>> f684215ef7355fb0209eaa05f562805913f62ef0
                     </form>
                 </div>
             </div>

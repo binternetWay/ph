@@ -1,4 +1,4 @@
 <?php
 // direcinando page
-header('Location: /ph/login')
+header('Location: /ph/login');
 ?>
