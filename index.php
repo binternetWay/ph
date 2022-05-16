@@ -1,4 +1,4 @@
 <?php
 // direcinando page
-header('Location: login.php')
+header('Location: ./assets/view/login.php')
 ?>

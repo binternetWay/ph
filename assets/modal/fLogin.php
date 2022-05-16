@@ -15,9 +15,9 @@ $row = mysqli_num_rows($resultado);
 
 if($row == 1){
     $_SESSION['usuario'] = $usuario;
-    header('Location: /ph/home.php');
+    header('Location: /ph/assets/view/home.php');
 } else {
     $_SESSION['nao_autenticado'] = true;
-    header('Location: /ph/login.php');
+    header('Location: /ph/assets/view/login.php');
 }
 ?>
