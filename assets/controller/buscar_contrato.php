@@ -12,20 +12,20 @@ if (isset($_POST['search']) && isset($_POST['cpf'])) {
     $cpf = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
 
     $v->execute(array(':cpf' => $cpf));
-
+    
     if ($v->rowCount() == 1) {
         $contrato = $v->fetchAll(PDO::FETCH_ASSOC)[0]['numero_contrato'];
         $_SESSION['token'] = md5(date('l jS \of F Y').md5($contrato));
         $_SESSION['cpf'] = $_POST['cpf'];
         $_SESSION['contrato'] = $contrato;
         
-        header('Location: assets/view/streaming.php?cod='.md5($contrato));
+        //header('Location: assets/view/streaming.php?cod='.md5($contrato));
     }
     elseif ($v->rowCount() > 1) {
         $_SESSION['token'] = md5(date('l jS \of F Y')).md5($cpf);
         $_SESSION['cpf'] = $cpf;
-    
-        header('Location: assets/view/usuarios.php?cod='.md5($cpf));
+        
+        //header('Location: assets/view/usuarios.php?cod='.md5($cpf));
     }
     else
         header('Location: logout.php');

@@ -28,10 +28,10 @@
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
-                    <form method="POST" action="/ph/assets/modal/fLogin.php">
-                        <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="usuario" name="usuario" placeholder="Digite seu CPF" required="required"/></div>
+                    <form method="POST" action="assets/controller/buscar_contrato.php">
+                        <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required="required"/></div>
                         <!-- <div class="form__line"><i class="fa-solid fa-key"></i><input type="password" id="senha" name="senha" placeholder="Senha" required="required" /></div> -->
-                        <div class="form__line"><button type="submit">Buscar Usuário</button></div>
+                        <div class="form__line"><button type="submit" name="search" id="search">Buscar Usuário</button></div>
                     </form>
                 </div>
             </div>
