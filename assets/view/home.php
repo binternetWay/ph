@@ -1,8 +1,3 @@
-<?php 
-session_start();
-include_once '../modal/vSessao.php'; 
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
