@@ -24,11 +24,11 @@
         <div class="container__login">
             <div class="container__login-top">
                 <div class="logo"><img class="logo__img-white" src="https://www.internetway.com.br/assets/img/whiteLogo.svg" alt="logo com a escrita internet way"></div>
-                <div class="logo"><img class="logo__img-black" src="/img/logo/bLogo.png" alt="logo com a escrita internet way"></div>
+                <div class="logo"><img class="logo__img-black" src="./assets/img/logo/bLogo.png" alt="logo com a escrita internet way"></div>
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
-                    <form method="POST" action="/config/fLogin.php">
+                    <form method="POST" action="./assets/modal/fLogin.php">
                         <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="usuario" name="usuario" placeholder="Usuário" required="required"/></div>
                         <div class="form__line"><i class="fa-solid fa-key"></i><input type="password" id="senha" name="senha" placeholder="Senha" required="required" /></div>
                         <div class="form__line"><button type="submit">Iniciar Sesssão</button></div>
