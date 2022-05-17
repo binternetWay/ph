@@ -84,7 +84,7 @@ function getRollLeft (idArrow) {
 function openShop () {
 	var popup = document.getElementById('shop');
 	if (popup.style.display === "none") {
-	  popup.style.display = "block";
+		popup.style.display = "block";
 	} else {
 		popup.style.display = "none";
 	}

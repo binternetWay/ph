@@ -8,15 +8,14 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><a href="#"><i class="fa-solid fa-question"></i><span class="menu__text"></span></a></li>
-            <li><a href="assets/controller/logout.php"><i class="fa-solid fa-person-running"></i><span class="menu__text"></span></a></li>
+            <li><span class="menu__text">V</span></li>
         </ul>
     </div>
 </div>
 
 <style>
 ul ,li{
-    width: 100%;
+    width: 80%;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -33,7 +32,7 @@ ul ,li{
     height: 70px;
     width: 100%;
 
-    background: linear-gradient(180deg, rgba(0,24,57,1) 15%, rgba(241,241,241,0) 100%);
+    background: linear-gradient(167deg, rgba(0,24,57,1) 11%, rgb(255 246 255 / 0%) 39%);
     z-index: 210;
 }
 
@@ -68,13 +67,34 @@ ul ,li{
     display: flex;
     align-items: center;
     flex-direction: row;
-}
 
-.config__user--ul li a{
-    padding: 0px 10px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+.menu__text{
+    padding: 11px 17px;
+    border-radius: 50%;
+    font-weight: 800;
+
+    background-color: var(--bg-type2);
     color: var(--bg1-default);
 }
-.config__user--ul li a i{
-    font-size: 20px;
+
+@media only screen and (max-width: 930px) {
+    .menu__slider{
+        background: linear-gradient(167deg, rgba(0,24,57,1) 11%, rgb(255 246 255 / 0%) 70%);
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .menu__slider{
+        background: linear-gradient(167deg, rgba(0,24,57,1) 11%, rgb(255 246 255 / 0%) 70%);
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .menu__slider{
+        background: linear-gradient(167deg, rgba(0,24,57,1) 11%, rgb(255 246 255 / 0%) 70%);
+    }
 }
 </style>
