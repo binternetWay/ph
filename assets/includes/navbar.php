@@ -8,7 +8,7 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><span class="menu__text">V</span></li>
+            <li><span class="menu__text">Daniel</span><i class="fa-solid fa-angle-left"></i></li>
         </ul>
     </div>
 </div>
@@ -67,16 +67,35 @@ ul ,li{
     display: flex;
     align-items: center;
     flex-direction: row;
-
     margin: 0px 10px;
     cursor: pointer;
 }
-.menu__text{
-    padding: 11px 17px;
-    border-radius: 50%;
-    font-weight: 800;
-
+.config__user--ul li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1px 10px;
+    border-radius: 10px;
     background-color: var(--bg-type2);
+    transition: 0.3s;
+}
+
+.config__user--ul li:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.config__user--ul li:hover i{
+    transform: rotate(-90deg);
+    transition: 0.6s;
+}
+
+.config__user--ul li i{
+    color: var(--bg1-default);
+    margin: 0px 0px 0px 10px;
+    transition: 0.6s;
+}
+.menu__text{
+    font-weight: 400;
     color: var(--bg1-default);
 }
 

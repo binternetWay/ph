@@ -2,18 +2,12 @@
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
-<<<<<<< HEAD
 $hash = md5($_SESSION['nome'].date('l jS \of F Y'));
 
 if ($hash != $_SESSION['token']) {
     header('Location: logout');
 }
- 
-=======
-// if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT), $_SESSION['token'])) {
-//     //header('Location: logout');
-// }
->>>>>>> be07066215b4812f901e75270d5ca307c33124f2
+
 ?>
 
 <!DOCTYPE html>
