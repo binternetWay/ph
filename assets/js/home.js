@@ -50,7 +50,7 @@ function createServiceList (lista, idDiv){
 		var nameIdService = idDiv + i
 
 		const div = document.createElement('div');
-		div.src_img = lista[i -1]['link'];
+		div.src_img = lista[i -1]['src_img'];
 
 		div.className='service_item';
 		div.id= nameIdService
@@ -59,7 +59,7 @@ function createServiceList (lista, idDiv){
 		document.getElementById(idDiv).appendChild(div);
 
 		const img = document.createElement('img');
-		img.src_img = lista[i -1]['link']
+		img.src_img = lista[i -1]['src_img']
 		img.setAttribute("src", img.src_img);
 		document.getElementById(nameIdService).appendChild(img);
 	}
