@@ -1,5 +1,4 @@
 html, body{
-    height: 100vh;
     width: 100%;
 }
 
@@ -18,7 +17,7 @@ body{
 
     top: 0;
     width: 100%;
-    height: 55%;
+    height: 350px;
 }
 
 .banner__select{
@@ -142,13 +141,69 @@ body{
     transition: 0.3s;
 }
 
+.bg__popup{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+    z-index: 500;
+}
+
+.container__shop{
+    top: 0;
+    right: 0;
+    position: absolute;
+
+    width: 400px;
+    height: 100%;
+    background-color: var(--bg1-grad);
+
+    z-index: 300;
+}
+
+.shop__box--top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 50px;
+}
+
+.shop__box--top i{
+    margin: 0px 15px;
+    padding: 2px 7px;
+    border-radius:  50%;
+    font-size: 30px;
+    color: var(--text-default);
+
+    transition: 0.3s;
+}
+.shop__box--top i:hover{
+    background-color: var(--main-danger);
+    transition: 0.3s;
+}
+.shop__box--img{
+    height: 30%;
+    border-radius: 20px;
+    margin: 5px 20px;
+    box-shadow: 0px 4px 10px 0 rgb(146 146 146 / 40%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    transition: 0.5s;
+}
 
 
 
 /* tablet layout*/
 @media only screen and (max-width: 930px) {
     .banner{
-        height: 45%;
+        height: 330px;
     }
     .border__grd--top{
         height: 140px;
@@ -161,7 +216,7 @@ body{
 /* Mobile layout */
 @media only screen and (max-width: 430px) {
     .banner{
-        height: 30%;
+        height: 220px;
     }
     .border__grd--top{
         height: 100px;
@@ -169,12 +224,15 @@ body{
     .border__grd--bottom{
         height: 100px;
     }
+    .container__shop{
+        width: 100%;
+    }
 }
 
 /* Mobile layout */
 @media only screen and (max-width: 380px) {
     .banner{
-        height: 35%;
+        height: 230px;
     }
     .border__grd--top{
         height: 70px;

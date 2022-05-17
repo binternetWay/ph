@@ -67,6 +67,8 @@ function createServiceList (lista, idDiv){
 
 function getImg (var_link) {
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
+	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
+	openShop();
 }
 
 function getRollRight(idArrow) {
@@ -77,4 +79,14 @@ function getRollRight(idArrow) {
 function getRollLeft (idArrow) {
 	const arrow = document.getElementById(idArrow)
 	arrow.scrollLeft += 180;
+}
+
+
+function openShop () {
+	var popup = document.getElementById('shop');
+	if (popup.style.display === "none") {
+	  popup.style.display = "block";
+	} else {
+		popup.style.display = "none";
+	}
 }
