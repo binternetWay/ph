@@ -81,7 +81,6 @@ function getRollLeft (idArrow) {
 	arrow.scrollLeft += 180;
 }
 
-
 function openShop () {
 	var popup = document.getElementById('shop');
 	if (popup.style.display === "none") {
