@@ -34,7 +34,8 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
 
         if (password_verify($_POST['senha'], $fetch['senha'])) {
             $_SESSION['cpf'] = $fetch['cpf'];
-            $_SESSION['token'] = password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT);
+            $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
+            $_SESSION['nome'] = $fetch['nome'];
             header('Location: /ph/painel');
         }
         else {
@@ -68,7 +69,7 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
         $y->execute();
 
         if ($y->rowCount() > 0) {
-            $_SESSION['token'] = password_hash(md5(date('l jS \of F Y').$_POST['cpf']), PASSWORD_DEFAULT);
+            $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
             $_SESSION['nome'] = $fetch['nome'];
             header('Location: /ph/painel');
         }
