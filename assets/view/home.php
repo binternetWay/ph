@@ -2,10 +2,9 @@
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
-if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT), $_SESSION['token'])) {
-    //header('Location: logout');
-}
- 
+// if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT), $_SESSION['token'])) {
+//     //header('Location: logout');
+// }
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +29,7 @@ if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT),
 <div id="container__service" class="container__service"></div>
 
 <div id="shop" class="bg__popup" style="display: none;">
-<div class="container__shop">
+<div id="container__shop" class="container__shop">
     <div id="close" class="shop__box--top"><i class="fa-solid fa-xmark"></i></div>
     <div class="shop__box--img" id="shop__box--img"></div>
     <div class="shop__box--info">
