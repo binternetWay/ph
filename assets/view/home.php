@@ -23,8 +23,8 @@ if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT),
 
 <body>
 
-<?php include_once 'assets/includes/loader.php'; ?>
-<?php include_once 'assets/includes/navbar.php'; ?>
+<?php include_once '../includes/loader.php'; ?>
+<?php include_once '../includes/navbar.php'; ?>
 
 <div class="banner"><div id="banner" class="banner__select"></div></div>
 <div id="container__service" class="container__service"></div>

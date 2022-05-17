@@ -39,12 +39,12 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
         }
         else {
             $_SESSION['msg'] = "erro_usuario";
-            header('Location: logout');
+            header('Location: /ph/logout');
         }
     }
     else{
         $_SESSION['msg'] = "erro_usuario";
-        header('Location: logout');
+        header('Location: /ph/logout');
     }
         
 }
@@ -69,7 +69,8 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
 
         if ($y->rowCount() > 0) {
             $_SESSION['token'] = password_hash(md5(date('l jS \of F Y').$_POST['cpf']), PASSWORD_DEFAULT);
-            header('Location: inicio');
+            $_SESSION['nome'] = $fetch['nome'];
+            header('Location: /ph/painel');
         }
         else{ 
             $_SESSION['msg'] = "erro_contrato";
