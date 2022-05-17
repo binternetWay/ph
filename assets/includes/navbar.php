@@ -33,7 +33,7 @@ ul ,li{
     height: 70px;
     width: 100%;
 
-    background: linear-gradient(180deg, rgba(0,24,57,1) 15%, rgba(241,241,241,0) 100%);
+    background: linear-gradient(167deg, rgba(0,24,57,1) 11%, rgb(255 246 255 / 0%) 39%);
     z-index: 210;
 }
 
