@@ -2,18 +2,13 @@
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
-<<<<<<< HEAD
 $hash = md5($_SESSION['nome'].date('l jS \of F Y'));
 
 if ($hash != $_SESSION['token']) {
     header('Location: logout');
+    
 }
  
-=======
-// if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT), $_SESSION['token'])) {
-//     //header('Location: logout');
-// }
->>>>>>> be07066215b4812f901e75270d5ca307c33124f2
 ?>
 
 <!DOCTYPE html>
@@ -67,36 +62,7 @@ if ($hash != $_SESSION['token']) {
 </div>
 </div>
 
-<script type='text/javascript'>
-<?php
-$lista = array(
-    array('nome'=>"Tnt",'link'=>"assets/img/banner/galinha.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/hbomax.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/looke.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/ubook.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/hube.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/deezer.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/ritualfit.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/supercomics.jpg")
-);
-$js_array = json_encode($lista);
-echo "var servico = ". $js_array . ";\n";
-?>
-
-<?php
-$lista = array(
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/hbomax.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/looke.jpg"),
-    array('nome'=>"HBO Max",'link'=>"assets/img/banner/ubook.jpg")
-);
-$js_array = json_encode($lista);
-echo "var myservice = ". $js_array . ";\n";
-?>
-
-createCategoriaService(myservice,'Meus Serviços');
-createCategoriaService(servico,'destaque');
-document.getElementById('close').onclick = function get (){openShop();}
-</script>
+<script src="assets/js/painel.js"></script>
 
 </body>
 </html>
