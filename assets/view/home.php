@@ -1,3 +1,13 @@
+<?php 
+session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
+session_start();
+
+if (!password_verify(password_hash(md5(date('l jS \of F Y')), PASSWORD_DEFAULT), $_SESSION['token'])) {
+    //header('Location: logout');
+}
+ 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,10 +15,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <title>Home</title>
-    <script src="../js/home.js" type="text/javascript"></script>
+    <script src="assets/js/home.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -52,14 +62,14 @@
 <script type='text/javascript'>
 <?php
 $lista = array(
-    array('nome'=>"Tnt",'link'=>"../img/banner/galinha.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/hbomax.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/looke.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/ubook.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/hube.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/deezer.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/ritualfit.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/supercomics.jpg")
+    array('nome'=>"Tnt",'link'=>"assets/img/banner/galinha.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/hbomax.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/looke.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/ubook.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/hube.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/deezer.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/ritualfit.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/supercomics.jpg")
 );
 $js_array = json_encode($lista);
 echo "var servico = ". $js_array . ";\n";
@@ -67,9 +77,9 @@ echo "var servico = ". $js_array . ";\n";
 
 <?php
 $lista = array(
-    array('nome'=>"HBO Max",'link'=>"../img/banner/hbomax.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/looke.jpg"),
-    array('nome'=>"HBO Max",'link'=>"../img/banner/ubook.jpg")
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/hbomax.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/looke.jpg"),
+    array('nome'=>"HBO Max",'link'=>"assets/img/banner/ubook.jpg")
 );
 $js_array = json_encode($lista);
 echo "var myservice = ". $js_array . ";\n";

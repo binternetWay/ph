@@ -1,7 +1,8 @@
 <?php
-
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
