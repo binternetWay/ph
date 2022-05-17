@@ -8,8 +8,7 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><a href="#"><i class="fa-solid fa-person-running"></i><span class="menu__text"></span></a></li>
-            <li><a href="#"><i class="fa-regular fa-comment"></i><span class="menu__text"></span></a></li>
+            <li><a href="#"><i class="fa-solid fa-question"></i><span class="menu__text"></span></a></li>
             <li><a href="assets/controller/logout.php"><i class="fa-solid fa-person-running"></i><span class="menu__text"></span></a></li>
         </ul>
     </div>

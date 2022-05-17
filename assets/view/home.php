@@ -24,6 +24,12 @@
 
 <div id="container__service" class="container__service"></div>
 
+<div id="shop" class="bg__popup" style="display: none;">
+<div class="container__shop">
+    <div id="close" class="shop__box--top"><i class="fa-solid fa-xmark"></i></div>
+    <div class="shop__box--img" id="shop__box--img"></div>
+</div>
+</div>
 
 <script type='text/javascript'>
 <?php
@@ -53,7 +59,7 @@ echo "var myservice = ". $js_array . ";\n";
 
 createCategoriaService(myservice,'Meus Serviços');
 createCategoriaService(servico,'destaque');
-
+document.getElementById('close').onclick = function get (){openShop();}
 </script>
 
 </body>
