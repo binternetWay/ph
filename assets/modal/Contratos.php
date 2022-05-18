@@ -40,6 +40,12 @@ class Contratos{
                 ELSE SUBSTRING(REPLACE(REPLACE(REPLACE(REPLACE(people.phone, '(', '') ,')',''),'-',''),' ','')::VARCHAR, 1, 20) END AS telefone,
                 people.email,
                 planos.plano,
+                planos.codigo_servico,
+
+                CASE 
+                WHEN planos.codigo_servico ILIKE '%RT%' THEN 'RT'
+                WHEN contracts.date > '2022-05-01' THEN 'AQ' ELSE 'FD' END AS tipo_contrato,
+
                 
                 -- informaçõe de endereço
                 CASE 
