@@ -38,7 +38,9 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
             $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
             $_SESSION['nome'] = $fetch['nome'];
 
-            $lista = Contratos::Quantidade_Contratos($_POST['cpf']);
+            $lista = new Contratos();
+
+            $lista = $lista->Quantidade_Contratos($_POST['cpf']);
 
             if (count($lista) == 1) {
                 $contrato = $lista[0]['numero_contrato'];
