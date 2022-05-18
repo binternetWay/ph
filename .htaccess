@@ -19,6 +19,6 @@ RewriteRule ^logout$ assets/controller/login.php [NC]
 RewriteRule ^contrato$ assets/view/contrato.php [NC]
 
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php?url=$1 [NC,L]

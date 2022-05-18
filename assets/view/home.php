@@ -35,26 +35,42 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
     <div id="close" class="shop__box--top"><i class="fa-solid fa-xmark"></i></div>
     <div class="shop__box--img" id="shop__box--img"></div>
     <div class="shop__box--info">
+
+        <div class="info__title"><span class="title">Informações do serviço</span></div>
+        <div class="info__title"><span class="title"></span></div>
+
         <div class="info__line">
             <span class="info__name">Nome Serviço:</span>
-            <span id="name__service" class="info">HBO Max</span>
+            <span id="name__service" class="info"></span>
         </div>
         <div class="info__line">
             <span class="info__name">Data de Inicio:</span>
-            <span id="inicio__service" class="info">17/05/2022</span>
+            <span id="inicio__service" class="info"></span>
         </div>
         <div class="info__line">
             <span class="info__name">Data de Final:</span>
-            <span id="fim__service" class="info">16/06/2022</span>
+            <span id="fim__service" class="info"></span>
         </div>
         <div class="info__line">
             <span class="info__name">Valor do Serviço:</span> 
-            <span id="valor__service" class="info">R$ 16,90</span>
+            <span id="valor__service" class="info"></span>
         </div>
+        
+        <div class="info__title"><span class="title"></span></div>
+        <div class="info__title"><span class="title"></span></div>
+        <div class="info__title"><span class="title">Informações da fatura</span></div>
+        <div class="info__title"><span class="title"></span></div>
+
+        <div class="info__line">
+            <span class="info__name">Vencimento da Fatuta:</span> 
+            <span id="dtProxFatura" class="info">10/06/2022</span>
+        </div>
+
         <div class="info__line">
             <span class="info__name">Valor da Proxima fatura:</span> 
             <span id="valorTotal__service" class="info">R$ 116,80</span>
         </div>
+
     </div>
     <div class="shop__box--buttom"><button class="btn__contratar" type="submit">Confirmar Plano</button></div>
 </div>

@@ -53,11 +53,13 @@ function createServiceList (lista, idDiv){
 		div.src_img = lista[i -1]['src_img'];
 		div.nome = lista[i -1]['nome'];
 		div.cod_servico = lista[i-1]['codigo_index'];
+		div.dataInicio = lista[i-1]['data_inicio'];
+		div.dataFinal = lista[i-1]['data_final'];
 
 		div.className='service_item';
 		div.id= nameIdService
 
-		div.onclick = function get() {getImg(div.src_img)};
+		div.onclick = function get() {getImg(div.src_img, div.cod_servico, div.nome, div.dataInicio, div.dataFinal)};
 		document.getElementById(idDiv).appendChild(div);
 
 		const img = document.createElement('img');
@@ -67,9 +69,15 @@ function createServiceList (lista, idDiv){
 	}
 }
 
-function getImg (var_link, nome_servico, codigo) {
+function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal) {
 	var nameService = document.getElementById('name__service');
-	console.log('Felipe');
+	var dtInicial = document.getElementById('inicio__service');
+	var dtFinal = document.getElementById('fim__service');
+
+	nameService.innerHTML = nome_servico
+	dtInicial.innerHTML = dataInicial
+	dtFinal.innerHTML = dataFinal
+
 
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";

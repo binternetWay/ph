@@ -204,16 +204,29 @@ body{
     align-items: center;
 
     margin-bottom: 10px;
-    padding: 0px 20px;
+    padding: 0px 80px;
 }
+.info__title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+.title{
+    color: var(--bg1-default);
+    font-size: 19px;
+    font-weight: 500;
+}
+
 .info__name{
     font-size: 13px;
     color: var(--bg3-default);
 }
 .info{
-    color: var(--bg1-default);
-    font-size: 19px;
-    font-weight: 500;
+    color: var(--bg2-default);
+    font-size: 15px;
 }
 
 .shop__box--buttom{
@@ -296,6 +309,9 @@ body{
     }
     .shop__box--info{
         margin-top: 60%
+    }
+    .info__line{
+        padding: 0px 50px;
     }
 }
 
