@@ -16,8 +16,6 @@ if (isset($_POST['ph_confirmar']) && isset($_POST['contrato'])) {
 
     $_SESSION['token'] = md5(date('l jS \of F Y').md5($contrato));
     $_SESSION['contrato'] = $contrato;
-    $_SESSION['tipo_contrato'] = 'RT';
-    $_SESSION['codigo_plano'] = '150.2022';
 
     header('Location: ../view/streaming.php?cod='.md5($contrato));
 }

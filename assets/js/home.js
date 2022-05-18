@@ -51,6 +51,8 @@ function createServiceList (lista, idDiv){
 
 		const div = document.createElement('div');
 		div.src_img = lista[i -1]['src_img'];
+		div.nome = lista[i -1]['nome'];
+		div.cod_servico = lista[i-1]['codigo_index'];
 
 		div.className='service_item';
 		div.id= nameIdService
@@ -65,7 +67,10 @@ function createServiceList (lista, idDiv){
 	}
 }
 
-function getImg (var_link) {
+function getImg (var_link, nome_servico, codigo) {
+	var nameService = document.getElementById('name__service');
+	console.log('Felipe');
+
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
 	openShop();
