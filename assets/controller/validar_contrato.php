@@ -9,7 +9,7 @@ session_start();
 
 if (isset($_POST['search']) && isset($_POST['cpf']) && !isset($_POST['primeira__senha']) && !isset($_POST['senha']) && !isset($_POST['iniciar'])) {
     $v = PDO_Conexao::getInstance()->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
-    $_POST[cpf] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
+    $_POST['cpf'] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     $v->execute(array(':cpf' => $_POST['cpf']));
 
     if ($v->rowCount() > 0) {
@@ -26,7 +26,7 @@ if (isset($_POST['search']) && isset($_POST['cpf']) && !isset($_POST['primeira__
 }
 elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['primeira__senha']) && isset($_POST['senha'])){
     //Começa o login
-    $_POST[cpf] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
+    $_POST['cpf'] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     $z = PDO_Conexao::getInstance()->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
     $z->execute(array(':cpf' => $_POST['cpf']));
 
@@ -38,7 +38,8 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
             $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
             $_SESSION['nome'] = $fetch['nome'];
 
-            $lista = Contratos::Quantidade_Contratos($_POST['cpf']);
+            $lista = new Contratos ();
+            $lista = $lista->Quantidade_Contratos($_POST['cpf']);
 
             if (count($lista) == 1) {
                 $contrato = $lista[0]['numero_contrato'];
@@ -68,7 +69,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
         
 }
 elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_POST['primeira__senha'] == $_POST['segunda__senha']){
-    $_POST[cpf] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
+    $_POST['cpf'] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     
     $x = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
 

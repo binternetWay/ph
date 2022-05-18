@@ -9,7 +9,9 @@ if (!isset($_SESSION['div']) || $_SESSION['div'] != md5('contratos'.date('l jS \
     header('Location: /ph/logout');
 }
 
-$div = Contratos::listar_contratos($_SESSION['cpf']);
+$div = new Contratos ();
+$div = $div->Quantidade_Contratos($_POST['cpf']);
+
 ?>
 
 <!DOCTYPE html>
