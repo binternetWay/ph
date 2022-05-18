@@ -8,7 +8,6 @@ if ($hash != $_SESSION['token']) {
     header('Location: logout');
     
 }
- 
 ?>
 
 <!DOCTYPE html>
