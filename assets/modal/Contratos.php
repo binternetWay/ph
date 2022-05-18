@@ -4,13 +4,23 @@ require_once 'PDO_Voalle.php';
 
 class Contratos{
 
+    public function Quantidade_Contratos($cpf)
+    {
+        $v = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
+        $cpf = preg_replace('/[\@\.\;\/" "-]+/ ', '', $cpf);
+    
+        $v->execute(array(':cpf' => $cpf));
+
+        return $v->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function listar_contratos(string $cpf)
     {
         $stmt = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
         $stmt->execute(array(':cpf' => $cpf));
         $x = 0;
         while ($fetch = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $linha[] = '<option value="'.$x.'">'.$fetch['plano'].' - Contrato('.$fetch['numero_contrato'].') - '.$fetch['nome_rua'].' - Nº'.$fetch['numero_casa'].' - '.$fetch['bairro'].'</option>';
+            $linha[] = '<option value="'.$fetch['numero_contrato'].'" name="contrato">'.$fetch['plano'].' - Contrato('.$fetch['numero_contrato'].') - '.$fetch['nome_rua'].' - Nº'.$fetch['numero_casa'].' - '.$fetch['bairro'].'</option>';
             $x ++;
         }
 

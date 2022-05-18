@@ -9,7 +9,7 @@ session_start();
 
 if (isset($_POST['search']) && isset($_POST['cpf']) && !isset($_POST['primeira__senha']) && !isset($_POST['senha']) && !isset($_POST['iniciar'])) {
     $v = PDO_Conexao::getInstance()->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
-
+    $_POST[cpf] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     $v->execute(array(':cpf' => $_POST['cpf']));
 
     if ($v->rowCount() > 0) {
@@ -18,7 +18,7 @@ if (isset($_POST['search']) && isset($_POST['cpf']) && !isset($_POST['primeira__
         $_SESSION['cpf'] = $_POST['cpf'];
         header('Location: login');
     }
-    else{
+    else {
         $_SESSION['condicao'] = true;
         $_SESSION['cpf'] = $_POST['cpf'];
         header('Location: login');
@@ -26,6 +26,7 @@ if (isset($_POST['search']) && isset($_POST['cpf']) && !isset($_POST['primeira__
 }
 elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['primeira__senha']) && isset($_POST['senha'])){
     //Começa o login
+    $_POST[cpf] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     $z = PDO_Conexao::getInstance()->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
     $z->execute(array(':cpf' => $_POST['cpf']));
 
@@ -36,20 +37,39 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
             $_SESSION['cpf'] = $fetch['cpf'];
             $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
             $_SESSION['nome'] = $fetch['nome'];
-            header('Location: /ph/painel');
+
+            $lista = Contratos::Quantidade_Contratos($_POST['cpf']);
+
+            if (count($lista) == 1) {
+                $contrato = $lista[0]['numero_contrato'];
+                $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
+                $_SESSION['cpf'] = $_POST['cpf'];
+                $_SESSION['contrato'] = $contrato;
+                header('Location: /ph/painel');
+            }
+            elseif (count($lista) > 1) {
+                $_SESSION['div'] = md5('contratos'.date('l jS \of F Y'));
+                header('Location: /ph/contrato');
+            }
+
+            
         }
         else {
             $_SESSION['msg'] = "erro_usuario";
+
             header('Location: /ph/logout');
         }
     }
     else{
         $_SESSION['msg'] = "erro_usuario";
+        
         header('Location: /ph/logout');
     }
         
 }
 elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_POST['primeira__senha'] == $_POST['segunda__senha']){
+    $_POST[cpf] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
+    
     $x = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
 
     $x->execute(array(':cpf' => $_POST['cpf']));
@@ -80,7 +100,7 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
     }
     else{
         header('Location: logout');
-}
+    }
 }
 elseif(isset($_POST['senha']) && isset($_POST['c_senha']) && $_POST['senha'] != $_POST['c_senha']){
     $_SESSION['msg'] = "erro_senha";

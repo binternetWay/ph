@@ -8,7 +8,7 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><span class="menu__text">Daniel</span><i class="fa-solid fa-angle-left"></i></li>
+            <li><a href="logout"><span class="menu__text">Daniel</span><i class="fa-solid fa-angle-left"></i></a></li>
         </ul>
     </div>
 </div>
