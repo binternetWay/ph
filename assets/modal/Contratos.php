@@ -4,7 +4,7 @@ require_once 'PDO_Voalle.php';
 
 class Contratos{
 
-    public function Quantidade_Contratos($cpf)
+    public static function Quantidade_Contratos($cpf)
     {
         $v = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
         $cpf = preg_replace('/[\@\.\;\/" "-]+/ ', '', $cpf);
