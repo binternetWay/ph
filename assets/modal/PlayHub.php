@@ -137,7 +137,6 @@ class PH {
         return $chave;
 
     }
-
     public function inscrever(string $produto, string $usuario)
     {
         $curl = curl_init();
