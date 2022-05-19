@@ -8,12 +8,28 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><a href="logout"><span class="menu__text"><?php echo $_SESSION['tipo_contrato'] ?></span><i class="fa-solid fa-angle-left"></i></a></li>
+            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo $_SESSION['tipo_contrato'] ?></span><i class="fa-solid fa-angle-left"></i></a></li>
         </ul>
+    </div>
+</div>
+<div class="menu__user">
+    <div class="line__option">
+        <select type="text"></select>
     </div>
 </div>
 
 <style>
+.menu__user{
+    display: flex;
+    position: absolute;
+    background-color: var(--bg1-default);
+    border-radius: 10px;
+
+    margin-top: 70px;
+    padding: 5px;
+    z-index: 600;
+}
+
 ul ,li{
     width: 80%;
     list-style: none;

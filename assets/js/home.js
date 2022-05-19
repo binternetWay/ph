@@ -81,6 +81,7 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal) {
 
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
+	document.getElementById('cod__servico').value = codigo
 	openShop();
 }
 

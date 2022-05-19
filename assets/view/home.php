@@ -7,7 +7,6 @@ $hash = md5($_SESSION['nome'].date('l jS \of F Y'));
 if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
     header('Location: logout');
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +72,10 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
         </div>
 
     </div>
-    <div class="shop__box--buttom"><button class="btn__contratar" type="submit">Confirmar Plano</button></div>
+    <form method="POST" action="">
+        <input id="cod__servico"type="hidden"></input>
+        <div class="shop__box--buttom"><button class="btn__contratar" type="submit">Confirmar Plano</button></div>
+    </form>
 </div>
 </div>
 
