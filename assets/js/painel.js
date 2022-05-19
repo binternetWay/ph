@@ -11,10 +11,10 @@ $('document').ready(function () {
         success: function (data) {
             
             var servico = data[0];
-            var myservice = data[1];
+            // var myservice = data[1];
 
             createCategoriaService(myservice,'Meus Serviços');
-            createCategoriaService(servico,'destaque');
+            createCategoriaService(servico,'Meus Serviços');
             document.getElementById('close').onclick = function get (){openShop();}
 
         }
