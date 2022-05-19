@@ -8,7 +8,7 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo $_SESSION['tipo_contrato'] ?></span><i class="fa-solid fa-angle-left"></i></a></li>
+            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo 'Menino vini' ?></span><i class="fa-solid fa-angle-left"></i></a></li>
         </ul>
     </div>
 </div>

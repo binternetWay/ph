@@ -184,7 +184,7 @@ body{
 
 .shop__box--img{
     top: 0;
-    position: absolute;
+    /* position: absolute; */
     height: 30%;
     width: 100%;
     background-repeat: no-repeat;
@@ -194,9 +194,6 @@ body{
     z-index: 300;
 }
 
-.shop__box--info{
-    margin-top: 45%;
-}
 .info__line{
     display: flex;
     flex-direction: row;
@@ -259,6 +256,54 @@ body{
     transition: 0.3s;
 }
 
+.retorno__playhub{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+
+.retorno__line{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.retorno__line--name{
+    font-size: 13px;
+    color: var(--bg3-default);
+    padding: 0px 5px;
+}
+
+.retorno__line--voucher{
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid var(--bg1-default);
+    color: var(--bg1-default);
+    font-size: 13px;
+}
+
+.retorno__line--btn{
+    margin: 10px 0px;
+    padding: 15px;
+    background-color: var(--bg-type2);
+    color: var(--bg1-default);
+    border: none;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.retorno__line--btn:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+
 /* Mobile cursor */
 @media (pointer: coarse) {
     .arrow__left{
@@ -287,10 +332,7 @@ body{
 @media only screen and (max-width: 560px){
     .container__shop{
         width: 100%;
-    }
-    .shop__box--info{
-        margin-top: 55%;
-    }
+
 }
 
 /* Mobile layout */
@@ -306,9 +348,6 @@ body{
     }
     .container__shop{
         width: 100%;
-    }
-    .shop__box--info{
-        margin-top: 60%
     }
     .info__line{
         padding: 0px 50px;
@@ -326,10 +365,4 @@ body{
     .border__grd--bottom{
         height: 70px;
     }
-    .shop__box--info{
-        margin-top: 70%
-    }
 }
-
-
-
