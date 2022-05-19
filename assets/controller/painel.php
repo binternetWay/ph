@@ -11,10 +11,13 @@ $stmt->execute();
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $lista = array(
-    array('nome'=>"HBO Max",'src_img'=>"assets/img/banner/hbomax.jpg"),
-    array('nome'=>"HBO Max",'src_img'=>"assets/img/banner/looke.jpg"),
-    array('nome'=>"HBO Max",'src_img'=>"assets/img/banner/ubook.jpg")
-);
+    array(
+        'id'=>"1",
+        'nome'=>"HBO Max",
+        'codigo_index'=>"HBX",
+        'id_categoria'=>"1",
+        'src_img'=>"assets/img/banner/hbomax.jpg",
+        'destque'=>"0",));
 
 $contrato = new Contratos();
 // var_dump($_SESSION);
