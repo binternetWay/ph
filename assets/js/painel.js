@@ -2,6 +2,7 @@
 
 var servico = [];
 var myservice = [];
+var p_servicos = [];
 $('document').ready(function () {
 
     $.ajax({
@@ -12,6 +13,7 @@ $('document').ready(function () {
             
             var servico = data[0];
             // var myservice = data[1];
+            var p_servicos = data[2];
 
             createCategoriaService(myservice,'Meus Serviços');
             createCategoriaService(servico,'Meus Serviços');
