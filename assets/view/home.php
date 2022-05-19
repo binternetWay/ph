@@ -34,8 +34,16 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 <div id="container__shop" class="container__shop">
     <div id="close" class="shop__box--top"><i class="fa-solid fa-xmark"></i></div>
     <div class="shop__box--img" id="shop__box--img"></div>
-    <div class="shop__box--info">
 
+    <div class="retorno__playhub">
+        <div class="retorno__line">
+            <span class="retorno__line--name">Voucher:</span>
+            <span class="retorno__line--voucher">123456</span>
+            <button class="retorno__line--btn" type="submit">Copiar Voucher</button>
+        </div>
+    </div>
+
+    <div class="shop__box--info">
         <div class="info__title"><span class="title">Informações do serviço</span></div>
         <div class="info__title"><span class="title"></span></div>
 
@@ -70,7 +78,6 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
             <span class="info__name">Valor da Proxima fatura:</span> 
             <span id="valorTotal__service" class="info">R$ 116,80</span>
         </div>
-
     </div>
     <form method="POST" action="assets/controller/inscricao.php">
         <input name="cod__servico" id="cod__servico"type="hidden"></input>
