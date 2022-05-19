@@ -13,7 +13,7 @@ if (isset($_POST['cod__servico'])) {
 
     $ph = new PH();
 
-    $playhub = $ph->inscrever($produto, $usuario);
+    $playhub = $ph->inscrever($produto, 'reginaldo.silva');
 
     var_dump($playhub);
 }

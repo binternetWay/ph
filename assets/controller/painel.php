@@ -1,4 +1,5 @@
 <?php
+require_once "../modal/PlayHub.php";
 require_once "../modal/PDO_Conexao.php";
 require_once "../modal/Contratos.php";
 
@@ -32,5 +33,9 @@ for ($i=0; $i < count($cont); $i++) {
 
 $ph = $contrato->valores_de_servico($resultado[1], $resultado[0]);
 
-echo json_encode(array($servicos, $lista, $ph));
+$play = new PH();
+
+$playhub = $play->buscar_inscricao('reginaldo.silva');
+
+echo json_encode(array($servicos, $lista, $ph, $playhub));
 ?>
