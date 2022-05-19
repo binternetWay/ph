@@ -15,10 +15,10 @@ RewriteRule ^demanda demanda.php [NC]
 RewriteRule ^formulario$ assets/controller/buscar_contrato.php [NC]
 RewriteRule ^login$ assets/view/login.php [NC]
 RewriteRule ^painel$ assets/view/home.php [NC]
-RewriteRule ^logout$ assets/controller/login.php [NC]
+RewriteRule ^logout$ assets/controller/logout.php [NC]
 RewriteRule ^contrato$ assets/view/contrato.php [NC]
 
 
-# RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
