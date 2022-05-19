@@ -1,6 +1,7 @@
 <?php
 
 require_once 'PDO_Voalle.php';
+require_once 'PDO_Conexao.php';
 
 class Contratos{
 
@@ -26,6 +27,7 @@ class Contratos{
 
         return $linha;
     }
+
     public function get_contratos()
     {
         $sql = "SELECT
@@ -95,6 +97,27 @@ class Contratos{
                 
         WHERE people.tx_id = :cpf
         AND contracts.v_status = 'Normal'";
+        
+        return $sql;
+    }
+
+    public function valores_de_servico($cod_plano, $tipo_contrato)
+    {
+        $stmt = PDO_Conexao::getInstance()->prepare($this->get_valores());
+
+        $stmt->execute(array(':tipo' => $tipo_contrato));
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function get_valores()
+    {
+        $sql = "SELECT * 
+                FROM preco
+                WHERE cod_plano = '50.2022'
+                AND tipo_contrato = :tipo";
         
         return $sql;
     }
