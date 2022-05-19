@@ -1,11 +1,11 @@
 <?php
 
-require_once "assets/modal/PlayHub.php";
+require_once "../modal/PlayHub.php";
 
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
-if (condition) {
+if (isset($_POST['cod__servico'])) {
     
     $usuario = $_SESSION['cpf'];
 
@@ -13,6 +13,7 @@ if (condition) {
 
     $ph = new PH();
 
-    $ph->inscrever($produto, $usuario);
+    $playhub = $ph->inscrever($produto, 'reginaldo.silva');
 
+    var_dump($playhub);
 }

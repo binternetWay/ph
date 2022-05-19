@@ -79,8 +79,8 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
             <span id="valorTotal__service" class="info">R$ 116,80</span>
         </div>
     </div>
-    <form method="POST" action="">
-        <input id="cod__servico"type="hidden"></input>
+    <form method="POST" action="assets/controller/inscricao.php">
+        <input name="cod__servico" id="cod__servico"type="hidden"></input>
         <div class="shop__box--buttom"><button class="btn__contratar" type="submit">Confirmar Plano</button></div>
     </form>
 </div>
