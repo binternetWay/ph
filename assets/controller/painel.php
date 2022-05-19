@@ -21,7 +21,7 @@ $lista = array(
         'destque'=>"0",));
 
 $contrato = new Contratos();
-// var_dump($_SESSION);
+
 $cont = $contrato->Quantidade_Contratos($_SESSION['cpf']);
 
 for ($i=0; $i < count($cont); $i++) { 
@@ -30,10 +30,11 @@ for ($i=0; $i < count($cont); $i++) {
         $resultado[1] = $cont[$i]['codigo_servico'];
     }
 }
-
+$_SESSION['tipo_contrato'] = $resultado[0];
 $ph = $contrato->valores_de_servico($resultado[1], $resultado[0]);
 
 $play = new PH();
+
 
 $playhub = $play->buscar_inscricao('reginaldo.silva');
 
