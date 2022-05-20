@@ -52,6 +52,12 @@
                 </div>
                 <div id="arRight" class="arRight"><i class="fa-solid fa-angle-left"></i></div>
             </div>
+            <?php
+                $planos = array(
+                    array('velocidade'=>'100MB','preco'=>'69.90'),
+                    array('velocidade'=>'150MB','preco'=>'79.90'),
+                    array('velocidade'=>'300MB','preco'=>'89.90'));
+            ?>
             <style>
                 .container__login-mid_alter{
                     display: flex;
