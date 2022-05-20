@@ -1,3 +1,16 @@
+<?php
+
+session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
+session_start();
+
+$token = md5($_SESSION['nome'].date('l jS \of F Y'));
+
+if ($_SESSION['token'] != $token) {
+    header('Location: logout');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
