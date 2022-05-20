@@ -1,0 +1,1 @@
+# Anotações para alterações futuras os criterios provisorios
