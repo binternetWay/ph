@@ -26,9 +26,103 @@
                 <div class="logo"><img class="logo__img-white" src="https://www.internetway.com.br/assets/img/whiteLogo.svg" alt="logo com a escrita internet way"></div>
                 <div class="logo"><img class="logo__img-black" src="assets/img/logo/bLogo.png" alt="logo com a escrita internet way"></div>
             </div>
-            <div class="container__login-mid">
-
+            <div class="container__login-mid_alter">
+                <div id="arLeft" class="arLeft"><i class="fa-solid fa-angle-left"></i></div>
+                <div id="container__plano" class="container__plano">
+                    <div class="select_plano">
+                        <span class="velocidade">100MB</span>
+                        <span class="preco">R$ 69,90</span>
+                    </div>
+                    <div class="select_plano">
+                        <span class="velocidade">150MB</span>
+                        <span class="preco">R$ 79,90</span>
+                    </div>
+                    <div class="select_plano">
+                        <span class="velocidade">300MB</span>
+                        <span class="preco">R$ 89,90</span>
+                    </div>
+                    <div class="select_plano">
+                        <span class="velocidade">500MB</span>
+                        <span class="preco">R$ 99,90</span>
+                    </div>
+                    <div class="select_plano">
+                        <span class="velocidade">750MB</span>
+                        <span class="preco">R$ 189,90</span>
+                    </div>
+                </div>
+                <div id="arRight" class="arRight"><i class="fa-solid fa-angle-left"></i></div>
             </div>
+            <style>
+                .container__login-mid_alter{
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                }
+                .container__plano{
+                    display: flex;
+                    flex-direction: row;
+                    cursor: pointer;
+                    overflow-x: auto;   
+
+                    padding: 15px;
+                    width: 100%;
+                }
+                .arLeft{
+                    display: flex;
+                    align-items: center;
+                    padding: 30px 5px;
+                    font-size: 20px;
+                    color: var(--bg-type2);
+                    cursor:pointer;
+                }
+                .arRight{
+                    display: flex;
+                    align-items: center;
+                    padding: 30px 5px;
+                    font-size: 20px;
+                    color: var(--bg-type2);
+                    transform: rotate(180deg);
+                    cursor:pointer;
+                }
+                .select_plano{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    margin: 0px 5px;
+                    width: 25%;
+                    min-width: 90px;
+                    height: 100px;
+                    border-radius:  10px;
+                    border: 3px solid transparent;
+                    background-color: var(--bg-type2);
+                    transition: 0.3s;
+                }
+                .select_plano:hover{
+                    transform: scale(1.05);
+                    border: 3px solid var(--bg2-contracts);
+                    transition: 0.3s;
+                }
+                .velocidade{
+                    margin: 5px 0px;
+                    color: var(--bg1-default);
+                    font-size: 20px;
+                    font-weight: 900;
+                }
+                .preco{
+                    margin: 1px 0px;
+                    color: var(--bg1-default);
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+                /* Mobile layout */
+                @media only screen and (max-width: 680px) {
+                    .select_plano:hover{
+                        border: 3px solid var(--bg1-default);
+                    }
+                }
+            </style>
             <div class="container__login-buttom">
                 <i class="fa-brands fa-facebook-square"></i>
                 <i class="fa-brands fa-instagram-square"></i>
@@ -42,4 +136,5 @@
 
 <!-- page JS -->
 <?php include_once '../includes/jsPadrao.php' ?>
+<script src="assets/js/planos.js"></script>
 </html>
