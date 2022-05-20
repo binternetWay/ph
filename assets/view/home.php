@@ -34,6 +34,8 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 <div id="container__shop" class="container__shop">
     <div id="close" class="shop__box--top"><i class="fa-solid fa-xmark"></i></div>
     <div class="shop__box--img" id="shop__box--img"></div>
+    <input name="cod__servico" id="cod__servico"type="hidden"></input>
+
 
 <?php 
     $retorno = 1;
