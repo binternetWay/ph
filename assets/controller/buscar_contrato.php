@@ -171,7 +171,6 @@ if (isset($_POST['s_contrato']) && isset($_POST['contrato'])) {
         echo "Seu plano não é compativel";
     }
 
-    //header('Location: /ph/painel');
 }
 else
     header('Location: /ph/logout');
