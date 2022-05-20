@@ -44,10 +44,10 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && !isset($_POST['prime
 
             if (count($lista) == 1) {
                 $contrato = $lista[0]['numero_contrato'];
-                $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
+                $_SESSION['token'] = md5('contratos'.date('l jS \of F Y'));
                 $_SESSION['cpf'] = $_POST['cpf'];
                 $_SESSION['contrato'] = $contrato;
-                header('Location: /ph/painel');
+                header('Location: /ph/contrato');
             }
             elseif (count($lista) > 1) {
                 $_SESSION['div'] = md5('contratos'.date('l jS \of F Y'));
