@@ -194,6 +194,10 @@ body{
     z-index: 300;
 }
 
+.shop__box--info{
+    margin-top:  20px;
+}
+
 .info__line{
     display: flex;
     flex-direction: row;

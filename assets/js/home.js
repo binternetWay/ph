@@ -74,14 +74,15 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal) {
 	var dtInicial = document.getElementById('inicio__service');
 	var dtFinal = document.getElementById('fim__service');
 
-	nameService.innerHTML = nome_servico
-	dtInicial.innerHTML = dataInicial
-	dtFinal.innerHTML = dataFinal
+	nameService.innerHTML = nome_servico;
+	dtInicial.innerHTML = dataInicial;
+	dtFinal.innerHTML = dataFinal;
+	getPreco(codigo);
 
 
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
-	document.getElementById('cod__servico').value = codigo
+	document.getElementById('cod__servico').value = codigo;
 	openShop();
 }
 

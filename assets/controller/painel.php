@@ -21,7 +21,6 @@ $lista = array(
         'destque'=>"0",));
 
 $contrato = new Contratos();
-// var_dump($_SESSION);
 $cont = $contrato->Quantidade_Contratos($_SESSION['cpf']);
 
 for ($i=0; $i < count($cont); $i++) { 
