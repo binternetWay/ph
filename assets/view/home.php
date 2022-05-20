@@ -38,7 +38,7 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 
 
 <?php 
-    $retorno = 0;
+    $retorno = 1;
     if ($retorno == 1) {
         $voucher = '<div class="retorno__playhub">
                         <div class="retorno__line">
@@ -57,8 +57,7 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
                         </form>';
     }
 
-?>
-    <?php echo $voucher ?>
+    echo $voucher ?>
     <div class="shop__box--info">
         <div class="info__title"><span class="title">Informações do serviço</span></div>
         <div class="info__title"><span class="title"></span></div>
@@ -95,7 +94,7 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
             <span id="valorTotal__service" class="info">R$ 116,80</span>
         </div>
     </div>
-    <?php echo $btn_aderir ?>
+    <?= $btn_aderir ?>
 
 </div>
 </div>

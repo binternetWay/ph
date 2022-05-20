@@ -109,7 +109,7 @@ class Contratos{
 
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $_SESSION['tipo_contrato '] = $row['tipo_contrato '];
+        //$_SESSION['tipo_contrato'] = $row['tipo_contrato'];
 
         return $row;
     }
