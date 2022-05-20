@@ -8,8 +8,10 @@ require_once "../modal/Contratos.php";
 if (!isset($_SESSION['div']) || $_SESSION['div'] != md5('contratos'.date('l jS \of F Y')) || !isset($_SESSION['cpf'])) {
     header('Location: /ph/logout');
 }
+
 $div = new Contratos();
 $div = $div->listar_contratos($_SESSION['cpf']);
+
 ?>
 
 <!DOCTYPE html>

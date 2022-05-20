@@ -36,18 +36,17 @@ session_start();
             <div class="container__login-mid">
                 <div class="form__logins">
                     <form method="POST" action="assets/controller/validar_contrato.php">
-                    <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" value="<?= @$_SESSION['cpf'] ?>" placeholder="Digite seu CPF" required="required"/></div>
-                    <?php
+                        <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" value="<?= @$_SESSION['cpf'] ?>" placeholder="Digite seu CPF" required="required"/></div>
+                        <?php
 
-                    if (isset($_SESSION['parametro']) && $_SESSION['parametro'] === md5("seu pai de calcinha")) {
-                        include_once '../includes/usuarioexistente.php';
-                        
-                    }
-                    elseif (isset($_SESSION['condicao']) && $_SESSION['condicao'] == true) {
-                        include_once '../includes/novousuario.php';
-                    }
-                    session_destroy();
-                    ?>
+                        if (isset($_SESSION['parametro']) && $_SESSION['parametro'] === md5("seu pai de calcinha")) {
+                            include_once '../includes/usuarioexistente.php';
+                        }
+                        elseif (isset($_SESSION['condicao']) && $_SESSION['condicao'] == true) {
+                            include_once '../includes/novousuario.php';
+                        }
+                        session_destroy();
+                        ?>
                         <div class="form__line"><button class="btn__buscar" type="submit" name="search">Buscar Usuário</button></div>
                     </form>
                 </div>
