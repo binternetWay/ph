@@ -10,7 +10,6 @@ if ($_SESSION['token'] != $token) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
@@ -39,38 +38,24 @@ if ($_SESSION['token'] != $token) {
                 <div class="logo"><img class="logo__img-white" src="https://www.internetway.com.br/assets/img/whiteLogo.svg" alt="logo com a escrita internet way"></div>
                 <div class="logo"><img class="logo__img-black" src="assets/img/logo/bLogo.png" alt="logo com a escrita internet way"></div>
             </div>
+            
             <div class="container__login-mid_alter">
                 <div id="arLeft" class="arLeft"><i class="fa-solid fa-angle-left"></i></div>
-                <div id="container__plano" class="container__plano">
-                    <div class="select_plano">
-                        <span class="velocidade">100MB</span>
-                        <span class="preco">R$ 69,90</span>
-                    </div>
-                    <div class="select_plano">
-                        <span class="velocidade">150MB</span>
-                        <span class="preco">R$ 79,90</span>
-                    </div>
-                    <div class="select_plano">
-                        <span class="velocidade">300MB</span>
-                        <span class="preco">R$ 89,90</span>
-                    </div>
-                    <div class="select_plano">
-                        <span class="velocidade">500MB</span>
-                        <span class="preco">R$ 99,90</span>
-                    </div>
-                    <div class="select_plano">
-                        <span class="velocidade">750MB</span>
-                        <span class="preco">R$ 189,90</span>
-                    </div>
-                </div>
+                <div id="container__plano" class="container__plano"></div>
                 <div id="arRight" class="arRight"><i class="fa-solid fa-angle-left"></i></div>
             </div>
+
+            <script>
             <?php
                 $planos = array(
                     array('velocidade'=>'100MB','preco'=>'69.90'),
                     array('velocidade'=>'150MB','preco'=>'79.90'),
                     array('velocidade'=>'300MB','preco'=>'89.90'));
+                $lista = json_encode($planos,true);
+                echo "var lista_planos = ". $lista . ";\n";
             ?>
+            </script>
+
             <style>
                 .container__login-mid_alter{
                     display: flex;
