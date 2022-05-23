@@ -1,4 +1,14 @@
 
+function activePopup () {
+    var popup = document.getElementById('popup');
+	if (popup.style.display === "none") {
+		popup.style.display = "flex";
+	} else {
+		popup.style.display = "none";
+	}
+}
+document.getElementById('close').onclick = function get() {activePopup()}
+
 function getRollRight(idArrow) {
     const arrow = document.getElementById(idArrow)
     arrow.scrollLeft += 30; 
@@ -24,6 +34,7 @@ function createlista(lista){
         const div_lista = document.createElement('div');
         div_lista.className = 'select_plano';
         div_lista.id = nome+i;
+        div_lista.onclick = function get() {activePopup()}
         document.getElementById('container__plano').appendChild(div_lista);
 
         const span_speed = document.createElement('span');
