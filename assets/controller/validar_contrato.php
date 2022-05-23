@@ -25,12 +25,21 @@ if (isset($_POST['search']) && isset($_POST['cpf'])
         header('Location: login');
     }
     else {
+        $stt = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
+        $stt->execute(array(':cpf' => $_POST['cpf']));
+        if ($stt->rowCount() > 0) {
+            //Cria parametro para cadastro do usuario em nossa base
+            $_SESSION['condicao'] = true;
+            $_SESSION['cpf'] = $_POST['cpf'];
 
-        //Cria parametro para cadastro do usuario em nossa base
-        $_SESSION['condicao'] = true;
-        $_SESSION['cpf'] = $_POST['cpf'];
+            header('Location: login');
+        }
+        else {
+            $_SESSION['msg'] = "erro_usuario_nao";
+            header('Location: login');
+        }
 
-        header('Location: login');
+        
     }    
 }
 
@@ -80,7 +89,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
         }
     }
     else{
-        $_SESSION['msg'] = "erro_usuario";
+        $_SESSION['msg'] = "erro_usuario_nao";
         
         header('Location: /ph/logout');
     }
@@ -118,10 +127,13 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
         }
         else{ 
             $_SESSION['msg'] = "erro_contrato";
+
             header('Location: logout');
         }
     }
     else{
+        $_SESSION['msg'] = "erro_contrato";
+
         header('Location: logout');
     }
 }
