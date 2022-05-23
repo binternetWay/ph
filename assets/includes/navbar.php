@@ -8,15 +8,15 @@
     </div>
     <div class="config__user">
         <ul class="config__user--ul">
-            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo 'Menino vini' ?></span><i class="fa-solid fa-angle-left"></i></a></li>
+            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo 'Vini' ?></span><i class="fa-solid fa-angle-left"></i></a></li>
         </ul>
     </div>
 </div>
-<div class="menu__user">
+<!-- <div class="menu__user">
     <div class="line__option">
         <select type="text"></select>
     </div>
-</div>
+</div> -->
 
 <style>
 .menu__user{
