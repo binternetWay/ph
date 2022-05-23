@@ -25,7 +25,8 @@ if (isset($_POST['search']) && isset($_POST['cpf'])
         header('Location: login');
     }
     else {
-        $stt = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
+        $sql = New Contratos();
+        $stt = PDO_Voalle::getInstance()->prepare($sql->get_contratos());
         $stt->execute(array(':cpf' => $_POST['cpf']));
         if ($stt->rowCount() > 0) {
             //Cria parametro para cadastro do usuario em nossa base
@@ -99,7 +100,9 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
 elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_POST['primeira__senha'] == $_POST['segunda__senha']){
     $_POST['cpf'] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     
-    $x = PDO_Voalle::getInstance()->prepare(Contratos::get_contratos());
+    $sql = New Contratos();
+
+    $x = PDO_Voalle::getInstance()->prepare($sql->get_contratos());
 
     $x->execute(array(':cpf' => $_POST['cpf']));
 
