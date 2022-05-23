@@ -32,7 +32,9 @@ if ($_SESSION['token'] != $token) {
     <div id="popup" class="popup__select" style="display: none;">
         <div class="container__confirmacao">
             <div id="close" class="popup__box--top"><i class="fa-solid fa-xmark"></i></div>
+            <div class="popup__box--title"><span class="title__popup"></span></div>
             <div class="popup__box--mid"><span>Pode ser utilizado em contrato de adesão, para uma ordem de serviço ou de um termo de uso, ou ainda, na aprovação de um orçamento ou proposta comercial. É o equivalente a uma assinatura manual, mas com a facilidade do digital.</span></div>
+            <div class="btn__line"><button class="btn__sim" type="submit">sim</button><button class="btn__sim" type="submit">não</button></div>
         </div>
     </div>
     <style>
@@ -55,16 +57,13 @@ if ($_SESSION['token'] != $token) {
         flex-direction: column;
 
         width: 55%;
-        height: 70%;
         max-width: 400px;
-        max-height: 430px;
         padding: 20px;
         background-color: var(--bg1-default);
         border-radius: 20px;
-        box-shadow: 0 4px 12px 0 rgb(35 35 35 / 16%);
+        box-shadow: 0 4px 12px 0 rgb(35 35 35 / 60%);
         z-index: 10;
     }
-
     .popup__box--top{
         display: flex;
         align-items: center;
@@ -75,7 +74,6 @@ if ($_SESSION['token'] != $token) {
     }
 
     .popup__box--top i{
-        margin: 0px 11px;
         padding: 2px 7px;
         border-radius:  50%;
         font-size: 30px;
@@ -90,15 +88,16 @@ if ($_SESSION['token'] != $token) {
         transform: scale(0.80);
         transition: 0.3s;
     }
+    .popup__box--mid{
+        margin-top: 25px;
+    }
     /* Mobile layout */
     @media only screen and (max-width: 680px) {
         .container__confirmacao{
             width: 100%;
-            height: 100%;
             max-width: none;
-            max-height: none;
-            border-radius: 0px;
-            padding: 0px 5px;
+            padding: 15px 25px;
+            margin: 0px 15px;
         }
     }
 
@@ -115,7 +114,7 @@ if ($_SESSION['token'] != $token) {
             </div>
             <div class="container__login--mid_msg">
                 <span class="msg1">Ops...!</span>
-                <span class="msg2">Parece que esse contrato inda não tem um plano compativel com a plataforma de Streaming!</span>
+                <span class="msg2">Parece que esse contrato inda não tem um plano compativel com a plataforma de streaming!</span>
             </div>
             
             
