@@ -95,7 +95,7 @@ session_start();
   <?php endif ?>
 
   <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_contrato'): ?>
-    toastr.warning("Erro, Usuario não encontrado em nossa base!");
+    toastr.warning("Erro, CPF não localizado em nossa base!");
     
   <?php endif ?>
 
