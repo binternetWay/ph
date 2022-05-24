@@ -42,6 +42,8 @@ if (isset($_POST['s_contrato']) && isset($_POST['contrato'])) {
     }
 
 }
-else
+else {
+    $_SESSION['msg'] = 'erro_contrato';
     header('Location: /ph/logout');
+}
 
