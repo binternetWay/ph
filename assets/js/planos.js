@@ -28,6 +28,7 @@ function createlista(lista){
 
     for(i=1;i <= qtdLista; i++){
         var nome = 'option';
+        var nome_img = 'cat';
         var velocidade = lista[i-1]['velocidade'];
         var preco = lista[i-1]['preco'];
 
@@ -46,6 +47,41 @@ function createlista(lista){
         span_preco.className = 'preco';
         span_preco.innerHTML =  'R$ '+preco;
         document.getElementById(nome+i).appendChild(span_preco);
+
+        const span_benef = document.createElement('span');
+        span_benef.className = 'benf';
+        span_benef.innerHTML =  'Benefício';
+        document.getElementById(nome+i).appendChild(span_benef);
+
+        const div_servico = document.createElement('div');
+        div_servico.className = 'service__line';
+        div_servico.id = nome_img+i;
+        document.getElementById(nome+i).appendChild(div_servico);
+
+        if(lista[i-1]['servico1'] != ''){
+            const serv = document.createElement('img');
+            serv.src = lista[i-1]['servico1'];
+            document.getElementById(nome_img+i).appendChild(serv);
+
+        }
+        if(lista[i-1]['servico2'] != ''){
+            const serv = document.createElement('img');
+            serv.src = lista[i-1]['servico2'];
+            document.getElementById(nome_img+i).appendChild(serv);
+
+        }
+        if(lista[i-1]['servico3'] != ''){
+            const serv = document.createElement('img');
+            serv.src = lista[i-1]['servico3'];
+            document.getElementById(nome_img+i).appendChild(serv);
+
+        }
+        if(lista[i-1]['servico4'] != ''){
+            const serv = document.createElement('img');
+            serv.src = lista[i-1]['servico4'];
+            document.getElementById(nome_img+i).appendChild(serv);
+
+        }
     }
 }
 createlista(lista_planos);

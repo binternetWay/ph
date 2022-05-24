@@ -54,8 +54,8 @@ session_start();
                 </div>
             </div>
             <div class="container__login-buttom">
-                <i class="fa-brands fa-facebook-square"></i>
-                <i class="fa-brands fa-instagram-square"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Contato</span>
             </div>
         </div>
     </div>
