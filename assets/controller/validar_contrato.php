@@ -39,7 +39,6 @@ if (isset($_POST['search']) && isset($_POST['cpf'])
             $_SESSION['msg'] = "erro_usuario_nao";
             header('Location: login');
         }
-
         
     }    
 }
