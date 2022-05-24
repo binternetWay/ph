@@ -36,9 +36,7 @@
     padding: 2px 7px;
     border-radius:  50%;
     font-size: 30px;
-    color: var(--text-default);
-    background-color: var(--main-danger);
-
+    color: black;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -46,13 +44,41 @@
     transform: scale(0.80);
     transition: 0.3s;
 }
-.title__popup{
+.info__newPlano{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    width: 70%;
+}
+.info__line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3px 0px;
+
+    color: black;
+}
+.info__line--center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 0px;
+}
+.info__line--center img{
+    margin: 0px 5px;
+}
+.info__line--center span{
     font-size: 20px;
     font-weight: 800;
     color: black;
 }
-.popup__box--mid{
-    margin-top: 25px;
+
+.title__popup{
+    font-size: 20px;
+    font-weight: 800;
+    color: black;
 }
 .text__confirmacao{
     font-size: 12px;
@@ -105,9 +131,9 @@
 
 
 .container__login {
-    width: 50%;
+    width: 80%;
     height: 80%;
-    max-width: 400px;
+    max-width: 500px;
     max-height: 500px;
 }
 .container__login--mid_msg{
@@ -178,8 +204,8 @@
 
     margin: 0px 5px;
     width: 25%;
-    min-width: 145px;
-    height: 220px;
+    min-width: 200px;
+    height: 155px;
     border-radius:  10px;
     border: 3px solid transparent;
     background-color: var(--bg-type2);
@@ -219,6 +245,12 @@
     width: 45px;
     border-radius: 10px;
 } 
+.form__conf{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 /* Mobile layout */
 @media only screen and (max-width: 680px) {
     .select_plano:hover{

@@ -33,12 +33,25 @@ if ($_SESSION['token'] != $token) {
     <div id="popup" class="popup__select" style="display: none;">
         <div class="container__confirmacao">
             <div id="close" class="popup__box--top"><i class="fa-solid fa-xmark"></i></div>
-            <div class="popup__box--title"><span class="title__popup">Confirmação</span></div>
-            <div class="popup__box--mid">
-                <input type="checkbox">
-                <label class="text__confirmacao">Declaro estar ciente sobre a Alteração do Plano realizado, bem como, observância da fidelidade de 12 meses. Concordo com as cláusulas e condições do novo <a href="#">Termo de Adesão.</a></label>
+            <div class="popup__box--title"><span class="title__popup">Novo Plano</span></div>
+            <div class="info__newPlano">
+                <div class="info__line"><span>Velocidade:</span><span id="velocidade"></span></div>
+                <div class="info__line"><span>Valor:</span><span id="valor_plano"></span></div>
+                <div class="info__line--center"><span>Benefícios</span></div>
+                <div class="info__line--center" style="margin-top: 25px;">
+                    <img src="assets/img/icons/icon_ubook.png" style="width: 50px;">
+                    <img src="assets/img/icons/icon_plus.png" style="width: 50px;">
+                </div>
             </div>
-            <div class="btn__line"><button class="btn btn__nao" type="submit">não</button><button class="btn btn__sim" type="submit">sim</button></div>
+            <form class="form__conf" action="">
+                <div class="popup__box--title" style="margin-top: 25px;"><span class="title__popup">Confirmação</span></div>
+                <div class="popup__box--mid">
+                    <input type="checkbox">
+                    <label class="text__confirmacao">Declaro estar ciente sobre a Alteração do Plano realizado, bem como, observância da fidelidade de 12 meses. Concordo com as cláusulas e condições do novo <a href="#">Termo de Adesão.</a></label>
+                </div>
+                <input type="hidden" value="" name="cod_plano" id="cod_plano">
+                <div class="btn__line"><button class="btn btn__nao" type="submit">não</button><button class="btn btn__sim" type="submit">sim</button></div>
+            </form>
         </div>
     </div>
     <svg class="login__page-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -81,7 +94,7 @@ if ($_SESSION['token'] != $token) {
 
             <div class="container__login-buttom">
                 <i class="fa-brands fa-whatsapp"></i>
-                <span>Contato</span>
+                <span>Fale Conosco</span>
             </div>
         </div>
     </div>
