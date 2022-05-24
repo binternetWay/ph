@@ -85,23 +85,19 @@ session_start();
     }
 
   <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_usuario'): ?>
-    toastr.warning("Erro, Usuario ou senha incorreta!");
-    
+    toastr.warning("Erro, usuário ou senha incorreta!");
   <?php endif ?>
 
   <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_usuario_nao'): ?>
-    toastr.warning("Erro, Usuario não existe em nossa base!");
-    
+    toastr.warning("Erro, usuário não existe em nossa base!");
   <?php endif ?>
 
   <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_contrato'): ?>
     toastr.warning("Erro, CPF não localizado em nossa base!");
-    
   <?php endif ?>
 
   <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_senha'): ?>
     toastr.warning("Erro, senhas não coincidem");
-    
   <?php endif ?>
 
 
