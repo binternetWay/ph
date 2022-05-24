@@ -46,6 +46,13 @@ function createlista(lista){
         span_preco.className = 'preco';
         span_preco.innerHTML =  'R$ '+preco;
         document.getElementById(nome+i).appendChild(span_preco);
+
+        const span_benef = document.createElement('span');
+        span_benef.className = 'benf';
+        span_benef.innerHTML =  'Benefício'
+        document.getElementById(nome+i).appendChild(span_benef);
+    
+    
     }
 }
 createlista(lista_planos);

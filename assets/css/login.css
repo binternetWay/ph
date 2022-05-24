@@ -154,6 +154,19 @@ body {
     margin-left: 15px;
     color:var(--bg3-default);
 }
+.container__login-buttom{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.container__login-buttom span{
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--bg-type2);
+}
 
 .container__login-buttom i{
     margin: 0px 7px;
@@ -178,12 +191,15 @@ body {
         color: var(--bg1-default);
         font-size: 40px;
     }
-
+    .container__login-buttom span{
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--bg1-default);
+    }
     .container__login-top .logo i{
         background-color: var(--bg1-default);
         color: var(--bg1-contracts);
     }
-
     .container__login-top .logo .logo__img-white{
         display: block;
     }

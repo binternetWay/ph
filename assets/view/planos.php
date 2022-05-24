@@ -32,9 +32,12 @@ if ($_SESSION['token'] != $token) {
     <div id="popup" class="popup__select" style="display: none;">
         <div class="container__confirmacao">
             <div id="close" class="popup__box--top"><i class="fa-solid fa-xmark"></i></div>
-            <div class="popup__box--title"><span class="title__popup"></span></div>
-            <div class="popup__box--mid"><span>Pode ser utilizado em contrato de adesão, para uma ordem de serviço ou de um termo de uso, ou ainda, na aprovação de um orçamento ou proposta comercial. É o equivalente a uma assinatura manual, mas com a facilidade do digital.</span></div>
-            <div class="btn__line"><button class="btn__sim" type="submit">sim</button><button class="btn__sim" type="submit">não</button></div>
+            <div class="popup__box--title"><span class="title__popup">Confirmação</span></div>
+            <div class="popup__box--mid">
+                <input type="checkbox">
+                <label class="text__confirmacao">Declaro estar ciente sobre a Alteração do Plano realizado, bem como, observância da fidelidade de 12 meses. Concordo com as cláusulas e condições do novo <a href="#">Termo de Adesão.</a></label>
+            </div>
+            <div class="btn__line"><button class="btn btn__nao" type="submit">não</button><button class="btn btn__sim" type="submit">sim</button></div>
         </div>
     </div>
     <style>
@@ -72,7 +75,6 @@ if ($_SESSION['token'] != $token) {
         height: 50px;
         z-index: 500;
     }
-
     .popup__box--top i{
         padding: 2px 7px;
         border-radius:  50%;
@@ -83,13 +85,56 @@ if ($_SESSION['token'] != $token) {
         cursor: pointer;
         transition: 0.3s;
     }
-
     .popup__box--top i:hover{
         transform: scale(0.80);
         transition: 0.3s;
     }
+    .title__popup{
+        font-size: 20px;
+        font-weight: 800;
+        color: black;
+    }
     .popup__box--mid{
         margin-top: 25px;
+    }
+    .text__confirmacao{
+        font-size: 12px;
+        line-height: 0px;
+    }
+    .btn__line{
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .btn{
+        margin: 10px 5px;
+        padding: 15px;
+        color: var(--bg1-default);
+        border: none;
+        border: 0;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 700;
+        overflow: hidden;
+        font-family: 'DM Sans', sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+    .btn__sim{
+        width: 70%;
+        min-width: 60px;
+        background-color: var(--main-sucesse);
+    }
+    .btn__nao{
+        width: 30%;
+        min-width: 60px;
+        background-color: var(--main-danger);
+    }
+    .btn:hover{
+        transform: scale(1.05);
+        transition: 0.3s;
     }
     /* Mobile layout */
     @media only screen and (max-width: 680px) {
@@ -121,7 +166,16 @@ if ($_SESSION['token'] != $token) {
             <div class="container__login--mid_title"><span class="title__processo">Escolha o melhor para você:</span></div>
             <div class="container__login-mid_alter">
                 <div id="arLeft" class="arLeft"><i class="fa-solid fa-angle-left"></i></div>
-                <div id="container__plano" class="container__plano"></div>
+
+                <div id="container__plano" class="container__plano">
+                    <div class="select_plano">
+                        <span class="velocidade">100MB</span>
+                        <span class="preco">R$ 69.90</span>
+                        <span class="benf">Benefício</span>
+                        <div class="service__line"><img src="assets/img/icons/icon_deezer.png" alt=""></div>
+                    </div>
+                </div>
+
                 <div id="arRight" class="arRight"><i class="fa-solid fa-angle-left"></i></div>
             </div>
 
@@ -213,8 +267,8 @@ if ($_SESSION['token'] != $token) {
 
                     margin: 0px 5px;
                     width: 25%;
-                    min-width: 90px;
-                    height: 100px;
+                    min-width: 120px;
+                    height: 140px;
                     border-radius:  10px;
                     border: 3px solid transparent;
                     background-color: var(--bg-type2);
@@ -237,6 +291,20 @@ if ($_SESSION['token'] != $token) {
                     font-size: 15px;
                     font-weight: 400;
                 }
+                .benf{
+                    margin-top: 15px;
+                    color: var(--bg1-default);
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+                .service__line{
+                    display: flex;
+                    align-items: center;
+                }
+                .service__line img{
+                    width: 35px;
+                    border-radius: 10px;
+                } 
                 /* Mobile layout */
                 @media only screen and (max-width: 680px) {
                     .select_plano:hover{
@@ -247,7 +315,7 @@ if ($_SESSION['token'] != $token) {
                         max-width: none;
                         max-height: none;
                         height: 100%;
-                        width: 100%;
+                        width: 100% !important;
                     }
                     .msg1{
                         color: var(--bg1-default);
@@ -258,8 +326,8 @@ if ($_SESSION['token'] != $token) {
                 }
             </style>
             <div class="container__login-buttom">
-                <i class="fa-brands fa-facebook-square"></i>
-                <i class="fa-brands fa-instagram-square"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Contato</span>
             </div>
         </div>
     </div>

@@ -88,12 +88,17 @@ $div = $div->listar_contratos($_SESSION['cpf']);
                         .form__line select::placeholder {
                             color: var(--bg3-default);
                         }
+                        @media only screen and (max-width: 680px) {
+                            .container__login{
+                                width: 80% !important;
+                            }
+                        }
                     </style>
                 </div>
             </div>
             <div class="container__login-buttom">
-                <i class="fa-brands fa-facebook-square"></i>
-                <i class="fa-brands fa-instagram-square"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Contato</span>
             </div>
         </div>
     </div>
