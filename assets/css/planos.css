@@ -66,8 +66,9 @@
     justify-content: center;
     margin: 3px 0px;
 }
-.info__line--center img{
+.benef__line{
     margin: 0px 5px;
+    width: 50px;
 }
 .info__line--center span{
     font-size: 20px;

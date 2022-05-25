@@ -11,21 +11,16 @@ function activePopup (velocidade, valor) {
 
 	} else {
 		popup.style.display = "none";
+
+        // remove imgBenef
+         var qtdImg = document.getElementsByClassName('benef__line').length;
+         var listaImg =  document.getElementsByClassName('benef__line');
+        for(i=1;i <= qtdImg; i++){
+            listaImg[0].remove()
+        }
 	}
 }
 document.getElementById('close').onclick = function get() {activePopup()}
-
-function getRollRight(idArrow) {
-    const arrow = document.getElementById(idArrow)
-    arrow.scrollLeft += 80; 
-}
-document.getElementById('arRight').onclick = function get() {getRollRight('container__plano')};
-
-function getRollLeft (idArrow) {
-    const arrow = document.getElementById(idArrow)
-    arrow.scrollLeft -= 80;
-}
-document.getElementById('arLeft').onclick = function get() {getRollLeft('container__plano')};
 
 
 function createlista(lista){
@@ -39,13 +34,15 @@ function createlista(lista){
         var nome_img = 'cat';
         var velocidade = lista[i-1]['velocidade'];
         var preco = lista[i-1]['preco'];
+        var numPlano = i-1;
 
         const div_lista = document.createElement('div');
         div_lista.className = 'select_plano';
         div_lista.id = nome+i;
         div_lista.parVelocidade = velocidade;
         div_lista.parPreco = preco;
-        div_lista.onclick = function get() {activePopup(div_lista.parVelocidade, div_lista.parPreco)}
+        div_lista.numPlano = numPlano;
+        div_lista.onclick = function get() {activePopup(div_lista.parVelocidade, div_lista.parPreco), createListaIcone(lista, 'benef', div_lista.numPlano)}
         document.getElementById('container__plano').appendChild(div_lista);
 
         const span_speed = document.createElement('span');
@@ -72,53 +69,62 @@ function createlista(lista){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico1'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
         if(lista[i-1]['servico2'] != ''){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico2'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
         if(lista[i-1]['servico3'] != ''){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico3'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
         if(lista[i-1]['servico4'] != ''){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico4'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
     }
 }
 createlista(lista_planos);
 
-function createListaIcone (lista, idDiv){
-    if(lista[i-1]['servico1'] != ''){
+function createListaIcone (lista, idDiv, numPlano){
+    if(lista[numPlano]['servico1'] != ''){
         const serv = document.createElement('img');
-        serv.src = lista[i-1]['servico1'];
-        document.getElementById(nome_img+i).appendChild(serv);
-
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico1'];
+        document.getElementById(idDiv).appendChild(serv);
     }
-    if(lista[i-1]['servico2'] != ''){
+    if(lista[numPlano]['servico2'] != ''){
         const serv = document.createElement('img');
-        serv.src = lista[i-1]['servico2'];
-        document.getElementById(nome_img+i).appendChild(serv);
-
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico2'];
+        document.getElementById(idDiv).appendChild(serv);
     }
-    if(lista[i-1]['servico3'] != ''){
+    if(lista[numPlano]['servico3'] != ''){
         const serv = document.createElement('img');
-        serv.src = lista[i-1]['servico3'];
-        document.getElementById(nome_img+i).appendChild(serv);
-
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico3'];
+        document.getElementById(idDiv).appendChild(serv);
     }
-    if(lista[i-1]['servico4'] != ''){
+    if(lista[numPlano]['servico4'] != ''){
         const serv = document.createElement('img');
-        serv.src = lista[i-1]['servico4'];
-        document.getElementById(nome_img+i).appendChild(serv);
-
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico4'];
+        document.getElementById(idDiv).appendChild(serv);
     }
 }
+
+function getRollRight(idArrow) {
+    const arrow = document.getElementById(idArrow)
+    arrow.scrollLeft += 80; 
+}
+document.getElementById('arRight').onclick = function get() {getRollRight('container__plano')};
+
+function getRollLeft (idArrow) {
+    const arrow = document.getElementById(idArrow)
+    arrow.scrollLeft -= 80;
+}
+document.getElementById('arLeft').onclick = function get() {getRollLeft('container__plano')};
+

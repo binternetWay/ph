@@ -38,10 +38,7 @@ if ($_SESSION['token'] != $token) {
                 <div class="info__line"><span>Velocidade:</span><span id="velocidade"></span></div>
                 <div class="info__line"><span>Valor:</span><span id="valor_plano"></span></div>
                 <div class="info__line--center"><span>Benefícios</span></div>
-                <div class="info__line--center" style="margin-top: 25px;">
-                    <img src="assets/img/icons/icon_ubook.png" style="width: 50px;">
-                    <img src="assets/img/icons/icon_plus.png" style="width: 50px;">
-                </div>
+                <div class="info__line--center" id="benef" style="margin-top: 25px;"></div>
             </div>
             <form class="form__conf" action="">
                 <div class="popup__box--title" style="margin-top: 25px;"><span class="title__popup">Confirmação</span></div>
