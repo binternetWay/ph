@@ -98,7 +98,7 @@ $div = $div->listar_contratos($_SESSION['cpf']);
             </div>
             <div class="container__login-buttom">
                 <i class="fa-brands fa-whatsapp"></i>
-                <span>Contato</span>
+                <span>Fale Conosco</span>
             </div>
         </div>
     </div>

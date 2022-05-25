@@ -1,25 +1,26 @@
 
-function activePopup () {
+function activePopup (velocidade, valor) {
     var popup = document.getElementById('popup');
+    var idValor = document.getElementById('valor_plano');
+    var idVelocidade = document.getElementById('velocidade');
+
 	if (popup.style.display === "none") {
 		popup.style.display = "flex";
+        idVelocidade.innerHTML = velocidade;
+        idValor.innerHTML = 'R$ '+valor;
+
 	} else {
 		popup.style.display = "none";
+
+        // remove imgBenef
+         var qtdImg = document.getElementsByClassName('benef__line').length;
+         var listaImg =  document.getElementsByClassName('benef__line');
+        for(i=1;i <= qtdImg; i++){
+            listaImg[0].remove()
+        }
 	}
 }
 document.getElementById('close').onclick = function get() {activePopup()}
-
-function getRollRight(idArrow) {
-    const arrow = document.getElementById(idArrow)
-    arrow.scrollLeft += 30; 
-}
-document.getElementById('arRight').onclick = function get() {getRollRight('container__plano')};
-
-function getRollLeft (idArrow) {
-    const arrow = document.getElementById(idArrow)
-    arrow.scrollLeft -= 30;
-}
-document.getElementById('arLeft').onclick = function get() {getRollLeft('container__plano')};
 
 
 function createlista(lista){
@@ -27,15 +28,21 @@ function createlista(lista){
 	var qtdLista = lista.length;
 
     for(i=1;i <= qtdLista; i++){
+
+        // set variavies
         var nome = 'option';
         var nome_img = 'cat';
         var velocidade = lista[i-1]['velocidade'];
         var preco = lista[i-1]['preco'];
+        var numPlano = i-1;
 
         const div_lista = document.createElement('div');
         div_lista.className = 'select_plano';
         div_lista.id = nome+i;
-        div_lista.onclick = function get() {activePopup()}
+        div_lista.parVelocidade = velocidade;
+        div_lista.parPreco = preco;
+        div_lista.numPlano = numPlano;
+        div_lista.onclick = function get() {activePopup(div_lista.parVelocidade, div_lista.parPreco), createListaIcone(lista, 'benef', div_lista.numPlano)}
         document.getElementById('container__plano').appendChild(div_lista);
 
         const span_speed = document.createElement('span');
@@ -62,26 +69,62 @@ function createlista(lista){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico1'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
         if(lista[i-1]['servico2'] != ''){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico2'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
         if(lista[i-1]['servico3'] != ''){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico3'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
         if(lista[i-1]['servico4'] != ''){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico4'];
             document.getElementById(nome_img+i).appendChild(serv);
-
         }
     }
 }
 createlista(lista_planos);
+
+function createListaIcone (lista, idDiv, numPlano){
+    if(lista[numPlano]['servico1'] != ''){
+        const serv = document.createElement('img');
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico1'];
+        document.getElementById(idDiv).appendChild(serv);
+    }
+    if(lista[numPlano]['servico2'] != ''){
+        const serv = document.createElement('img');
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico2'];
+        document.getElementById(idDiv).appendChild(serv);
+    }
+    if(lista[numPlano]['servico3'] != ''){
+        const serv = document.createElement('img');
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico3'];
+        document.getElementById(idDiv).appendChild(serv);
+    }
+    if(lista[numPlano]['servico4'] != ''){
+        const serv = document.createElement('img');
+        serv.className = 'benef__line';
+        serv.src = lista[numPlano]['servico4'];
+        document.getElementById(idDiv).appendChild(serv);
+    }
+}
+
+function getRollRight(idArrow) {
+    const arrow = document.getElementById(idArrow)
+    arrow.scrollLeft += 80; 
+}
+document.getElementById('arRight').onclick = function get() {getRollRight('container__plano')};
+
+function getRollLeft (idArrow) {
+    const arrow = document.getElementById(idArrow)
+    arrow.scrollLeft -= 80;
+}
+document.getElementById('arLeft').onclick = function get() {getRollLeft('container__plano')};
+
