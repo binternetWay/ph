@@ -17,6 +17,7 @@ $('document').ready(function () {
             var minhas_inscricoes = data[3];
 
             createCategoriaService(myservice,'Meus Serviços');
+            console.log(myservice);
             createCategoriaService(servico,'Todos os Serviços');
             document.getElementById('close').onclick = function get (){openShop();}
         }

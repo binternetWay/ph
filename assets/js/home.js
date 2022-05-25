@@ -1,3 +1,8 @@
+
+function printLista (lista) {
+	console.log(lista);
+}
+
 function createCategoriaService (lista, nome) {
 
 	// set variaveis

@@ -6,7 +6,16 @@ require_once "../modal/Contratos.php";
 @session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 @session_start();
 
-$stmt = PDO_Conexao::getInstance()->prepare("SELECT *,  TO_CHAR(CURRENT_DATE, 'DD/MM') AS data_inicio, TO_CHAR((CURRENT_DATE+30), 'DD/MM') AS data_final FROM catalogo");
+$stmt = PDO_Conexao::getInstance()->prepare("
+SELECT servico.nome, servico.codigo_playhub, servico.src_img, categoria_id
+
+FROM catalogo
+LEFT JOIN plano ON plano.id = catalogo.cod_plano_id
+LEFT JOIN servico ON servico.id = catalogo.servico_id
+LEFT JOIN categoria ON categoria.id = catalogo.categoria_id
+
+WHERE tipo_contrato = 'RT'
+AND cod_plano = '50.2022'");
 
 $stmt->execute();
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
