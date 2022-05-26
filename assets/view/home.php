@@ -38,7 +38,8 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 
 
 <?php 
-    $retorno = 1;
+    $retorno = 0;
+    $numero == 12345;
     if ($retorno == 1) {
         $voucher = '<div class="retorno__playhub">
                         <div class="retorno__line">
