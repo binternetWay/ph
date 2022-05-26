@@ -178,10 +178,18 @@ class Contratos{
 
     public function get_valores()
     {
-        $sql = "SELECT * 
-                FROM preco
-                WHERE cod_plano = '50.2022'
-                AND tipo_contrato = :tipo";
+        $sql = "SELECT preco.tipo_contrato, 
+        categoria.id,
+        categoria.nome,
+        preco.qtd_free,
+        preco.valor
+        
+        FROM preco
+        LEFT JOIN plano ON plano.id = preco.cod_plano_id
+        LEFT JOIN categoria ON categoria.id = preco.categoria_id
+        
+        WHERE plano.cod_plano = '50.2022'
+        AND tipo_contrato  = :tipo";
         
         return $sql;
     }
