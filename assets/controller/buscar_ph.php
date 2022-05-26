@@ -10,5 +10,4 @@ echo "<pre>";
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
-var_dump($_SESSION);
-//var_dump($ph->buscar_inscricao('tarzan.carteiro'));
+var_dump($ph->buscar_inscricao('tarzan.carteiro'));

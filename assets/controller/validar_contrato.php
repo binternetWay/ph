@@ -81,7 +81,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 header('Location: /ph/painel');
             }
             else {
-                $_SESSION['msg'] = "erro_usuario";
+                $_SESSION['msg'] = "erro_contrato";
     
                 header('Location: /ph/logout');
             }
