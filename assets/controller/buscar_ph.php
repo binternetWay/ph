@@ -7,4 +7,4 @@ require_once "../modal/PlayHub.php";
 $ph = new PH();
 
 echo "<pre>";
-var_dump($ph->buscar_usuario('tarzan.carteiro'));
+var_dump($ph->buscar_inscricao('tarzan.carteiro'));

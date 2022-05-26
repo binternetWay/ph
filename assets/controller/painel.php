@@ -37,5 +37,6 @@ $play = new PH();
 
 $playhub = $play->buscar_inscricao('reginaldo.silva');
 
+//Final
 echo json_encode(array($servicos, $lista, $ph, $playhub));
 ?>
