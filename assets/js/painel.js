@@ -22,23 +22,3 @@ $('document').ready(function () {
         }
     });
 });
-
-function getPreco(codigo){
-    $.ajax({
-        type: var_type,
-        url: var_url,
-        dataType: var_dataType,
-        success: function (data) {
-            var p_servicos = data[2];
-
-            for(i=1; i <= 20;i++){
-                if(p_servicos[i-1]['cod_catalogo'] == codigo){
-                    var valorService = document.getElementById('valor__service');
-
-                    valorService.innerHTML = 'R$ '+p_servicos[i-1]['valor']
-                }
-            }
-        }
-    });
-
-}

@@ -90,7 +90,7 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
         </div>
 
         <div class="info__line">
-            <span class="info__name">Valor da Proxima fatura:</span> 
+            <span class="info__name">Valor da Proxima fatura:</span>
             <span id="valorTotal__service" class="info">R$ 116,80</span>
         </div>
     </div>

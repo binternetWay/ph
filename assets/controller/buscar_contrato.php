@@ -11,9 +11,9 @@ if (isset($_POST['s_contrato']) && isset($_POST['contrato'])) {
     $_SESSION['contrato'] = $_POST['contrato'];
     $_SESSION['token'] = md5($_SESSION['nome'].date('l jS \of F Y'));
     
-    $stmt = PDO_Conexao::getInstance()->prepare("SELECT DISTINCT plano 
-    FROM preco
-    ORDER BY plano ASC");
+    $stmt = PDO_Conexao::getInstance()->prepare("SELECT DISTINCT cod_plano 
+    FROM plano
+    ORDER BY cod_plano ASC");
     $sql = new Contratos();
     $stt = PDO_Voalle::getInstance()->prepare($sql->get_contratos());
 
