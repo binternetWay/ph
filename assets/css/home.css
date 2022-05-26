@@ -283,6 +283,7 @@ body{
     border-radius: 30px;
     border: 1px solid var(--bg1-default);
     color: var(--bg1-default);
+    background-color: var(--bg1-contracts);
     font-size: 13px;
 }
 

@@ -43,8 +43,8 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
         $voucher = '<div class="retorno__playhub">
                         <div class="retorno__line">
                             <span class="retorno__line--name">Voucher:</span>
-                            <span class="retorno__line--voucher">123456</span>
-                            <button class="retorno__line--btn" type="submit">Copiar Voucher</button>
+                            <input id="retorno__voucher"class="retorno__line--voucher" value="123456" disabled="disabled"></input>
+                            <button id="click__copy" class="retorno__line--btn" onclick="clickCopy()" type="submit">Copiar Voucher</button>
                         </div>
                     </div>';
         $btn_aderir = '';

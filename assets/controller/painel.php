@@ -27,8 +27,8 @@ LEFT JOIN preco ON (preco.categoria_id = catalogo.categoria_id
 										AND preco.cod_plano_id = catalogo.cod_plano_id
 										AND preco.tipo_contrato = catalogo.tipo_contrato)
 
-WHERE catalogo.tipo_contrato = 'RT'
-AND plano.cod_plano = '50.2022'");
+WHERE catalogo.tipo_contrato = 'FD'
+AND plano.cod_plano = '750.2022'");
 
 $stmt->execute();
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -58,7 +58,7 @@ function createServiceList (lista, idDiv){
 		div.cod_servico = lista[i-1]['codigo_index'];
 		div.dataInicio = lista[i-1]['data_inicio'];
 		div.dataFinal = lista[i-1]['data_final'];
-		div.valorServico = lista[i-1]['valor'];
+		div.valorServico = 'R$ ' + lista[i-1]['valor'];
 
 		div.className='service_item';
 		div.id= nameIdService
@@ -109,4 +109,13 @@ function openShop () {
 	} else {
 		popup.style.display = "none";
 	}
+}
+
+function clickCopy () {
+	var copyText = document.getElementById("retorno__voucher");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+
+	navigator.clipboard.writeText(copyText.value);
+	alert("Voucher copiado: " + copyText.value);
 }
