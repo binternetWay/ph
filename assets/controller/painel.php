@@ -5,30 +5,37 @@ require_once "../modal/Contratos.php";
 
 @session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 @session_start();
-
+if (!isset($_SESSION['codigo_plano']) && !isset($_SESSION['tipo_contrato'])) {
+    header('Location: ../logout');
+}
 $stmt = PDO_Conexao::getInstance()->prepare("
-SELECT 
-catalogo.tipo_contrato,
-plano.cod_plano,
-servico.nome,
-servico.codigo_playhub AS codigo_index,
-servico.src_img,
-catalogo.categoria_id,
-preco.valor,
-TO_CHAR(CURRENT_DATE, 'DD/MM') AS data_inicio, 
-TO_CHAR((CURRENT_DATE+30), 'DD/MM') AS data_final
+                                            SELECT 
+                                            catalogo.tipo_contrato,
+                                            plano.cod_plano,
+                                            servico.nome,
+                                            servico.codigo_playhub AS codigo_index,
+                                            servico.src_img,
+                                            catalogo.categoria_id,
+                                            preco.valor,
+                                            TO_CHAR(CURRENT_DATE, 'DD/MM') AS data_inicio, 
+                                            TO_CHAR((CURRENT_DATE+30), 'DD/MM') AS data_final
 
-FROM catalogo
-LEFT JOIN plano ON plano.id = catalogo.cod_plano_id
-LEFT JOIN categoria ON categoria.id = catalogo.categoria_id
-LEFT JOIN servico ON servico.id = catalogo.servico_id
+                                            FROM catalogo
+                                            LEFT JOIN plano ON plano.id = catalogo.cod_plano_id
+                                            LEFT JOIN categoria ON categoria.id = catalogo.categoria_id
+                                            LEFT JOIN servico ON servico.id = catalogo.servico_id
 
-LEFT JOIN preco ON (preco.categoria_id = catalogo.categoria_id 
-										AND preco.cod_plano_id = catalogo.cod_plano_id
-										AND preco.tipo_contrato = catalogo.tipo_contrato)
+                                            LEFT JOIN preco ON (preco.categoria_id = catalogo.categoria_id 
+                                                                                    AND preco.cod_plano_id = catalogo.cod_plano_id
+                                                                                    AND preco.tipo_contrato = catalogo.tipo_contrato)
 
+<<<<<<< HEAD
 WHERE catalogo.tipo_contrato = 'FD'
 AND plano.cod_plano = '750.2022'");
+=======
+                                            WHERE catalogo.tipo_contrato = '".$_SESSION['tipo_contrato']."'
+                                            AND plano.cod_plano = '".$_SESSION['codigo_plano']."'");
+>>>>>>> 47bc7cf04697c99e520e3157be3651201e3c70bd
 
 $stmt->execute();
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,6 +65,8 @@ $play = new PH();
 
 
 $playhub = $play->buscar_inscricao('reginaldo.silva');
+// $playhub = $play->buscar_inscricao($_SESSION['cpf']);
 
+//Final
 echo json_encode(array($servicos, $lista, $ph, $playhub));
 ?>

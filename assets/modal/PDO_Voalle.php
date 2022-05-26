@@ -13,7 +13,7 @@ class PDO_Voalle {
 
     public static function getInstance() {
         if (!isset(self::$instance)) {
-            self::$instance = new PDO("pgsql:host=191.242.48.3;port=5432;dbname=dbemp00372", 'cliente_s', '8hnHjcBu2e5TkWGx');
+            self::$instance = new PDO("pgsql:host=erp-staging.internetway.com.br;port=5432;dbname=dbemp00372_staging", 'cliente_s', '8hnHjcBu2e5TkWGx');
             self::$instance->setAttribute(PDO::ATTR_ERRMODE,
             PDO::ERRMODE_EXCEPTION);
             self::$instance->setAttribute(PDO::ATTR_ORACLE_NULLS,
