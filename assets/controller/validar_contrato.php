@@ -65,21 +65,25 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
 
             $lista = $lista->Quantidade_Contratos($_POST['cpf']);
 
+            $funcao = new Contratos();
+
             //Verifica quantos contratos existe na Voalle 
-            if (count($lista) == 1) {
+            if (count($lista) > 0 && $funcao->comparar_codigo_plano($lista)) {
 
                 //Se for 1 vai direto para o painel
                 $contrato = $lista[0]['numero_contrato'];
                 $_SESSION['div'] = md5('contratos'.date('l jS \of F Y'));
                 $_SESSION['cpf'] = $_POST['cpf'];
                 $_SESSION['contrato'] = $contrato;
-                header('Location: /ph/contrato');
-            }
-            elseif (count($lista) > 1) {
+                $_SESSION['tipo_contrato'] = $lista[0]['tipo_contrato'];
+                $_SESSION['codigo_plano'] = $lista[0]['codigo_servico'];
 
-                //Se for mais de 1 contrato vai para a seleção de contratos
-                $_SESSION['div'] = md5('contratos'.date('l jS \of F Y'));
-                header('Location: /ph/contrato');
+                header('Location: /ph/painel');
+            }
+            else {
+                $_SESSION['msg'] = "erro_usuario";
+    
+                header('Location: /ph/logout');
             }
         }
         else {
