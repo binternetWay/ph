@@ -182,7 +182,8 @@ class Contratos{
             
             WHERE people.tx_id = :cpf
             AND contracts.v_status = 'Normal'
-            AND velo.download = planos.download";
+            -- AND velo.download = planos.download
+            ";
         
         return $sql;
     }

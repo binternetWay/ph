@@ -124,10 +124,12 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
         $y->execute();
 
         if ($y->rowCount() > 0) {
-
             //Se cadastro for realizado com sucesso vai para o painel
             $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
             $_SESSION['nome'] = $fetch['nome'];
+            $_SESSION['contrato'] = $fetch['numero_contrato'];
+            $_SESSION['tipo_contrato'] = $fetch['tipo_contrato'];
+            $_SESSION['codigo_plano'] = $fetch['codigo_servico'];
 
             header('Location: /ph/painel');
         }
