@@ -85,7 +85,6 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 	vlServico.innerHTML = valorServico;
 
 
-
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('cod__servico').value = codigo;

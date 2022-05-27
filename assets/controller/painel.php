@@ -29,13 +29,8 @@ $stmt = PDO_Conexao::getInstance()->prepare("
                                                                                     AND preco.cod_plano_id = catalogo.cod_plano_id
                                                                                     AND preco.tipo_contrato = catalogo.tipo_contrato)
 
-<<<<<<< HEAD
 WHERE catalogo.tipo_contrato = 'FD'
 AND plano.cod_plano = '750.2022'");
-=======
-                                            WHERE catalogo.tipo_contrato = '".$_SESSION['tipo_contrato']."'
-                                            AND plano.cod_plano = '".$_SESSION['codigo_plano']."'");
->>>>>>> 47bc7cf04697c99e520e3157be3651201e3c70bd
 
 $stmt->execute();
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
