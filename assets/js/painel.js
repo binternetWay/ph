@@ -12,11 +12,10 @@ $('document').ready(function () {
         success: function (data) {
             
             var servico = data[0];
-            var myservice = data[1];
-            var p_servicos = data[2];
-            var minhas_inscricoes = data[3];
+            var p_servicos = data[1];
+            var minhas_inscricoes = data[2];
 
-            createCategoriaService(myservice,'Meus Serviços');
+            createMeuServico(minhas_inscricoes, servico);
             createCategoriaService(servico,'Todos os Serviços');
             document.getElementById('close').onclick = function get (){openShop();}
         }
