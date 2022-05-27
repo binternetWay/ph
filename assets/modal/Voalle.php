@@ -60,10 +60,10 @@ class Voalle{
                 "title": "SOLCITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)",
                 "description": "PANO ANTIGO: [plano]  PLANO NOVO: [plano]",
                 "priority": 1,
-                "beginningDate": "2021-11-09T19:25:58.666Z",
+                "beginningDate": "'.date('Y-m-d\TH:i:sP').'",
                 "finalDate": "2021-11-09T19:25:58.666Z",
                 "report": {
-                    "beginningDate": "2021-11-09T19:25:58.666Z",
+                    "beginningDate": "'.date('Y-m-d\TH:i:sP').'",
                     "finalDate": "2021-11-09T19:25:58.666Z",
                     "description": "string"
                 },
