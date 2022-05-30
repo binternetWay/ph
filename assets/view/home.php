@@ -70,7 +70,7 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
         <div class="info__title"><span class="title"></span></div>
 
         <div class="info__line">
-            <span class="info__name">Vencimento da Fatuta:</span> 
+            <span class="info__name">Vencimento da Fatuta:</span>
             <span id="dtProxFatura" class="info">10/06/2022</span>
         </div>
 
