@@ -33,7 +33,7 @@ class Voalle{
 
     }
 
-    public function NovaSolicitacao()
+    public function NovaSolicitacao(string $cliente, int $cod_cliente, string $plano, string $up)
     {
         $curl = curl_init();
 
@@ -47,32 +47,31 @@ class Voalle{
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS =>'{
-            "incidentStatusId": 2,
-            "personId": 41727,
-            "clientId": 0,
-            "incidentTypeId": 1802,
-            "contractServiceTagId": 0,
-            "catalogServiceId": 1,
-            "serviceLevelAgreementId": 0,
-            "catalogServiceItemId": 0,
-            "catalogServiceItemClassId": 0,
+            "incidentStatusId": 2, //Status da solicitação
+            "personId": 118814, //ID do solicitante
+            "clientId": 118814, //ID do cliente da solicitação
+            "incidentTypeId": 1802, //ID do tipo de solicitação
+            "contractServiceTagId": 0, //ID da etiqueta de serviço
+            "catalogServiceId": 1, //ID do tipo de atendimento
+            "serviceLevelAgreementId": 0, //ID do service level agreement
+            "catalogServiceItemId": 2, //ID do iten de serviço
+            "catalogServiceItemClassId": 1, //ID do subitem de serviço
             "assignment": {
-                "title": "SOLCITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)",
-                "description": "PANO ANTIGO: [plano]  PLANO NOVO: [plano]",
-                "priority": 1,
-                "beginningDate": "'.date('Y-m-d\TH:i:sP').'",
-                "finalDate": "2021-11-09T19:25:58.666Z",
+                "title": "teste", //Titulo da solicitação
+                "description": "teste", //Texto de abertura
+                "priority": 1, //Prioridade
+                "beginningDate": "2022-05-27 14:50:00", //Data de abertura
+                "finalDate": "2022-05-30 14:50:00", //Prazo para encerramento
                 "report": {
-                    "beginningDate": "'.date('Y-m-d\TH:i:sP').'",
-                    "finalDate": "2021-11-09T19:25:58.666Z",
-                    "description": "string"
+                    "beginningDate": "2022-05-27 14:50:00", //Data inicial do relato
+                    "finalDate": "2022-05-27 14:50:00", //Data final do relato
+                    "description": "teste" //Descrição
                 },
-                "companyPlaceId": 0
+                "companyPlaceId": 0 //ID do local de atendimento
             }
         }',
         CURLOPT_HTTPHEADER => array(
-            'Authorization: '.$this->token,
-            'Content-Type: application/json'
+            'Authorization: Bearer'
         ),
         ));
 
