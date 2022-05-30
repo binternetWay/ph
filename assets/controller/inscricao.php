@@ -10,10 +10,9 @@ if (isset($_POST['cod__servico'])) {
     $usuario = $_SESSION['cpf'];
 
     $produto = $_POST['cod__servico'];
-
     $ph = new PH();
 
     $playhub = $ph->inscrever($produto, 'reginaldo.silva');
-
-    var_dump($playhub);
 }
+
+header('Location: /ph/painel');

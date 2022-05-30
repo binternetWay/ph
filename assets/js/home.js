@@ -1,4 +1,21 @@
 
+function createMeuServico (voucherLista, servicoLista) {
+	const listaCodigo = [];
+	const finalLista = [];
+	var sLista = servicoLista.length;
+	var mLista = voucherLista.length;
+	
+	for(i=1;i <= sLista; i++){
+		listaCodigo.push(servicoLista[i-1]['codigo_index']);
+	}
+
+	for(i=1;i <= mLista; i++){
+		var pServico = listaCodigo.indexOf(voucherLista[i-1]['ProductId']);
+		servicoLista[pServico].voucher = voucherLista[i-1]['Voucher'];
+		finalLista.push(servicoLista[pServico]);
+	}
+	createCategoriaService(finalLista,'Meus Serviços');
+}
 
 function createCategoriaService (lista, nome) {
 	// set variaveis
@@ -59,11 +76,13 @@ function createServiceList (lista, idDiv){
 		div.dataInicio = lista[i-1]['data_inicio'];
 		div.dataFinal = lista[i-1]['data_final'];
 		div.valorServico = 'R$ ' + lista[i-1]['valor'];
+		div.voucher = lista[i-1]['voucher'];
 
 		div.className='service_item';
 		div.id= nameIdService
 
-		div.onclick = function get() {getImg(div.src_img, div.cod_servico, div.nome, div.dataInicio, div.dataFinal, div.valorServico)};
+		div.onclick = function get() {getImg(div.src_img, div.cod_servico, div.nome, div.dataInicio, div.dataFinal, div.valorServico, div.voucher)};
+		
 		document.getElementById(idDiv).appendChild(div);
 
 		const img = document.createElement('img');
@@ -73,11 +92,15 @@ function createServiceList (lista, idDiv){
 	}
 }
 
-function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorServico) {
+function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorServico, voucher) {
 	var nameService = document.getElementById('name__service');
 	var dtInicial = document.getElementById('inicio__service');
 	var dtFinal = document.getElementById('fim__service');
 	var vlServico = document.getElementById('valor__service');
+	var campBtn = document.getElementById('form_btn');
+	var campVoucher = document.getElementById('voucher');
+	var valueServico = document.getElementById('cod__servico');
+	var retornoVoucher = document.getElementById('retorno__voucher');
 
 	nameService.innerHTML = nome_servico;
 	dtInicial.innerHTML = dataInicial;
@@ -87,7 +110,17 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
-	document.getElementById('cod__servico').value = codigo;
+	valueServico.value = codigo;
+
+	if(voucher === undefined){
+		campBtn.style.display = 'flex';
+		campVoucher.style.display = 'none';
+	} else {
+		campBtn.style.display = 'none';
+		campVoucher.style.display = 'flex';
+		retornoVoucher.value = voucher;
+
+	}
 	openShop();
 }
 
@@ -118,3 +151,4 @@ function clickCopy () {
 	navigator.clipboard.writeText(copyText.value);
 	alert("Voucher copiado: " + copyText.value);
 }
+
