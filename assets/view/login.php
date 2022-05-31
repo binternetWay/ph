@@ -103,9 +103,6 @@ session_start();
 
   <?php $_SESSION['msg'] = null; ?>
 
-  setTimeout(function() {
-    $('.alert').fadeOut();
-  }, 3000);
 </script>	
 
 <!-- page JS -->

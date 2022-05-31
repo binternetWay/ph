@@ -9,7 +9,7 @@ class Voalle{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://erp-staging.internetway.com.br:45700/connect/token',
+        CURLOPT_URL => 'https://erp.internetway.com.br:45700/connect/token',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -71,7 +71,7 @@ class Voalle{
             }
         }',
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer'
+            'Authorization: Bearer '.$this->token
         ),
         ));
 
@@ -79,6 +79,52 @@ class Voalle{
 
         curl_close($curl);
         echo $response;
+
+    }
+
+    public function Criar_Valor($valor, $contrato, $servico, $data)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://erp.internetway.com.br:45715/external/integrations/thirdparty/contract/contracteventualvalues',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+            "contractId": '.$contrato.',
+            "serviceProductCode": "'.$servico.'",
+            "monthYearType": 2,
+            "monthYear": "'.$data.'",
+            "initialMonthYear": "",
+            "finalMonthYear": "",
+            "description": "SVA - PlayHub",
+            "presentInvoiceNote": false,
+            "unitAmount": '.$valor.',
+            "units": 1
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$this->token,
+            'Content-Type: application/json'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $chave = json_decode($response, true);
+
+        if ($chave['success'] == false) {
+            return false;
+        }
+        else {
+            return true;
+        }
 
     }
 }

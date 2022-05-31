@@ -25,7 +25,10 @@ session_start();
 
 //$c->NovaSolicitacao($resultado['numero_cliente'], $resultado['numero_contrato'], $resultado['plano'], '2022.100');
 
-$x = new Usuario($_SESSION['cpf']);
+$x = new PH();
 
-echo "<pre>";
-var_dump($x->Get_Usuario());
+//var_dump($x->buscar_usuario('reginaldo.silvaa'));
+
+if ($x->buscar_usuario('reginaldo.silvaa') == NULL) {
+    echo "Nulo";
+}

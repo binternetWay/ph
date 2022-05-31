@@ -16,6 +16,9 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Toast CSS -->
+    <link href="assets/build/toastr.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <title>Home</title>
@@ -90,6 +93,40 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 
 <script src="assets/js/painel.js"></script>
 
+<script src="assets/build/toastr.min.js"></script>
+
+<script>
+    toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": true,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+    }
+
+  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_ph'): ?>
+    toastr.warning("Erro ao inserir serviço!");
+  <?php endif ?>
+
+  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_valor'): ?>
+    toastr.warning("Erro ao adicionar servico!");
+  <?php endif ?>
+
+  <?php $_SESSION['msg'] = null; ?>
+
+</script>	
+
 </body>
+
 </html>
 

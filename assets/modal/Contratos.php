@@ -41,6 +41,7 @@ class Contratos{
         
         WHEN vencimento.prox_vencimento IS NULL AND SUBSTRING(CURRENT_DATE::VARCHAR, 9, 2)::INT < contracts.collection_day::INT
         THEN (SUBSTRING((CURRENT_DATE::DATE + INTERVAL '0' MONTH)::VARCHAR, 1, 8) || contracts.collection_day)::DATE ELSE NULL END AS prox_vencimento,
+        CASE WHEN typefatura.expiration_docket = 1 THEN 1 ELSE 0 END AS tipo_faturmento,
         
         vencimento.prox_vencimento AS prox_vencimento_original,
         contracts.collection_day AS dia_vencimento,
@@ -85,8 +86,9 @@ class Contratos{
         
         
         FROM contracts
-        LEFT JOIN people on people.id = contracts.client_id
+        LEFT JOIN people ON people.id = contracts.client_id
         LEFT JOIN people_addresses AS address ON address.id = contracts.people_address_id
+        LEFT JOIN contract_date_configurations AS typefatura ON typefatura.id = contracts.contract_date_configuration_id
         
         -- Left para informações de plano
         LEFT JOIN (
@@ -150,7 +152,7 @@ class Contratos{
             LEFT JOIN solicitation_problems AS problema ON problema.id = tag.solicitation_problem_id
             LEFT JOIN people_addresses AS address ON address.id = ctt.people_address_id
         
-                                    -- Lef join responsavel pela abertura
+            -- Lef join responsavel pela abertura
             LEFT JOIN (SELECT assignment_id, 
                                     MIN(people.name) AS nome_abertura, 
                                     MIN(tx_id) AS cpf_abertura, 	
@@ -190,7 +192,8 @@ class Contratos{
                                                     
                                     GROUP BY people.tx_id) AS velo
                                     ON velo.cpf = people.tx_id
-                    
+        
+        -- left join para identificar a proxima fatura
         LEFT JOIN (SELECT DISTINCT
         fin.contract_id AS numero_contrato, 
         MAX(pg.client_paid_date) AS data_pagamento,
