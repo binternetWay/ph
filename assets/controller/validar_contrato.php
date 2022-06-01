@@ -77,15 +77,17 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 $_SESSION['cpf'] = $_POST['cpf'];
                 $_SESSION['contrato'] = $contrato;
                 $_SESSION['tipo_contrato'] = $lista[0]['tipo_contrato'];
-                $_SESSION['codigo_plano'] = $lista[0]['codigo_servico'];
+                $_SESSION['codigo_plano'] = $_POST['cpf'];
 
-                $sht = PDO_Conexao::getInstance()->prepare('UPDATE usuarios
+                $sht = PDO_Conexao::getInstance()->prepare('UPDATE usuario
                 SET tipo_contrato = :tipo_contrato, cod_plano_id = :cod_plano_id
                 WHERE usuario = :usuario');
 
+                var_dump($lista[0]);
+
                 $sht->bindParam(':tipo_contrato', $lista[0]['tipo_contrato']);
-                $sht->bindParam(':cod_plano_id', $lista[0]['codigo_plano']);
-                $sht->bindParam(':usuario', $lista[0]['usuario']);
+                $sht->bindParam(':cod_plano_id', $lista[0]['codigo_servico']);
+                $sht->bindParam(':usuario', $_POST['cpf']);
 
                 $sht->execute();
 
@@ -95,7 +97,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 else {
                     $_SESSION['msg'] = "erro_contrato";
         
-                    header('Location: /ph/logout');
+                    //header('Location: /ph/logout');
                 }
             }
             else {

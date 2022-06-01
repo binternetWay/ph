@@ -11,11 +11,12 @@ class PH {
     {
         $this->ApiKey = "20898402-DAA9-4901-A629-DFFBD492BCF3";
         $this->ApiSecret = "30kqXFg6xHlngRCs0yEOhaAm6kjgZnLSex913gypnZTJrX2hK7xrYxUUY41xiDFC1F4tlraOHtZzGRXROKAn8U8WP0Jz3O2tUwe6"; 
+        $this->Url = "https://www.playhub.com.br/API/PlayhubApi/api/v3";
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/authentication/tokens',
+        CURLOPT_URL => $this->Url.'/authentication/tokens',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -45,7 +46,7 @@ class PH {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/customers',
+        CURLOPT_URL =>  $this->Url.'/customers',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -82,7 +83,7 @@ class PH {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/customers/reginaldo.silva',
+        CURLOPT_URL =>  $this->Url.'/customers/reginaldo.silva',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
