@@ -1,7 +1,6 @@
 <?php
 
 require_once "../modal/PlayHub.php";
-require_once "../modal/Voalle.php";
 require_once "../modal/Contratos.php";
 
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
@@ -13,7 +12,6 @@ if (isset($_POST['cod__servico'])) {
 
     $produto = $_POST['cod__servico'];
     $ph = new PH();
-    $voalle = new Voalle();
 
     $stmt = PDO_Conexao::getInstance()->prepare("
                 SELECT 
@@ -46,34 +44,6 @@ if (isset($_POST['cod__servico'])) {
     $stmt->execute();
     $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-    $z = new Contratos();
-    
-    $stt = PDO_Voalle::getInstance()->prepare($z->get_contratos());
-    $stt->execute(array(':cpf' => $_SESSION['cpf']));
-
-    $row = $stt->fetchAll(PDO::FETCH_ASSOC)[0];
-
-    if ($row['tipo_faturmento'] == 1) {
-        $data = date('Y-m', strtotime('-1 month', strtotime(date($row['prox_vencimento']))))."-01";
-    }
-    else{
-        $data = substr(date($row['prox_vencimento']),0 ,7)."-01";
-    }
-
-    $valor_sva = $servicos['valor'] * 0.70;
-    $valor_scm = $servicos['valor'] * 0.30;
-
-    if ($voalle->Criar_Valor($valor_sva, $_SESSION['contrato'], $servicos['codigo_sva'], $data) == false) {
-        $_SESSION['msg'] = 'erro_valor';
-        header('Location: /ph/painel');
-        die();
-    }
-    if ($voalle->Criar_Valor($valor_scm, $_SESSION['contrato'], $servicos['codigo_scm'], $data) == false) {
-        $_SESSION['msg'] = 'erro_valor';
-        //header('Location: /ph/painel');
-        die();
-    }
-
     $playhub = $ph->inscrever($produto, $usuario);
     $bd = $ph->insertar_inscricao($_POST['cod__servico']);
 
@@ -84,4 +54,4 @@ if (isset($_POST['cod__servico'])) {
 
 }
 
-//header('Location: /ph/painel');
+header('Location: /ph/painel');

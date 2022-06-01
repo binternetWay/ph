@@ -79,7 +79,24 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 $_SESSION['tipo_contrato'] = $lista[0]['tipo_contrato'];
                 $_SESSION['codigo_plano'] = $lista[0]['codigo_servico'];
 
-                header('Location: /ph/painel');
+                $sht = PDO_Conexao::getInstance()->prepare('UPDATE usuarios
+                SET tipo_contrato = :tipo_contrato, cod_plano_id = :cod_plano_id
+                WHERE usuario = :usuario');
+
+                $sht->bimdParam(':tipo_contrato', $lista[0]['tipo_contrato']);
+                $sht->bimdParam(':cod_plano_id', $lista[0]['codigo_plano']);
+                $sht->bimdParam(':usuario', $lista[0]['usuario']);
+
+                $sht->execute();
+
+                if ($sht->rowCount() > 0) {
+                    header('Location: /ph/painel');
+                }
+                else {
+                    $_SESSION['msg'] = "erro_contrato";
+        
+                    header('Location: /ph/logout');
+                }
             }
             else {
                 $_SESSION['msg'] = "erro_contrato";
