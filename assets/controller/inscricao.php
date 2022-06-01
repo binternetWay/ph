@@ -66,10 +66,12 @@ if (isset($_POST['cod__servico'])) {
     if ($voalle->Criar_Valor($valor_sva, $_SESSION['contrato'], $servicos['codigo_sva'], $data) == false) {
         $_SESSION['msg'] = 'erro_valor';
         header('Location: /ph/painel');
+        die();
     }
     if ($voalle->Criar_Valor($valor_scm, $_SESSION['contrato'], $servicos['codigo_scm'], $data) == false) {
         $_SESSION['msg'] = 'erro_valor';
-        header('Location: /ph/painel');
+        //header('Location: /ph/painel');
+        die();
     }
 
     $playhub = $ph->inscrever($produto, $usuario);
@@ -82,4 +84,4 @@ if (isset($_POST['cod__servico'])) {
 
 }
 
-header('Location: /ph/painel');
+//header('Location: /ph/painel');
