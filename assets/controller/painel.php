@@ -50,8 +50,7 @@ $ph = $contrato->valores_de_servico($resultado[1], $resultado[0]);
 $play = new PH();
 
 
-$playhub = $play->buscar_inscricao('reginaldo.silva');
-// $playhub = $play->buscar_inscricao($_SESSION['cpf']);
+$playhub = $play->buscar_inscricao($_SESSION['cpf']);
 
 //Final
 echo json_encode(array($servicos, $ph, $playhub));

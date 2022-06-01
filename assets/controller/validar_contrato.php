@@ -3,6 +3,7 @@
 require_once '../modal/PDO_Voalle.php';
 require_once '../modal/PDO_Conexao.php';
 require_once '../modal/Contratos.php';
+require_once '../modal/PlayHub.php';
 
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
@@ -122,6 +123,12 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
         $y->bindParam(':email', $fetch['email']);
 
         $y->execute();
+
+        $ph = new PH();
+
+        if ($ph->buscar_usuario($_POST['cpf']) == NULL) {
+            $usuario_ph = $ph->adicionar_cliente($_POST['cpf'], $_POST['cpf'], $_POST['cpf'], $fetch['nome'], $fetch['email'], $fetch['telefone']);
+        }
 
         if ($y->rowCount() > 0) {
             //Se cadastro for realizado com sucesso vai para o painel
