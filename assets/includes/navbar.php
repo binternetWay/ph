@@ -12,15 +12,26 @@
         </ul>
     </div>
 </div>
-<!-- <div class="menu__user">
-    <div class="line__option">
-        <select type="text"></select>
-    </div>
-</div> -->
+<div class="menu__user">
+    <div class="line__option"><span>Sair</span><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+</div>
 
 <style>
+.line__option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.line__option span{
+    padding: 5px;
+}
+.line__option i{
+    padding-right: 5px;
+}
+
 .menu__user{
     display: flex;
+    flex-direction: column;
     position: absolute;
     background-color: var(--bg1-default);
     border-radius: 10px;
