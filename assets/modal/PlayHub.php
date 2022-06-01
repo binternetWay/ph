@@ -274,14 +274,14 @@ class PH {
         $data = date('Y-m-d');
         $vencimento = date('Y-m-d', strtotime("+30 days",strtotime(date('Y-m-d'))));
 
-        $fatura = $contrato['valor_contrato'] + $servicos['valor'];
+        $fatura = 0;
 
         $stmt->bindParam(':usuario_id', $user);
         $stmt->bindParam(':servico_id', $servicos['id']);
         $stmt->bindParam(':data_contratacao', $data);
         $stmt->bindParam(':data_inicial', $data);
         $stmt->bindParam(':data_final', $vencimento);
-        $stmt->bindParam(':valor_servico', $servicos['valor']);
+        $stmt->bindParam(':valor_servico', $fatura);
         $stmt->bindParam(':data_fatura', $contrato['prox_vencimento']);
         $stmt->bindParam(':valor_fatura', $fatura);
 
