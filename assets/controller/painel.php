@@ -30,7 +30,8 @@ $stmt = PDO_Conexao::getInstance()->prepare("
                                             AND preco.tipo_contrato = catalogo.tipo_contrato)
 
     WHERE catalogo.tipo_contrato = '".$_SESSION['tipo_contrato']."'
-    AND plano.cod_plano = '".$_SESSION['codigo_plano']."'");
+    AND plano.cod_plano = '".$_SESSION['codigo_plano']."'
+    AND catalogo.categoria_id IN (2,3,4)");
 
 $stmt->execute();
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
