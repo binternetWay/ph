@@ -29,6 +29,6 @@ $x = new PH();
 
 //var_dump($x->buscar_usuario('reginaldo.silvaa'));
 
-if ($x->buscar_usuario('reginaldo.silvaa') == NULL) {
-    echo "Nulo";
+if ($x->buscar_inscricao('46523457800') != NULL) {
+    var_dump($x->buscar_inscricao('46523457800'));
 }

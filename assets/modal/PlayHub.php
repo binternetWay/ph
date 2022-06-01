@@ -118,7 +118,7 @@ class PH {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/customers/'.$usuario,
+        CURLOPT_URL => $this->Url.'/customers/'.$usuario,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -146,7 +146,7 @@ class PH {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/customers/'.$usuario.'/subscriptions',
+        CURLOPT_URL => $this->Url.'/customers/'.$usuario.'/subscriptions',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -176,7 +176,7 @@ class PH {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/customers/'.$usuario.'/subscriptions',
+        CURLOPT_URL => $this->Url.'/customers/'.$usuario.'/subscriptions',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -204,7 +204,7 @@ class PH {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://stage3.pca.com.br/PlayHub_Demo/API/PlayhubApi/api/v3/customers/'.$usuario.'/subscriptions/EIT',
+        CURLOPT_URL => $this->Url.'/customers/'.$usuario.'/subscriptions/EIT',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
