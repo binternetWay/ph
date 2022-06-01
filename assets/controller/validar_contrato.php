@@ -83,9 +83,9 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 SET tipo_contrato = :tipo_contrato, cod_plano_id = :cod_plano_id
                 WHERE usuario = :usuario');
 
-                $sht->bimdParam(':tipo_contrato', $lista[0]['tipo_contrato']);
-                $sht->bimdParam(':cod_plano_id', $lista[0]['codigo_plano']);
-                $sht->bimdParam(':usuario', $lista[0]['usuario']);
+                $sht->bindParam(':tipo_contrato', $lista[0]['tipo_contrato']);
+                $sht->bindParam(':cod_plano_id', $lista[0]['codigo_plano']);
+                $sht->bindParam(':usuario', $lista[0]['usuario']);
 
                 $sht->execute();
 
