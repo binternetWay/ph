@@ -96,7 +96,6 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 	var nameService = document.getElementById('name__service');
 	var dtInicial = document.getElementById('inicio__service');
 	var dtFinal = document.getElementById('fim__service');
-	var vlServico = document.getElementById('valor__service');
 	var campBtn = document.getElementById('form_btn');
 	var campVoucher = document.getElementById('voucher');
 	var valueServico = document.getElementById('cod__servico');
@@ -105,7 +104,7 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 	nameService.innerHTML = nome_servico;
 	dtInicial.innerHTML = dataInicial;
 	dtFinal.innerHTML = dataFinal;
-	vlServico.innerHTML = valorServico;
+
 
 
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";

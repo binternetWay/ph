@@ -62,37 +62,17 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
             <span class="info__name">Data de Final:</span>
             <span id="fim__service" class="info"></span>
         </div>
-        <div class="info__line">
-            <span class="info__name">Valor do Serviço:</span> 
-            <span id="valor__service" class="info"></span>
-        </div>
-        
-        <div class="info__title"><span class="title"></span></div>
-        <div class="info__title"><span class="title"></span></div>
-        <div class="info__title"><span class="title">Informações da fatura</span></div>
-        <div class="info__title"><span class="title"></span></div>
-
-        <div class="info__line">
-            <span class="info__name">Vencimento da Fatuta:</span>
-            <span id="dtProxFatura" class="info">10/06/2022</span>
-        </div>
-
-        <div class="info__line">
-            <span class="info__name">Valor da Proxima fatura:</span>
-            <span id="valorTotal__service" class="info">R$ 116,80</span>
-        </div>
     </div>
 
     <form id="form_btn" method="POST" action="assets/controller/inscricao.php" style="display: none;" >
         <input name="cod__servico" id="cod__servico" type="hidden">
-        <div class="shop__box--buttom"><button class="btn__contratar" type="submit">Confirmar Plano</button></div>
+        <div class="shop__box--buttom"><button class="btn__contratar" type="submit">Confirmar serviço</button></div>
     </form>
 
 </div>
 </div>
 
 <script src="assets/js/painel.js"></script>
-
 <script src="assets/build/toastr.min.js"></script>
 
 <script>
@@ -123,10 +103,8 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
   <?php endif ?>
 
   <?php $_SESSION['msg'] = null; ?>
-
-</script>	
+</script>
 
 </body>
-
 </html>
 

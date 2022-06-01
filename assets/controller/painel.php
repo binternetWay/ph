@@ -18,7 +18,7 @@ $stmt = PDO_Conexao::getInstance()->prepare("
     catalogo.categoria_id,
     preco.valor,
     TO_CHAR(CURRENT_DATE, 'DD/MM') AS data_inicio, 
-    TO_CHAR((CURRENT_DATE+30), 'DD/MM') AS data_final
+    TO_CHAR((date_trunc('month', CURRENT_DATE) + interval '1 month' - interval '1 day')::date, 'DD/MM') AS data_final
 
     FROM catalogo
     LEFT JOIN plano ON plano.id = catalogo.cod_plano_id
