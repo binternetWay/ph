@@ -27,7 +27,7 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 
 <body>
 
-<?php include_once '../includes/loader.php'; ?>
+<?php include_once '../includes/loader_home.php'; ?>
 <?php include_once '../includes/navbar.php'; ?>
 
 <div class="banner"><div id="banner" class="banner__select"></div></div>

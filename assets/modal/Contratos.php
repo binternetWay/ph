@@ -243,7 +243,7 @@ class Contratos{
         
         WHERE people.tx_id = :cpf
         AND contracts.v_status = 'Normal'
-        -- AND velo.download = planos.download
+        AND velo.download = planos.download
             ";
         
         return $sql;
@@ -333,7 +333,7 @@ class Contratos{
     {
         $stmt = PDO_Conexao::getInstance()->prepare($this->get_categoria());
         $stmt->execute(array(':cpf' => $cpf));
-        if ($stmt->rowCount() > 1) {
+        if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $condicao = "AND catalogo.categoria_id IN (";
                 
