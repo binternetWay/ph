@@ -48,6 +48,7 @@ class Contratos{
         contracts.collection_day AS dia_vencimento,
         contracts.v_status AS status,
         people.name AS nome,
+        SUBSTRING(TRIM(people.name) FROM '^([^ ]+)') AS prim_nome,
         people.tx_id AS cpf,
         
         CASE WHEN people.phone = '' 
@@ -323,7 +324,7 @@ class Contratos{
                                     ON (qtds.usuario = usuario.usuario AND qtds.categoria_id = preco.categoria_id)
         
         WHERE preco.qtd_free > 0
-        AND (qtds.qtd_servico IS NULL OR qtds.qtd_servico < 0)
+        -- AND (qtds.qtd_servico IS NULL OR qtds.qtd_servico < 0)
         AND usuario.usuario = :cpf
         ORDER BY usuario.usuario";
 

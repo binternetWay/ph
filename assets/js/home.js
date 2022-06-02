@@ -1,5 +1,5 @@
 
-function createMeuServico (voucherLista, servicoLista) {
+function createMeuServico (voucherLista, servicoLista, nomeApresentacao) {
 	const listaCodigo = [];
 	const finalLista = [];
 	var sLista = servicoLista.length;
@@ -11,10 +11,13 @@ function createMeuServico (voucherLista, servicoLista) {
 
 	for(i=1;i <= mLista; i++){
 		var pServico = listaCodigo.indexOf(voucherLista[i-1]['ProductId']);
-		servicoLista[pServico].voucher = voucherLista[i-1]['Voucher'];
-		finalLista.push(servicoLista[pServico]);
+
+		if (pServico >= 0) {
+			servicoLista[pServico].voucher = voucherLista[i-1]['Voucher'];
+			finalLista.push(servicoLista[pServico]);
+		}
 	}
-	createCategoriaService(finalLista,'Meus Serviços');
+	createCategoriaService(finalLista,nomeApresentacao);
 }
 
 function createCategoriaService (lista, nome) {
@@ -117,7 +120,7 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 	} else {
 		campBtn.style.display = 'none';
 		campVoucher.style.display = 'flex';
-		retornoVoucher.value = voucher;
+		// retornoVoucher.value = voucher; 
 
 	}
 	openShop();

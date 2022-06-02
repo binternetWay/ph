@@ -15,10 +15,8 @@ $('document').ready(function () {
             var p_servicos = data[1];
             var minhas_inscricoes = data[2];
 
-            console.log(minhas_inscricoes);
-            console.log(servico);
             if(minhas_inscricoes.length > 0){
-                createMeuServico(minhas_inscricoes, servico);
+                createMeuServico(minhas_inscricoes, servico, 'Meus Serviços');
             }
 
             createCategoriaService(servico,'Todos os Serviços');
