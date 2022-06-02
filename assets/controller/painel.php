@@ -35,9 +35,14 @@ $stmt = PDO_Conexao::getInstance()->prepare("
     AND plano.cod_plano = :cod_plano
     ".$contrato->Categorias($_SESSION['cpf']));
 
+    if ($contrato->Categorias($_SESSION['cpf']) != "") {
+        $stmt->execute(array(':tipo_contrato' => $_SESSION['tipo_contrato'], ':cod_plano' => $_SESSION['codigo_plano']));
+        $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    else {
+        $servicos = NULL;
+    }
 
-$stmt->execute(array(':tipo_contrato' => $_SESSION['tipo_contrato'], ':cod_plano' => $_SESSION['codigo_plano']));
-$servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $cont = $contrato->Quantidade_Contratos($_SESSION['cpf']);
 
