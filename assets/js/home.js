@@ -11,7 +11,7 @@ function createMeuServico (voucherLista, servicoLista, nomeApresentacao) {
 
 	for(i=1;i <= mLista; i++){
 		var pServico = listaCodigo.indexOf(voucherLista[i-1]['ProductId']);
-		
+
 		if (pServico >= 0) {
 			servicoLista[pServico].voucher = voucherLista[i-1]['Voucher'];
 			finalLista.push(servicoLista[pServico]);
@@ -120,7 +120,7 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 	} else {
 		campBtn.style.display = 'none';
 		campVoucher.style.display = 'flex';
-		retornoVoucher.value = voucher;
+		// retornoVoucher.value = voucher; 
 
 	}
 	openShop();

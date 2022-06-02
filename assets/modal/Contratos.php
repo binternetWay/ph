@@ -47,6 +47,7 @@ class Contratos{
         contracts.collection_day AS dia_vencimento,
         contracts.v_status AS status,
         people.name AS nome,
+        SUBSTRING(TRIM(people.name) FROM '^([^ ]+)') AS prim_nome,
         people.tx_id AS cpf,
         
         CASE WHEN people.phone = '' 
