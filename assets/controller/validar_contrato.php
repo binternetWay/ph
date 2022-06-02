@@ -78,6 +78,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 $_SESSION['contrato'] = $contrato;
                 $_SESSION['tipo_contrato'] = $lista[0]['tipo_contrato'];
                 $_SESSION['codigo_plano'] = $lista[0]['codigo_servico'];
+                $_SESSION['nome_cliente'] = $lista[0]['prim_nome'];
 
                 $sht = PDO_Conexao::getInstance()->prepare('UPDATE usuario
                 SET tipo_contrato = :tipo_contrato, cod_plano_id = :cod_plano_id

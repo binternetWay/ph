@@ -6,15 +6,30 @@
             <span class="logo__name">Streaming</span>
         </div>
     </div>
-    <div class="config__user">
+    <div class="config__user" id="config__user">
         <ul class="config__user--ul">
-            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo 'Vini' ?></span><i class="fa-solid fa-angle-left"></i></a></li>
+            <li><a href="#" style="text-decoration: none;"><span class="menu__text"><?php echo $_SESSION['nome_cliente'] ?></span><i class="fa-solid fa-angle-left"></i></a></li>
         </ul>
     </div>
 </div>
-<div class="menu__user">
-    <div class="line__option"><span>Sair</span><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+<div class="menu__user" id="menu__user" style="display: none;">
+    <a href="logout" class="line__option"><span>Sair</span><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 </div>
+
+
+<script>
+    var config = document.getElementById('config__user');
+    config.onclick = function get() {ativeMenu()};
+    
+function ativeMenu () {
+    var menu = document.getElementById('menu__user');
+    if (menu.style.display === 'none'){
+        menu.style.display = 'flex';
+    }else {
+        menu.style.display = 'none'
+    }
+}
+</script>
 
 <style>
 .line__option{
@@ -24,6 +39,8 @@
 }
 .line__option span{
     padding: 5px;
+    text-decoration: none;
+    color: black;
 }
 .line__option i{
     padding-right: 5px;
@@ -36,13 +53,14 @@
     background-color: var(--bg1-default);
     border-radius: 10px;
 
+    right: 5px;
     margin-top: 70px;
     padding: 5px;
     z-index: 600;
 }
 
 ul ,li{
-    width: 80%;
+    width: 90%;
     list-style: none;
     margin: 0;
     padding: 0;
