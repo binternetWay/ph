@@ -8,6 +8,8 @@ require_once "../modal/Contratos.php";
 if (!isset($_SESSION['codigo_plano']) && !isset($_SESSION['tipo_contrato'])) {
     header('Location: ../logout');
 }
+$contrato = new Contratos();
+
 $stmt = PDO_Conexao::getInstance()->prepare("
     SELECT 
     catalogo.tipo_contrato,
@@ -29,14 +31,13 @@ $stmt = PDO_Conexao::getInstance()->prepare("
                                             AND preco.cod_plano_id = catalogo.cod_plano_id
                                             AND preco.tipo_contrato = catalogo.tipo_contrato)
 
-    WHERE catalogo.tipo_contrato = '".$_SESSION['tipo_contrato']."'
-    AND plano.cod_plano = '".$_SESSION['codigo_plano']."'
-    AND catalogo.categoria_id IN (2,3,4)");
+    WHERE catalogo.tipo_contrato = :tipo_contrato
+    AND plano.cod_plano = :cod_plano
+    ".$contrato->Categorias($_SESSION['cpf']));
 
-$stmt->execute();
+$stmt->execute(array(':tipo_contrato' => $_SESSION['tipo_contrato'], ':cod_plano' => $_SESSION['codigo_plano']));
 $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$contrato = new Contratos();
 $cont = $contrato->Quantidade_Contratos($_SESSION['cpf']);
 
 for ($i=0; $i < count($cont); $i++) { 
@@ -47,10 +48,9 @@ for ($i=0; $i < count($cont); $i++) {
 }
 $_SESSION['tipo_contrato'] = $resultado[0];
 $ph = $contrato->valores_de_servico($resultado[1], $resultado[0]);
-
 $play = new PH();
 
-$playhub = $play->buscar_inscricao($_SESSION['cpf']);
+$playhub = $play->buscar_inscricao('46523457800');
 
 //Final
 echo json_encode(array($servicos, $ph, $playhub));

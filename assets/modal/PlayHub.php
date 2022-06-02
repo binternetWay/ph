@@ -9,8 +9,8 @@ class PH {
 
     function __construct()
     {
-        $this->ApiKey = "20898402-DAA9-4901-A629-DFFBD492BCF3";
-        $this->ApiSecret = "30kqXFg6xHlngRCs0yEOhaAm6kjgZnLSex913gypnZTJrX2hK7xrYxUUY41xiDFC1F4tlraOHtZzGRXROKAn8U8WP0Jz3O2tUwe6"; 
+        $this->ApiKey = "FBA6AF39-659C-401F-9B14-E8E1430CA0D3";
+        $this->ApiSecret = "4aP0ZzFRXxguH2Nu2W1boiMfpeF75pIzFYpeMuxkhSWpLjbE6Rfk0rFgMLdH1m76BmbNXNz5hLlsuCxrTSRKBYqNjKWayTXz6yDT"; 
         $this->Url = "https://www.playhub.com.br/API/PlayhubApi/api/v3";
 
         $curl = curl_init();

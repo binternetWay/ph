@@ -253,12 +253,9 @@ class Contratos{
     {
         $stmt = PDO_Conexao::getInstance()->prepare($this->get_valores());
 
-        $stmt->execute(array(':tipo' => $tipo_contrato));
+        $stmt->execute(array(':tipo' => $tipo_contrato, ':cod' => $cod_plano));
 
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // $_SESSION['tipo_contrato'] = $row['tipo_contrato'];
-        // $_SESSION['codigo_servico'] = $row['codigo_servico'];
 
         return $row;
     }
@@ -275,7 +272,7 @@ class Contratos{
         LEFT JOIN plano ON plano.id = preco.cod_plano_id
         LEFT JOIN categoria ON categoria.id = preco.categoria_id
         
-        WHERE plano.cod_plano = '50.2022'
+        WHERE plano.cod_plano = :cod
         AND tipo_contrato  = :tipo";
         
         return $sql;
@@ -297,5 +294,61 @@ class Contratos{
             }
         }
         return false;
+    }
+
+    public function get_categoria()
+    {
+        $sql = "SELECT 
+        preco.categoria_id
+        
+        
+        FROM usuario
+            LEFT JOIN plano ON plano.cod_plano = usuario.cod_plano_id
+            LEFT JOIN preco ON (preco.tipo_contrato = usuario.tipo_contrato 
+                                                    AND preco.cod_plano_id = plano.id)
+            LEFT JOIN (SELECT 
+        usuario.usuario,
+        catalogo.categoria_id,
+        COUNT(usuario.usuario) AS qtd_servico
+        
+        FROM servico_disponivel AS sd
+        LEFT JOIN usuario ON usuario.id = sd.usuario_id
+        LEFT JOIN plano ON plano.cod_plano = usuario.cod_plano_id
+        LEFT JOIN catalogo ON (catalogo.tipo_contrato = usuario.tipo_contrato
+                                                    AND catalogo.cod_plano_id = plano.id
+                                                    AND catalogo.servico_id = sd.servico_id)
+        
+        GROUP BY usuario.usuario, catalogo.categoria_id) AS qtds
+                                    ON (qtds.usuario = usuario.usuario AND qtds.categoria_id = preco.categoria_id)
+        
+        WHERE preco.qtd_free > 0
+        AND (qtds.qtd_servico IS NULL OR qtds.qtd_servico < 0)
+        AND usuario.usuario = :cpf
+        ORDER BY usuario.usuario";
+
+        return $sql;
+    }
+
+    public function Categorias($cpf)
+    {
+        $stmt = PDO_Conexao::getInstance()->prepare($this->get_categoria());
+        $stmt->execute(array(':cpf' => $cpf));
+        if ($stmt->rowCount() > 1) {
+                $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $condicao = "AND catalogo.categoria_id IN (";
+                
+                for ($i=0; $i < count($row); $i++) { 
+                    $condicao .= $row[$i]['categoria_id'];
+                    if(isset($row[$i+1]['categoria_id'])){
+                        $condicao .= ",";
+                    }
+                }
+
+                $condicao .= ")";
+            return $condicao;
+        }
+        else{
+            return "";
+        }
     }
 }
