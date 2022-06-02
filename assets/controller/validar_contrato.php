@@ -38,7 +38,9 @@ if (isset($_POST['search']) && isset($_POST['cpf'])
         }
         else {
             $_SESSION['msg'] = "erro_usuario_nao";
-            header('Location: login');
+
+            var_dump($stt->fetchAll(PDO::FETCH_ASSOC));
+            // header('Location: login');
         }
         
     }    
@@ -97,7 +99,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 else {
                     $_SESSION['msg'] = "erro_contrato";
         
-                    //header('Location: /ph/logout');
+                    header('Location: /ph/logout');
                 }
             }
             else {

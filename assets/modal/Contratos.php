@@ -34,6 +34,7 @@ class Contratos{
         contracts.client_id AS numero_cliente,
         contracts.id AS numero_contrato,
         contracts.amount AS valor_contrato,
+        contracts.company_place_id AS base,
         
         CASE 
         WHEN vencimento.prox_vencimento IS NULL AND SUBSTRING(CURRENT_DATE::VARCHAR, 9, 2)::INT > contracts.collection_day::INT
