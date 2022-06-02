@@ -35,8 +35,14 @@ $stmt = PDO_Conexao::getInstance()->prepare("
     AND plano.cod_plano = :cod_plano
     ".$contrato->Categorias($_SESSION['cpf']));
 
-$stmt->execute(array(':tipo_contrato' => $_SESSION['tipo_contrato'], ':cod_plano' => $_SESSION['codigo_plano']));
-$servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($contrato->Categorias($_SESSION['cpf']) != "") {
+        $stmt->execute(array(':tipo_contrato' => $_SESSION['tipo_contrato'], ':cod_plano' => $_SESSION['codigo_plano']));
+        $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    else {
+        $servicos = NULL;
+    }
+
 
 $cont = $contrato->Quantidade_Contratos($_SESSION['cpf']);
 
@@ -50,7 +56,7 @@ $_SESSION['tipo_contrato'] = $resultado[0];
 $ph = $contrato->valores_de_servico($resultado[1], $resultado[0]);
 $play = new PH();
 
-$playhub = $play->buscar_inscricao('46523457800');
+$playhub = $play->buscar_inscricao($_SESSION['cpf']);
 
 //Final
 echo json_encode(array($servicos, $ph, $playhub));

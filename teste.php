@@ -25,10 +25,8 @@ session_start();
 
 //$c->NovaSolicitacao($resultado['numero_cliente'], $resultado['numero_contrato'], $resultado['plano'], '2022.100');
 
-$x = new PH();
+$x = new Contratos();
 
 //var_dump($x->buscar_usuario('reginaldo.silvaa'));
 
-if ($x->buscar_inscricao('46523457800') != NULL) {
-    var_dump($x->buscar_inscricao('46523457800'));
-}
+echo $x->Categorias('40434653861');
