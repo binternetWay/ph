@@ -345,6 +345,7 @@ class Contratos{
                 }
 
                 $condicao .= ")";
+                
             return $condicao;
         }
         else{
