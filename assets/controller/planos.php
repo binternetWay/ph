@@ -15,9 +15,11 @@ if (isset($_POST['alterar_plano']) && isset($_POST['cod_plano'])) {
     $solicitacao = $x->NovaSolicitacao($y->getNumeroCliente(), $y->getPlano(), $_POST['cod_plano'], $y->getBase());
 
     if ($solicitacao != false) {
-        echo $solicitacao;
+        $_SESSION['protocolo'] = $solicitacao;
+        header('Location: planos');
     }
     else {
-        echo "Erro";
+        $_SESSION['protocolo'] = false;
+        header('Location: planos');
     }
 }
