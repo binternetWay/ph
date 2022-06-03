@@ -15,9 +15,12 @@ if ($_SESSION['token'] != $token) {
 if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != '') {
     # code...
 }
+<<<<<<< HEAD
 
 // var_dump($_SESSION['protocolo']);
 
+=======
+>>>>>>> d2be7d86686b4bb16735e4babb193f37d86606a9
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -38,6 +41,11 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != '') {
 
 <body>
     <?php include_once '../includes/loader.php'?>
+    <div class="popup__notificacao">
+        <div class="notificacao">
+            <span class="texto__notificacao">Seu protocolo foi aberto!<br> Numero do protocolo:&nbsp;<span class="protocolo" id="protocolo"></span></span>
+        </div>
+    </div>
 
     <div id="popup" class="popup__select" style="display: none;">
         <div class="container__confirmacao">
@@ -87,7 +95,7 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != '') {
 
                 <div id="arRight" class="arRight"><i class="fa-solid fa-angle-left"></i></div>
             </div>
-
+            
             <script>
             <?php
             $x = new Usuario($_SESSION['cpf']);
@@ -122,6 +130,9 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != '') {
                 $lista = json_encode($planos,true);
                 echo "var lista_planos = ". $lista .";\n";
             ?>
+            </script>
+            <script>
+                var jsProtocolo = '<?php echo $_SESSION['protocolo']?>';
             </script>
 
             <div class="container__login-buttom">
