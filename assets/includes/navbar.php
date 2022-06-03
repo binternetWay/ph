@@ -120,6 +120,7 @@ ul ,li{
     flex-direction: row;
     align-items: center;
     padding: 1px 10px;
+    margin-right: 10px;
     border-radius: 10px;
     background-color: var(--bg-type2);
     transition: 0.3s;
