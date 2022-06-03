@@ -16,10 +16,12 @@ if (isset($_POST['alterar_plano']) && isset($_POST['cod_plano'])) {
 
     if ($solicitacao != false) {
         $_SESSION['protocolo'] = $solicitacao;
+
         header('Location: planos');
     }
     else {
-        $_SESSION['protocolo'] = false;
+        $_SESSION['protocolo'] = '';
+
         header('Location: planos');
     }
 }

@@ -12,9 +12,11 @@ if ($_SESSION['token'] != $token) {
     header('Location: logout');
 }
 
-if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
+if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != '') {
     # code...
 }
+
+// var_dump($_SESSION['protocolo']);
 
 ?>
 <!DOCTYPE html>
