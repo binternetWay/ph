@@ -291,11 +291,12 @@ class Contratos{
 
         for ($i=0; $i < count($linha); $i++) { 
             if ($linha[$i]['cod_plano'] == $array[0]['codigo_servico']) {
+                
                 return true;
                 exit();
             }
         }
-        return false;
+        
     }
 
     public function get_categoria()

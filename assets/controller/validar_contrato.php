@@ -39,8 +39,7 @@ if (isset($_POST['search']) && isset($_POST['cpf'])
         else {
             $_SESSION['msg'] = "erro_usuario_nao";
 
-            var_dump($stt->fetchAll(PDO::FETCH_ASSOC));
-            // header('Location: login');
+            header('Location: login');
         }
         
     }    
@@ -70,9 +69,12 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
 
             $funcao = new Contratos();
 
-            //Verifica quantos contratos existe na Voalle 
-            if (count($lista) > 0 && $funcao->comparar_codigo_plano($lista)) {
+            echo "<pre>";
+            var_dump($funcao->comparar_codigo_plano($lista));
 
+            //Verifica quantos contratos existe na Voalle 
+            if (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) != NULL) {
+                
                 //Se for 1 vai direto para o painel
                 $contrato = $lista[0]['numero_contrato'];
                 $_SESSION['div'] = md5('contratos'.date('l jS \of F Y'));
@@ -86,33 +88,41 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 SET tipo_contrato = :tipo_contrato, cod_plano_id = :cod_plano_id
                 WHERE usuario = :usuario');
 
-                var_dump($lista[0]);
-
                 $sht->bindParam(':tipo_contrato', $lista[0]['tipo_contrato']);
                 $sht->bindParam(':cod_plano_id', $lista[0]['codigo_servico']);
                 $sht->bindParam(':usuario', $_POST['cpf']);
 
                 $sht->execute();
 
-                if ($sht->rowCount() > 0) {
-                    header('Location: /ph/painel');
+                if ($sht->rowCount() > 0 && $funcao->comparar_codigo_plano($lista) !== NULL) {
+                    // header('Location: /ph/painel');
+                }
+                elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
+                    $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
+                    
+                    header('Location: /ph/planos');
                 }
                 else {
                     $_SESSION['msg'] = "erro_contrato";
         
-                    header('Location: /ph/logout');
+                    // header('Location: /ph/logout');
                 }
+            }
+            elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
+                $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
+                
+                header('Location: /ph/planos');
             }
             else {
                 $_SESSION['msg'] = "erro_contrato";
     
-                header('Location: /ph/logout');
+                // header('Location: /ph/logout');
             }
         }
         else {
             $_SESSION['msg'] = "erro_usuario";
 
-            header('Location: /ph/logout');
+            // header('Location: /ph/logout');
         }
     }
     else{
