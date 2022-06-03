@@ -65,22 +65,22 @@ function createlista(lista){
         div_servico.id = nome_img+i;
         document.getElementById(nome+i).appendChild(div_servico);
 
-        if(lista[i-1]['servico1'] != ''){
+        if(lista[i-1]['servico1'] != ' '){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico1'];
             document.getElementById(nome_img+i).appendChild(serv);
         }
-        if(lista[i-1]['servico2'] != ''){
+        if(lista[i-1]['servico2'] != ' '){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico2'];
             document.getElementById(nome_img+i).appendChild(serv);
         }
-        if(lista[i-1]['servico3'] != ''){
+        if(lista[i-1]['servico3'] != ' '){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico3'];
             document.getElementById(nome_img+i).appendChild(serv);
         }
-        if(lista[i-1]['servico4'] != ''){
+        if(lista[i-1]['servico4'] != ' '){
             const serv = document.createElement('img');
             serv.src = lista[i-1]['servico4'];
             document.getElementById(nome_img+i).appendChild(serv);
@@ -90,25 +90,25 @@ function createlista(lista){
 createlista(lista_planos);
 
 function createListaIcone (lista, idDiv, numPlano){
-    if(lista[numPlano]['servico1'] != ''){
+    if(lista[numPlano]['servico1'] != ' '){
         const serv = document.createElement('img');
         serv.className = 'benef__line';
         serv.src = lista[numPlano]['servico1'];
         document.getElementById(idDiv).appendChild(serv);
     }
-    if(lista[numPlano]['servico2'] != ''){
+    if(lista[numPlano]['servico2'] != ' '){
         const serv = document.createElement('img');
         serv.className = 'benef__line';
         serv.src = lista[numPlano]['servico2'];
         document.getElementById(idDiv).appendChild(serv);
     }
-    if(lista[numPlano]['servico3'] != ''){
+    if(lista[numPlano]['servico3'] != ' '){
         const serv = document.createElement('img');
         serv.className = 'benef__line';
         serv.src = lista[numPlano]['servico3'];
         document.getElementById(idDiv).appendChild(serv);
     }
-    if(lista[numPlano]['servico4'] != ''){
+    if(lista[numPlano]['servico4'] != ' '){
         const serv = document.createElement('img');
         serv.className = 'benef__line';
         serv.src = lista[numPlano]['servico4'];
@@ -127,4 +127,3 @@ function getRollLeft (idArrow) {
     arrow.scrollLeft -= 80;
 }
 document.getElementById('arLeft').onclick = function get() {getRollLeft('container__plano')};
-
