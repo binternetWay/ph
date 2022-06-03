@@ -3,10 +3,11 @@
 class Voalle{
     
     private $token;
+    private $Url = "https://erp.internetway.com.br";
 
     function __construct()
     {
-        $this->Url = "https://erp.internetway.com.br";
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -69,14 +70,25 @@ class Voalle{
                 
         }',
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer '.$this->token
-        ),
+            'Authorization: Bearer '.$this->token,
+            'Content-Type: application/json',
+            'Cookie: SYNSUITE=dhfvuu6l4pai0q8n6o13jb37p1'
+          ),
         ));
 
         $response = curl_exec($curl);
 
         curl_close($curl);
-        echo $response;
+
+        $chave = json_decode($response, true);
+
+        if ($chave['success'] == false) {
+            return false;
+        }
+        else {
+            $protocolo = $chave['response'];
+            return $protocolo['protocol'];
+        }
 
     }
 

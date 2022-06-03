@@ -37,11 +37,11 @@ if (isset($_POST['cod__servico'])) {
                                                         AND preco.cod_plano_id = catalogo.cod_plano_id
                                                         AND preco.tipo_contrato = catalogo.tipo_contrato)
 
-                WHERE catalogo.tipo_contrato = '".$_SESSION['tipo_contrato']."'
-                AND plano.cod_plano = '".$_SESSION['codigo_plano']."'
-                AND servico.codigo_playhub = '".$produto."'");
+                WHERE catalogo.tipo_contrato = :tipo_contrato
+                AND plano.cod_plano = :cod_plano
+                AND servico.codigo_playhub = :codigo_playhub");
 
-    $stmt->execute();
+    $stmt->execute(array(':tipo_contrato' => $_SESSION['tipo_contrato'], ':cod_plano' => $_SESSION['codigo_plano'], ':codigo_playhub' => $produto));
     $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
     $playhub = $ph->inscrever($produto, $usuario);

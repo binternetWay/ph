@@ -20,13 +20,15 @@ class Usuario {
     private $codigo_servico;
     private $numero_protocolo;
     private $valor_contrato;
+    private $base;
+    private $numero_cliente;
 
 
     public function __construct($usuario)
     {
         $fetch = $this->Selecionar_usuario($usuario);
         $row = $this->Selecionar_contrato($usuario);
-        
+
         $this->setUsuario($fetch['cpf']);
         $this->setIdUsuario($fetch['id']);
         $this->setPlano($row['plano']);
@@ -38,6 +40,8 @@ class Usuario {
         $this->setCodigoServico($row['codigo_servico']);
         $this->setNumeroProtocolo($row['numero_protocolo']);
         $this->setValorContrato($row['valor_contrato']);
+        $this->setBase($row['base']);
+        $this->setNumeroCliente($row['base']);
     }
 
     // SET'S
@@ -96,6 +100,16 @@ class Usuario {
         $this->valor_contrato = $valor_contrato;
     }
 
+    public function setBase($base)
+    {
+        $this->base = $base;
+    }
+
+    public function setNumeroCliente($numero_cliente)
+    {
+        $this->numero_cliente = $numero_cliente;
+    }
+
 
     // GET'S
     public function getUsuario()
@@ -151,6 +165,16 @@ class Usuario {
     public function getValorContrato()
     {
         return $this->valor_contrato;
+    }
+
+    public function getBase()
+    {
+        return $this->base;
+    }
+
+    public function getNumeroCliente()
+    {
+        return $this->numero_cliente;
     }
 
 

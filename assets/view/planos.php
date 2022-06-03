@@ -43,14 +43,17 @@ if ($_SESSION['token'] != $token) {
                 <div class="info__line--center"><span>Benefícios</span></div>
                 <div class="info__line--center" id="benef" style="margin-top: 25px;"></div>
             </div>
-            <form class="form__conf" action="">
+            <form class="form__conf" action="alterar_plano" method="POST">
                 <div class="popup__box--title" style="margin-top: 25px;"><span class="title__popup">Confirmação</span></div>
                 <div class="popup__box--mid">
                     <input type="checkbox">
                     <label class="text__confirmacao">Declaro estar ciente sobre a Alteração do Plano realizado, bem como, observância da fidelidade de 12 meses. Concordo com as cláusulas e condições do novo <a href="#">Termo de Adesão.</a></label>
                 </div>
-                <input type="hidden" value="" name="cod_plano" id="cod_plano">
-                <div class="btn__line"><button class="btn btn__nao" type="submit">não</button><button class="btn btn__sim" type="submit">sim</button></div>
+                <input type="hidden" value="2022.750" name="cod_plano" id="cod_plano">
+                <div class="btn__line">
+                    <button class="btn btn__nao" type="submit">não</button>
+                    <button class="btn btn__sim" type="submit" name="alterar_plano">SIM</button>
+                </div>
             </form>
         </div>
     </div>
@@ -92,10 +95,10 @@ if ($_SESSION['token'] != $token) {
                                 plano.velocidade, 
                                 plano.preco,
                                 '0.00' AS servico_minimo,
-                                CASE WHEN categoria_id = 1 THEN categoria.src_img ELSE ' '  END AS servico1,
-                                CASE WHEN categoria_id = 2 THEN categoria.src_img ELSE ' '  END AS servico2,
-                                CASE WHEN categoria_id = 3 THEN categoria.src_img ELSE ' '  END AS servico3,
-                                CASE WHEN categoria_id = 4 THEN categoria.src_img ELSE ' '  END AS servico4
+                                CASE WHEN categoria_id = 1 THEN categoria.src_img ELSE ' ' END AS servico1,
+                                CASE WHEN categoria_id = 2 THEN categoria.src_img ELSE ' ' END AS servico2,
+                                CASE WHEN categoria_id = 3 THEN categoria.src_img ELSE ' ' END AS servico3,
+                                CASE WHEN categoria_id = 4 THEN categoria.src_img ELSE ' ' END AS servico4
                                 
                                 FROM preco
                                 LEFT JOIN categoria ON categoria.id = preco.categoria_id
