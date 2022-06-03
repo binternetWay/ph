@@ -34,6 +34,7 @@ class Contratos{
         contracts.client_id AS numero_cliente,
         contracts.id AS numero_contrato,
         contracts.amount AS valor_contrato,
+        contracts.company_place_id AS base,
         
         CASE 
         WHEN vencimento.prox_vencimento IS NULL AND SUBSTRING(CURRENT_DATE::VARCHAR, 9, 2)::INT > contracts.collection_day::INT
@@ -290,11 +291,12 @@ class Contratos{
 
         for ($i=0; $i < count($linha); $i++) { 
             if ($linha[$i]['cod_plano'] == $array[0]['codigo_servico']) {
+                
                 return true;
                 exit();
             }
         }
-        return false;
+        
     }
 
     public function get_categoria()

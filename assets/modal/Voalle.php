@@ -3,13 +3,15 @@
 class Voalle{
     
     private $token;
+    private $Url = "https://erp.internetway.com.br";
 
     function __construct()
     {
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://erp.internetway.com.br:45700/connect/token',
+        CURLOPT_URL => $this->Url.':45700/connect/token',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -33,12 +35,12 @@ class Voalle{
 
     }
 
-    public function NovaSolicitacao(string $cliente, int $cod_cliente, string $plano, string $up)
+    public function NovaSolicitacao(string $cliente, string $plano, string $up, string $local)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://erp-staging.internetway.com.br:45715/external/integrations/thirdparty/opendetailedsolicitation',
+        CURLOPT_URL => $this->Url.':45715/external/integrations/thirdparty/opendetailedsolicitation',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -47,38 +49,46 @@ class Voalle{
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS =>'{
-            "incidentStatusId": 2, //Status da solicitação
-            "personId": 118814, //ID do solicitante
-            "clientId": 118814, //ID do cliente da solicitação
-            "incidentTypeId": 1802, //ID do tipo de solicitação
-            "contractServiceTagId": 0, //ID da etiqueta de serviço
-            "catalogServiceId": 1, //ID do tipo de atendimento
-            "serviceLevelAgreementId": 0, //ID do service level agreement
-            "catalogServiceItemId": 2, //ID do iten de serviço
-            "catalogServiceItemClassId": 1, //ID do subitem de serviço
+            "incidentStatusId": 2,
+            "personId": '.$cliente.', 
+            "clientId": '.$cliente.', 
+            "incidentTypeId": 1802,
+            "serviceLevelAgreementId": 15, 
             "assignment": {
-                "title": "teste", //Titulo da solicitação
-                "description": "teste", //Texto de abertura
-                "priority": 1, //Prioridade
-                "beginningDate": "2022-05-27 14:50:00", //Data de abertura
-                "finalDate": "2022-05-30 14:50:00", //Prazo para encerramento
+                "title": "SOLICITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)", 
+                "description": "PLANO ANTIGO: ['.$plano.']  PLANO NOVO: ['.$up.']", 
+                "priority": 1,
+                "beginningDate": "", 
+                "finalDate": "", 
                 "report": {
-                    "beginningDate": "2022-05-27 14:50:00", //Data inicial do relato
-                    "finalDate": "2022-05-27 14:50:00", //Data final do relato
-                    "description": "teste" //Descrição
+                    "beginningDate": "",
+                    "finalDate": "", 
+                    "description": "Solicitação aberta pelo portal SVA" 
                 },
-                "companyPlaceId": 0 //ID do local de atendimento
+                "companyPlaceId": '.$local.' 
             }
+                
         }',
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer '.$this->token
-        ),
+            'Authorization: Bearer '.$this->token,
+            'Content-Type: application/json',
+            'Cookie: SYNSUITE=dhfvuu6l4pai0q8n6o13jb37p1'
+          ),
         ));
 
         $response = curl_exec($curl);
 
         curl_close($curl);
-        echo $response;
+
+        $chave = json_decode($response, true);
+
+        if ($chave['success'] == false) {
+            return false;
+        }
+        else {
+            $protocolo = $chave['response'];
+            return $protocolo['protocol'];
+        }
 
     }
 
@@ -87,7 +97,7 @@ class Voalle{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://erp.internetway.com.br:45715/external/integrations/thirdparty/contract/contracteventualvalues',
+        CURLOPT_URL => $this->Url.':45715/external/integrations/thirdparty/contract/contracteventualvalues',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,

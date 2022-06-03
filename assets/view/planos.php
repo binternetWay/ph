@@ -3,10 +3,17 @@
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
+require_once "../modal/PDO_Conexao.php";
+require_once "../modal/Usuario.php";
+
 $token = md5($_SESSION['nome'].date('l jS \of F Y'));
 
 if ($_SESSION['token'] != $token) {
     header('Location: logout');
+}
+
+if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
+    # code...
 }
 
 ?>
@@ -40,14 +47,17 @@ if ($_SESSION['token'] != $token) {
                 <div class="info__line--center"><span>Benefícios</span></div>
                 <div class="info__line--center" id="benef" style="margin-top: 25px;"></div>
             </div>
-            <form class="form__conf" action="">
+            <form class="form__conf" action="alterar_plano" method="POST">
                 <div class="popup__box--title" style="margin-top: 25px;"><span class="title__popup">Confirmação</span></div>
                 <div class="popup__box--mid">
                     <input type="checkbox">
                     <label class="text__confirmacao">Declaro estar ciente sobre a Alteração do Plano realizado, bem como, observância da fidelidade de 12 meses. Concordo com as cláusulas e condições do novo <a href="#">Termo de Adesão.</a></label>
                 </div>
-                <input type="hidden" value="" name="cod_plano" id="cod_plano">
-                <div class="btn__line"><button class="btn btn__nao" type="submit">não</button><button class="btn btn__sim" type="submit">sim</button></div>
+                <input type="hidden" value="2022.750" name="cod_plano" id="cod_plano">
+                <div class="btn__line">
+                    <button class="btn btn__nao" type="submit">não</button>
+                    <button class="btn btn__sim" type="submit" name="alterar_plano">SIM</button>
+                </div>
             </form>
         </div>
     </div>
@@ -78,14 +88,37 @@ if ($_SESSION['token'] != $token) {
 
             <script>
             <?php
-                $planos = array(
-                    array('velocidade'=>'100MB','preco'=>'69.90','servico_minimo'=>'9.90','servico1'=>'assets/img/icons/icon_ubook.png','servico2'=>'', 'servico3'=>'', 'servico4'=>''),
-                    array('velocidade'=>'150MB','preco'=>'79.90','servico_minimo'=>'9.90','servico1'=>'assets/img/icons/icon_ubook.png','servico2'=>'', 'servico3'=>'', 'servico4'=>''),
-                    array('velocidade'=>'300MB','preco'=>'89.90','servico_minimo'=>'3.99','servico1'=>'assets/img/icons/icon_ubook.png','servico2'=>'', 'servico3'=>'', 'servico4'=>''),
-                    array('velocidade'=>'500MB','preco'=>'99.90','servico_minimo'=>'3.99','servico1'=>'assets/img/icons/icon_ubook.png','servico2'=>'', 'servico3'=>'', 'servico4'=>'assets/img/icons/icon_plus.png'),
-                    array('velocidade'=>'750MB','preco'=>'189.90','servico_minimo'=>'3.99','servico1'=>'assets/img/icons/icon_ubook.png','servico2'=>'assets/img/icons/icon_hbomax.png', 'servico3'=>'assets/img/icons/icon_deezer.png', 'servico4'=>'assets/img/icons/icon_plus.png'));
+            $x = new Usuario($_SESSION['cpf']);
+                $stmt = PDO_Conexao::getInstance()->prepare("SELECT velocidade, preco, servico_minimo,
+                                MAX(servico1) AS servico1,
+                                MAX(servico2) AS servico2,
+                                MAX(servico3) AS servico3,
+                                MAX(servico4) AS servico4
+                                
+                                FROM(SELECT 
+                                plano.velocidade, 
+                                plano.preco,
+                                '0.00' AS servico_minimo,
+                                CASE WHEN categoria_id = 1 THEN categoria.src_img ELSE ' ' END AS servico1,
+                                CASE WHEN categoria_id = 2 THEN categoria.src_img ELSE ' ' END AS servico2,
+                                CASE WHEN categoria_id = 3 THEN categoria.src_img ELSE ' ' END AS servico3,
+                                CASE WHEN categoria_id = 4 THEN categoria.src_img ELSE ' ' END AS servico4
+                                
+                                FROM preco
+                                LEFT JOIN categoria ON categoria.id = preco.categoria_id
+                                LEFT JOIN plano ON plano.id = preco.cod_plano_id
+                                WHERE tipo_contrato = 'FD'
+                                AND preco >= :preco
+                                AND qtd_free > 0) AS analitico
+                                GROUP BY velocidade, preco, servico_minimo
+                                ORDER BY preco");
+
+                $stmt->execute(array(':preco' => $x->getValorContrato()));
+
+                $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
                 $lista = json_encode($planos,true);
-                echo "var lista_planos = ". $lista . ";\n";
+                echo "var lista_planos = ". $lista .";\n";
             ?>
             </script>
 
