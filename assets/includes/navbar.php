@@ -56,7 +56,7 @@ function ativeMenu () {
     right: 5px;
     margin-top: 70px;
     padding: 5px;
-    z-index: 600;
+    z-index: 250;
 }
 
 ul ,li{
