@@ -270,7 +270,7 @@ class PH {
         
         $stmt = PDO_Conexao::getInstance()->prepare($sql);
 
-        $user = $login->Get_Id_Usuario();
+        $user = $login->getIdUsuario();
 
         $data = date('Y-m-d');
         $vencimento = date('Y-m-d', strtotime("+30 days",strtotime(date('Y-m-d'))));

@@ -69,9 +69,6 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
 
             $funcao = new Contratos();
 
-            echo "<pre>";
-            var_dump($funcao->comparar_codigo_plano($lista));
-
             //Verifica quantos contratos existe na Voalle 
             if (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) != NULL) {
                 
@@ -95,7 +92,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 $sht->execute();
 
                 if ($sht->rowCount() > 0 && $funcao->comparar_codigo_plano($lista) !== NULL) {
-                    // header('Location: /ph/painel');
+                    header('Location: /ph/painel');
                 }
                 elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
                     $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
@@ -105,7 +102,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 else {
                     $_SESSION['msg'] = "erro_contrato";
         
-                    // header('Location: /ph/logout');
+                    header('Location: /ph/logout');
                 }
             }
             elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
@@ -116,13 +113,13 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
             else {
                 $_SESSION['msg'] = "erro_contrato";
     
-                // header('Location: /ph/logout');
+                header('Location: /ph/logout');
             }
         }
         else {
             $_SESSION['msg'] = "erro_usuario";
 
-            // header('Location: /ph/logout');
+            header('Location: /ph/logout');
         }
     }
     else{
