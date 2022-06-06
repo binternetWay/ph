@@ -37,7 +37,8 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
     <?php include_once '../includes/loader.php'?>
     <div class="popup__notificacao" id="popup__notificacao">
         <div class="notificacao">
-            <span class="texto__notificacao">Seu protocolo foi aberto!<br> Numero do protocolo:&nbsp;<span class="protocolo" id="protocolo"></span></span>
+            <span class="texto__notificacao">Seu protocolo foi aberto!<br> Liberamos para você um acesso provisório.  <br> Numero do protocolo:&nbsp;<span class="protocolo" id="protocolo"></span></span>
+            <a class="btn__login--protocolo" href="/ph/logout">Login</a>
         </div>
     </div>
 
@@ -54,7 +55,7 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
             <form class="form__conf" action="alterar_plano" method="POST">
                 <div class="popup__box--title" style="margin-top: 25px;"><span class="title__popup">Confirmação</span></div>
                 <div class="popup__box--mid">
-                    <input type="checkbox">
+                    <input type="checkbox" required>
                     <label class="text__confirmacao">Declaro estar ciente sobre a Alteração do Plano realizado, bem como, observância da fidelidade de 12 meses. Concordo com as cláusulas e condições do novo <a href="#">Termo de Adesão.</a></label>
                 </div>
                 <input type="hidden" value="2022.750" name="cod_plano" id="cod_plano">
