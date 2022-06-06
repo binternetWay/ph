@@ -12,7 +12,7 @@ if (isset($_POST['alterar_plano']) && isset($_POST['cod_plano'])) {
     $x = new Voalle();
     $y = new Usuario($_SESSION['cpf']);
 
-    $solicitacao = $x->NovaSolicitacao($y->getNumeroCliente(), $y->getPlano(), $_POST['cod_plano'], $y->getBase());
+    $solicitacao = $x->NovaSolicitacao($y->getNumeroCliente(), $y->getPlano(), $_POST['cod_plano'], $y->getBase(), $y->getContrato());
 
     if ($solicitacao != false) {
         $_SESSION['protocolo'] = $solicitacao;

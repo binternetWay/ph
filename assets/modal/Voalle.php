@@ -35,7 +35,7 @@ class Voalle{
 
     }
 
-    public function NovaSolicitacao(string $cliente, string $plano, string $up, string $local)
+    public function NovaSolicitacao(string $cliente, string $plano, string $up, string $local, string $contrato)
     {
         $curl = curl_init();
 
@@ -55,7 +55,7 @@ class Voalle{
             "incidentTypeId": 1802,
             "serviceLevelAgreementId": 15, 
             "assignment": {
-                "title": "SOLICITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)", 
+                "title": "'.$contrato.' SOLICITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)", 
                 "description": "PLANO ANTIGO: ['.$plano.']  PLANO NOVO: ['.$up.']", 
                 "priority": 1,
                 "beginningDate": "", 
