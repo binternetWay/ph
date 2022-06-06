@@ -15,12 +15,6 @@ if ($_SESSION['token'] != $token) {
 if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != '') {
     # code...
 }
-<<<<<<< HEAD
-
-// var_dump($_SESSION['protocolo']);
-
-=======
->>>>>>> d2be7d86686b4bb16735e4babb193f37d86606a9
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
