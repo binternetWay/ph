@@ -325,7 +325,7 @@ class Contratos{
                                     ON (qtds.usuario = usuario.usuario AND qtds.categoria_id = preco.categoria_id)
         
         WHERE preco.qtd_free > 0
-        -- AND (qtds.qtd_servico IS NULL OR qtds.qtd_servico < 0)
+        AND (qtds.qtd_servico IS NULL OR qtds.qtd_servico < 0)
         AND usuario.usuario = :cpf
         ORDER BY usuario.usuario";
 
