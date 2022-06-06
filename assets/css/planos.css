@@ -308,3 +308,18 @@
     font-weight: 700;
     color: black;
 }
+.btn__login--protocolo{
+    margin: 10px 0px;
+    padding: 15px;
+    background-color: var(--bg-type2);
+    color: var(--bg1-default);
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
