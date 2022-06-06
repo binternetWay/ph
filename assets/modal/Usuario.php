@@ -28,12 +28,14 @@ class Usuario {
     {
         $fetch = $this->Selecionar_usuario($usuario);
         $row = $this->Selecionar_contrato($usuario);
+        echo "<pre>";
+        var_dump($row);
 
         $this->setUsuario($fetch['cpf']);
         $this->setIdUsuario($fetch['id']);
         $this->setPlano($row['plano']);
         $this->setContrato($row['numero_contrato']);
-        $this->setTipoContrato($row['numero_contrato']);
+        $this->setTipoContrato($row['tipo_contrato']);
         $this->setPrimeiroNome($row['prim_nome']);
         $this->setTelefone($row['telefone']);
         $this->setEmail($row['email']);
@@ -41,7 +43,7 @@ class Usuario {
         $this->setNumeroProtocolo($row['numero_protocolo']);
         $this->setValorContrato($row['valor_contrato']);
         $this->setBase($row['base']);
-        $this->setNumeroCliente($row['base']);
+        $this->setNumeroCliente($row['numero_cliente']);
     }
 
     // SET'S
