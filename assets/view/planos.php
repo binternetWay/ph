@@ -35,7 +35,7 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
 
 <body>
     <?php include_once '../includes/loader.php'?>
-    <div class="popup__notificacao">
+    <div class="popup__notificacao" id="popup__notificacao">
         <div class="notificacao">
             <span class="texto__notificacao">Seu protocolo foi aberto!<br> Numero do protocolo:&nbsp;<span class="protocolo" id="protocolo"></span></span>
         </div>
@@ -125,9 +125,8 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
                 echo "var lista_planos = ". $lista .";\n";
             ?>
             </script>
-            <script>
-                var jsProtocolo = '<?php echo $_SESSION['protocolo']?>';
-            </script>
+
+
 
             <div class="container__login-buttom">
                 <i class="fa-brands fa-whatsapp"></i>
@@ -135,6 +134,9 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
             </div>
         </div>
     </div>
+    <script>
+        var jsProtocolo = '<?php echo $_SESSION['protocolo']?>';
+    </script>
     <svg class="login__page-wave" style="bottom: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path class="wave1" fill-opacity="0.5" d="M0,32L60,64C120,96,240,160,360,181.3C480,203,600,181,720,149.3C840,117,960,75,1080,80C1200,85,1320,139,1380,165.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
     </svg>
