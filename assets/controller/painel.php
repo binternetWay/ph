@@ -43,6 +43,12 @@ $stmt = PDO_Conexao::getInstance()->prepare("
         $servicos = NULL;
     }
 
+$stmt_servico = PDO_Conexao::getInstance()->prepare("
+    SELECT src_img, nome, codigo_playhub AS codigo_index, '' AS  dataInicio,  '' AS dataFinal, '' AS voucher 
+    FROM servico
+");
+$stmt_servico->execute();
+$total_servico = $stmt_servico->fetchAll(PDO::FETCH_ASSOC);
 
 $cont = $contrato->Quantidade_Contratos($_SESSION['cpf']);
 
@@ -60,5 +66,5 @@ $playhub = $play->buscar_inscricao($_SESSION['cpf']);
 
 
 //Final
-echo json_encode(array($servicos, $ph, $playhub));
+echo json_encode(array($servicos, $ph, $playhub, $total_servico));
 ?>
