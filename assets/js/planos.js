@@ -127,3 +127,11 @@ function getRollLeft (idArrow) {
     arrow.scrollLeft -= 80;
 }
 document.getElementById('arLeft').onclick = function get() {getRollLeft('container__plano')};
+
+if (typeof jsProtocolo == 'undefined') {
+    var popup =  document.getElementById('popup__notificacao');
+    popup.style.display = 'none';
+} else {
+    var protocolo = document.getElementById('protocolo');
+    protocolo.innerHTML = jsProtocolo;
+};
