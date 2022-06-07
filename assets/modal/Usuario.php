@@ -28,8 +28,8 @@ class Usuario {
     {
         $fetch = $this->Selecionar_usuario($usuario);
         $row = $this->Selecionar_contrato($usuario);
-        echo "<pre>";
-        var_dump($row);
+        // echo "<pre>";
+        // var_dump($row);
 
         $this->setUsuario($fetch['cpf']);
         $this->setIdUsuario($fetch['id']);

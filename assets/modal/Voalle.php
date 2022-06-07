@@ -55,8 +55,8 @@ class Voalle{
             "incidentTypeId": 1802,
             "serviceLevelAgreementId": 15, 
             "assignment": {
-                "title": "'.$contrato.' SOLICITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)", 
-                "description": "PLANO ANTIGO: ['.$plano.']  PLANO NOVO: ['.$up.']", 
+                "title": "SOLICITAÇÃO - TROCA PLANO - PORTAL SVA (PLAYHUB)", 
+                "description": "'.$contrato.' - Contrato - PLANO ANTIGO: ['.$plano.']  PLANO NOVO: ['.$up.']", 
                 "priority": 1,
                 "beginningDate": "", 
                 "finalDate": "", 

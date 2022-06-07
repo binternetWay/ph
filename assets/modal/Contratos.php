@@ -56,7 +56,7 @@ class Contratos{
         ELSE SUBSTRING(REPLACE(REPLACE(REPLACE(REPLACE(people.phone, '(', '') ,')',''),'-',''),' ','')::VARCHAR, 1, 20) END AS telefone,
         people.email,
         planos.plano,
-        planos.codigo_servico,
+				CASE WHEN protocolo.numero_protocolo IS NULL THEN planos.codigo_servico ELSE protocolo.plano END AS codigo_servico,
         planos.download,
         
         CASE 
@@ -114,66 +114,72 @@ class Contratos{
                             ON planos.numero_contrato = contracts.id
         
         -- Left join para solicitações em andamento
-        LEFT JOIN (
-                                SELECT numero_contrato, MIN(numero_protocolo) AS numero_protocolo
-                                FROM (SELECT DISTINCT
-                                CASE 
-                                WHEN types_ctt.title ILIKE '%IZAZ%' THEN 'Izaz'
-                                WHEN ctt.date > '2020-08-01' THEN 'Way & Izaz' ELSE 'Way' END AS base,
-        
-                                items.contract_id AS numero_contrato,
-                                people.id AS numero_cliente,
-                                tag.protocol AS numero_protocolo,
-                                people.name AS nome_cliente,
-                                people.tx_id AS cpf,
-                                types.title AS Tipo_solicitacao,
-                                class.title AS contexto,
-                                problema.title AS problema,
-                                SUBSTRING(ass.beginning_date::VARCHAR, 1, 10) AS Data_abertura, 
-                                SUBSTRING(ass.conclusion_date::VARCHAR, 1, 10) AS Data_fechamento, 
-                                teams_id.title AS equipe_responsavel,
-                                pp.name AS responsavel_atual,
-                                teams_ori.title AS equipe_abertura,
-                                resp_abertura.nome_abertura AS respo_abertura,
-                                resp_abertura.cpf_abertura,
-                                users.login AS login_aebertura,
-                                status.title AS status_ordem
-        
-        FROM assignments AS ass
-            LEFT JOIN assignment_incidents AS tag ON ass.id = tag.assignment_id
-            LEFT JOIN incident_status AS status ON status.id = tag.incident_status_id
-            LEFT JOIN incident_types AS types ON types.id = tag.incident_type_id
-            LEFT JOIN contract_items AS items ON items.contract_service_tag_id = tag.contract_service_tag_id
-            LEFT JOIN contracts AS ctt ON ctt.id =  items.contract_id
-            LEFT JOIN teams AS teams_id ON teams_id.id = tag.team_id
-            LEFT JOIN teams AS teams_ori ON teams_ori.id = tag.origin_team_id
-            LEFT JOIN people ON people.id = ass.requestor_id
-            LEFT JOIN people AS pp ON pp.id = ass.responsible_id
-            LEFT JOIN contract_types AS types_ctt ON types_ctt.id = ctt.contract_type_id
-            LEFT JOIN solicitation_classifications AS class ON class.id = tag.solicitation_classification_id
-            LEFT JOIN solicitation_problems AS problema ON problema.id = tag.solicitation_problem_id
-            LEFT JOIN people_addresses AS address ON address.id = ctt.people_address_id
-        
-            -- Lef join responsavel pela abertura
-            LEFT JOIN (SELECT assignment_id, 
-                                    MIN(people.name) AS nome_abertura, 
-                                    MIN(tx_id) AS cpf_abertura, 	
-                                    MIN(beginning_date) AS data_relato
-                                    
-                                    FROM reports
-                                        LEFT JOIN people ON people.id = reports.person_id
-                                    GROUP BY assignment_id) AS resp_abertura
-                                    ON resp_abertura.assignment_id = ass.id
-        
-                                    LEFT JOIN users ON users.tx_id = resp_abertura.cpf_abertura
-                                
-        
-                                -- Condições
-                                WHERE status.title NOT IN ('Cancelado','Abertura','Encerramento')
-                                AND types.title ILIKE '%SOLICITAÇÃO - TROCA DE PLANO%'
-                                AND items.contract_id IS NOT NULL) qtd
-                                GROUP BY numero_contrato) AS protocolo
-                                ON protocolo.numero_contrato = contracts.id
+        LEFT JOIN (SELECT plano, numero_contrato::VARCHAR, MIN(numero_protocolo) AS numero_protocolo
+																FROM (SELECT DISTINCT
+																CASE 
+																WHEN types_ctt.title ILIKE '%IZAZ%' THEN 'Izaz'
+																WHEN ctt.date > '2020-08-01' THEN 'Way & Izaz' ELSE 'Way' END AS base,
+
+																CASE 
+																WHEN ass.description ILIKE '%2022.750%' THEN '2022.750'
+																WHEN ass.description ILIKE '%2022.500%' THEN '2022.500'
+																WHEN ass.description ILIKE '%2022.300%' THEN '2022.300'
+																WHEN ass.description ILIKE '%2022.150%' THEN '2022.150'
+																WHEN ass.description ILIKE '%2022.100%' THEN '2022.100' ELSE '2022.50' END plano,
+
+																items.contract_id AS numero_contrato_sistema,
+																SUBSTRING(TRIM(ass.description) FROM '^([^ ]+)') AS numero_contrato,
+																people.id AS numero_cliente,
+																tag.protocol AS numero_protocolo,
+																people.name AS nome_cliente,
+																people.tx_id AS cpf,
+																types.title AS Tipo_solicitacao,
+																class.title AS contexto,
+																problema.title AS problema,
+																SUBSTRING(ass.beginning_date::VARCHAR, 1, 10) AS Data_abertura, 
+																SUBSTRING(ass.conclusion_date::VARCHAR, 1, 10) AS Data_fechamento, 
+																teams_id.title AS equipe_responsavel,
+																pp.name AS responsavel_atual,
+																teams_ori.title AS equipe_abertura,
+																resp_abertura.nome_abertura AS respo_abertura,
+																resp_abertura.cpf_abertura,
+																users.login AS login_aebertura,
+																status.title AS status_ordem
+
+																FROM assignments AS ass
+																LEFT JOIN assignment_incidents AS tag ON ass.id = tag.assignment_id
+																LEFT JOIN incident_status AS status ON status.id = tag.incident_status_id
+																LEFT JOIN incident_types AS types ON types.id = tag.incident_type_id
+																LEFT JOIN contract_items AS items ON items.contract_service_tag_id = tag.contract_service_tag_id
+																LEFT JOIN contracts AS ctt ON ctt.id =  items.contract_id
+																LEFT JOIN teams AS teams_id ON teams_id.id = tag.team_id
+																LEFT JOIN teams AS teams_ori ON teams_ori.id = tag.origin_team_id
+																LEFT JOIN people ON people.id = ass.requestor_id
+																LEFT JOIN people AS pp ON pp.id = ass.responsible_id
+																LEFT JOIN contract_types AS types_ctt ON types_ctt.id = ctt.contract_type_id
+																LEFT JOIN solicitation_classifications AS class ON class.id = tag.solicitation_classification_id
+																LEFT JOIN solicitation_problems AS problema ON problema.id = tag.solicitation_problem_id
+																LEFT JOIN people_addresses AS address ON address.id = ctt.people_address_id
+
+																-- Lef join responsavel pela abertura
+																LEFT JOIN (SELECT assignment_id, 
+																		MIN(people.name) AS nome_abertura, 
+																		MIN(tx_id) AS cpf_abertura, 	
+																		MIN(beginning_date) AS data_relato
+																		
+																		FROM reports
+																				LEFT JOIN people ON people.id = reports.person_id
+																		GROUP BY assignment_id) AS resp_abertura
+																		ON resp_abertura.assignment_id = ass.id
+
+																		LEFT JOIN users ON users.tx_id = resp_abertura.cpf_abertura
+
+
+																-- Condições
+																WHERE status.title NOT IN ('Cancelado','Abertura','Encerramento')
+																AND types.title ILIKE '%SOLICITAÇÃO - TROCA PLANO - PORTAL SVA%') qtd
+																GROUP BY plano, numero_contrato) AS protocolo
+                                ON protocolo.numero_contrato = contracts.id::VARCHAR
                                 
             -- left join para maior palno
             LEFT JOIN (SELECT DISTINCT
@@ -245,8 +251,7 @@ class Contratos{
         
         WHERE people.tx_id = :cpf
         AND contracts.v_status = 'Normal'
-        AND velo.download = planos.download
-            ";
+        AND velo.download = planos.download";
         
         return $sql;
     }
