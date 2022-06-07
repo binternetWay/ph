@@ -29,4 +29,4 @@ $x = new Usuario('40434653861');
 
 //var_dump($x->buscar_usuario('reginaldo.silvaa'));
 
-var_dump($x->getValorContrato());
+var_dump($x->getContrato());
