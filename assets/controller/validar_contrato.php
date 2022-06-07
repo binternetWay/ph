@@ -167,6 +167,11 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
             $_SESSION['tipo_contrato'] = $fetch['tipo_contrato'];
             $_SESSION['codigo_plano'] = $fetch['codigo_servico'];
 
+<<<<<<< HEAD
+=======
+            $_SESSION['msg'] = "cadastro_realizado";
+
+>>>>>>> 983c93a36ff0c25d7901e3e1d1f0dc0bcca8a355
             header('Location: /ph/logout');
         }
         else{ 
