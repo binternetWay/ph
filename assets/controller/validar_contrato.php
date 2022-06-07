@@ -167,7 +167,7 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
             $_SESSION['tipo_contrato'] = $fetch['tipo_contrato'];
             $_SESSION['codigo_plano'] = $fetch['codigo_servico'];
 
-            header('Location: /ph/painel');
+            header('Location: /ph/logout');
         }
         else{ 
             $_SESSION['msg'] = "erro_contrato";

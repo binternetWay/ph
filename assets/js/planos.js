@@ -1,13 +1,15 @@
 
-function activePopup (velocidade, valor) {
+function activePopup (velocidade, valor, codPlano) {
     var popup = document.getElementById('popup');
     var idValor = document.getElementById('valor_plano');
     var idVelocidade = document.getElementById('velocidade');
+    var valueCodPlano = document.getElementById('cod_plano');
 
 	if (popup.style.display === "none") {
 		popup.style.display = "flex";
         idVelocidade.innerHTML = velocidade;
         idValor.innerHTML = 'R$ '+valor;
+        valueCodPlano.value = codPlano;
 
 	} else {
 		popup.style.display = "none";
@@ -26,6 +28,7 @@ document.getElementById('close').onclick = function get() {activePopup()}
 function createlista(lista){
     	// set veriaveis
 	var qtdLista = lista.length;
+    console.log(lista);
 
     for(i=1;i <= qtdLista; i++){
 
@@ -34,6 +37,7 @@ function createlista(lista){
         var nome_img = 'cat';
         var velocidade = lista[i-1]['velocidade'];
         var preco = lista[i-1]['preco'];
+        var codPlano = lista[i-1]['cod_plano'];
         var numPlano = i-1;
 
         const div_lista = document.createElement('div');
@@ -42,7 +46,8 @@ function createlista(lista){
         div_lista.parVelocidade = velocidade;
         div_lista.parPreco = preco;
         div_lista.numPlano = numPlano;
-        div_lista.onclick = function get() {activePopup(div_lista.parVelocidade, div_lista.parPreco), createListaIcone(lista, 'benef', div_lista.numPlano)}
+        div_lista.codPlano = codPlano;
+        div_lista.onclick = function get() {activePopup(div_lista.parVelocidade, div_lista.parPreco, div_lista.codPlano), createListaIcone(lista, 'benef', div_lista.numPlano)}
         document.getElementById('container__plano').appendChild(div_lista);
 
         const span_speed = document.createElement('span');
