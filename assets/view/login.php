@@ -100,6 +100,10 @@ session_start();
     toastr.warning("Erro, senhas não coincidem");
   <?php endif ?>
 
+  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'cadastro_realizado'): ?>
+    toastr.success("Usuário cadastrado com sucesso!");
+  <?php endif ?>
+
 
   <?php $_SESSION['msg'] = null; ?>
 
