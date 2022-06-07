@@ -19,8 +19,10 @@ $('document').ready(function () {
             if(minhas_inscricoes.length > 0){
                 createMeuServico(minhas_inscricoes, total_servico, 'Meus Serviços');
             }
+            if(servico.length > 0){
+                createCategoriaService(servico,'Todos os Serviços');
+            }
 
-            createCategoriaService(servico,'Todos os Serviços');
             document.getElementById('close').onclick = function get (){openShop();}
         }
     });

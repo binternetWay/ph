@@ -37,8 +37,14 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
     <?php include_once '../includes/loader.php'?>
     <div class="popup__notificacao" id="popup__notificacao">
         <div class="notificacao">
-            <span class="texto__notificacao">Seu protocolo foi aberto!<br> Liberamos para você um acesso provisório.  <br> Numero do protocolo:&nbsp;<span class="protocolo" id="protocolo"></span></span>
+            <span class="texto__notificacao">Seu protocolo foi aberto!<br> Liberamos para você um acesso provisório, realize o login novamente.  <br> Numero do protocolo:&nbsp;<span class="protocolo" id="protocolo"></span></span>
             <a class="btn__login--protocolo" href="/ph/logout">Login</a>
+        </div>
+    </div>
+
+    <div class="popup__planoincomp" id="popup__planoincomp" style="display: none;">
+        <div class="notificacao">
+            <span class="texto__notificacao">Ops!<br> Parece que você não tem planos disponíveis.  <br> entre em contato pelo <span class="protocolo">0800 764 4000.</span></span>
         </div>
     </div>
 

@@ -40,7 +40,7 @@ $stmt = PDO_Conexao::getInstance()->prepare("
         $servicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     else {
-        $servicos = NULL;
+        $servicos = [];
     }
 
 $stmt_servico = PDO_Conexao::getInstance()->prepare("

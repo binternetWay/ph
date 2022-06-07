@@ -28,7 +28,6 @@ document.getElementById('close').onclick = function get() {activePopup()}
 function createlista(lista){
     	// set veriaveis
 	var qtdLista = lista.length;
-    console.log(lista);
 
     for(i=1;i <= qtdLista; i++){
 
@@ -92,7 +91,13 @@ function createlista(lista){
         }
     }
 }
-createlista(lista_planos);
+
+if (lista_planos.length > 0){
+    createlista(lista_planos);
+} else {
+    var semPlano = document.getElementById('popup__planoincomp');
+    semPlano.style.display = 'flex';
+}
 
 function createListaIcone (lista, idDiv, numPlano){
     if(lista[numPlano]['servico1'] != ' '){
