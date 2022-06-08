@@ -2,6 +2,7 @@
 require_once "../modal/PlayHub.php";
 require_once "../modal/PDO_Conexao.php";
 require_once "../modal/Contratos.php";
+require_once "../modal/Usuario.php";
 
 @session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 @session_start();
@@ -43,10 +44,19 @@ $stmt = PDO_Conexao::getInstance()->prepare("
         $servicos = [];
     }
 
+$id_user = new Usuario($_SESSION['cpf']);
+
 $stmt_servico = PDO_Conexao::getInstance()->prepare("
-    SELECT src_img, nome, codigo_playhub AS codigo_index, '' AS  dataInicio,  '' AS dataFinal, '' AS voucher 
+    SELECT src_img, nome, 
+    codigo_playhub AS codigo_index, 
+    to_char(serDispo.data_inicial, 'HH/MM/YY') AS data_inicio,  
+    to_char(serDispo.data_final, 'HH/MM/YY') AS data_final
+
     FROM servico
-");
+    LEFT JOIN (SELECT *
+                            FROM servico_disponivel
+                            WHERE usuario_id = '".$id_user->getIdUsuario()."') AS serDispo
+                            ON serDispo.servico_id = servico.id");
 $stmt_servico->execute();
 $total_servico = $stmt_servico->fetchAll(PDO::FETCH_ASSOC);
 

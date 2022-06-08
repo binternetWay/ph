@@ -41,7 +41,7 @@
 <?php include_once '../includes/jsPadrao.php'?>
 <script>
     jQuery(window).load(function () {
-      $(".loader").delay(7500).fadeOut("slow");
+      $(".loader").delay(15000).fadeOut("slow");
     $("#tudo_page").toggle("fast");
 });
 </script>
