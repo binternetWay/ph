@@ -6,6 +6,11 @@ require_once "../modal/Voalle.php";
 require_once "../modal/Usuario.php";
 require_once "../modal/Contratos.php";
 
+
+if ($_SESSION['csrf'] != $csrf) {
+    header('Location: logout');
+}
+
 if (isset($_POST['alterar_plano']) && isset($_POST['cod_plano'])) {
 
     session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
