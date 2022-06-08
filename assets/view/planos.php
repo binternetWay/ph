@@ -5,6 +5,7 @@ session_start();
 
 require_once "../modal/PDO_Conexao.php";
 require_once "../modal/Usuario.php";
+require_once "../modal/Contratos.php";
 
 $token = md5($_SESSION['nome'].date('l jS \of F Y'));
 
@@ -12,9 +13,13 @@ if ($_SESSION['token'] != $token) {
     header('Location: logout');
 }
 
-if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
-    # code...
+if (isset($_SESSION['protocolo'])) {
+    $protocolo = "var jsProtocolo = ".$_SESSION['protocolo'].";";
 }
+else{
+    $protocolo = "";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -100,39 +105,16 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
             <script>
             <?php
             $x = new Usuario($_SESSION['cpf']);
-                $stmt = PDO_Conexao::getInstance()->prepare("
-                    SELECT cod_plano,velocidade, preco, servico_minimo,
-                    MAX(servico1) AS servico1,
-                    MAX(servico2) AS servico2,
-                    MAX(servico3) AS servico3,
-                    MAX(servico4) AS servico4
-                    
-                    
-                    FROM(SELECT 
-                    plano.velocidade, 
-                    plano.preco,
-                    '0.00' AS servico_minimo,
-                    CASE WHEN categoria_id = 1 THEN categoria.src_img ELSE ' ' END AS servico1,
-                    CASE WHEN categoria_id = 2 THEN categoria.src_img ELSE ' ' END AS servico2,
-                    CASE WHEN categoria_id = 3 THEN categoria.src_img ELSE ' ' END AS servico3,
-                    CASE WHEN categoria_id = 4 THEN categoria.src_img ELSE ' ' END AS servico4,
-                                                    plano.cod_plano
-                    
-                    FROM preco
-                    LEFT JOIN categoria ON categoria.id = preco.categoria_id
-                    LEFT JOIN plano ON plano.id = preco.cod_plano_id
-                    WHERE tipo_contrato = 'FD'
-                    AND preco >= :preco
-                    AND qtd_free > 0) AS analitico
-                    GROUP BY cod_plano, velocidade, preco, servico_minimo
-                    ORDER BY preco");
+            $y = new Contratos();
 
-                $stmt->execute(array(':preco' => $x->getValorContrato()));
+            $stmt = PDO_Conexao::getInstance()->prepare($y->get_planos());
 
-                $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                
-                $lista = json_encode($planos,true);
-                echo "var lista_planos = ". $lista .";\n";
+            $stmt->execute(array(':preco' => $x->getValorContrato()));
+
+            $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $lista = json_encode($planos,true);
+            echo "var lista_planos = ". $lista .";\n";
             ?>
             </script>
 
@@ -145,7 +127,7 @@ if (isset($_SESSION['protocolo']) && $_SESSION['protocolo'] != false) {
         </div>
     </div>
     <script>
-        var jsProtocolo = '<?php echo $_SESSION['protocolo']?>';
+        <?= $protocolo ?>
     </script>
     <svg class="login__page-wave" style="bottom: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path class="wave1" fill-opacity="0.5" d="M0,32L60,64C120,96,240,160,360,181.3C480,203,600,181,720,149.3C840,117,960,75,1080,80C1200,85,1320,139,1380,165.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
