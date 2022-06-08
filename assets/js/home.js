@@ -20,6 +20,7 @@ function createMeuServico (voucherLista, servicoLista, nomeApresentacao) {
 	createCategoriaService(finalLista,nomeApresentacao);
 }
 
+
 function createCategoriaService (lista, nome) {
 	// set variaveis
 	var nameServiceList = nome + '__list';
