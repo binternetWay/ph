@@ -20,6 +20,8 @@ else{
     $protocolo = "";
 }
 
+$token = md5(uniqid(rand(), true));
+$_SESSION['csrf'] = $token;
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -74,6 +76,7 @@ else{
                     <button class="btn btn__nao" type="submit">não</button>
                     <button class="btn btn__sim" type="submit" name="alterar_plano">SIM</button>
                 </div>
+                <input type="hidden" name="csrf" value="<?= $token ?>" />
             </form>
         </div>
     </div>

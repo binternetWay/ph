@@ -8,6 +8,12 @@ require_once '../modal/PlayHub.php';
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
+$csrf = isset($_POST['csrf']) ? $_POST['csrf'] : '';
+
+if ($_SESSION['csrf'] != $csrf) {
+    header('Location: logout');
+}
+
 //Primeira Etapa, Apos informar o CPF para login
 if (isset($_POST['search']) && isset($_POST['cpf']) 
         && !isset($_POST['primeira__senha']) && !isset($_POST['senha']) && !isset($_POST['iniciar'])) {

@@ -2,6 +2,8 @@
 session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
 
+$token = md5(uniqid(rand(), true));
+$_SESSION['csrf'] = $token;
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +51,7 @@ session_start();
                             include_once '../includes/novousuario.php';
                         }
                         ?>
+                        <input type="hidden" name="csrf" value="<?= $token ?>" />
                         <div class="form__line"><button class="btn__buscar" type="submit" name="search">Buscar Usuário</button></div>
                     </form>
                 </div>
