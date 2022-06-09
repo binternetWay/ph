@@ -288,6 +288,7 @@ body{
 }
 
 .retorno__line--btn{
+    width: 100%;
     margin: 10px 0px;
     padding: 15px;
     background-color: var(--bg-type2);

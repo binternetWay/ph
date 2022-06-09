@@ -81,11 +81,12 @@ function createServiceList (lista, idDiv){
 		div.dataFinal = lista[i-1]['data_final'];
 		div.valorServico = 'R$ ' + lista[i-1]['valor'];
 		div.voucher = lista[i-1]['voucher'];
+		div.link_tutorial = '/ph/assets/manuais/'+lista[i-1]['codigo_index']+'.pdf';
 
 		div.className='service_item';
 		div.id= nameIdService
 
-		div.onclick = function get() {getImg(div.src_img, div.cod_servico, div.nome, div.dataInicio, div.dataFinal, div.valorServico, div.voucher)};
+		div.onclick = function get() {getImg(div.src_img, div.cod_servico, div.nome, div.dataInicio, div.dataFinal, div.valorServico, div.voucher, div.link_tutorial)};
 		
 		document.getElementById(idDiv).appendChild(div);
 
@@ -96,7 +97,7 @@ function createServiceList (lista, idDiv){
 	}
 }
 
-function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorServico, voucher) {
+function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorServico, voucher, link_tutorial) {
 	var nameService = document.getElementById('name__service');
 	var dtInicial = document.getElementById('inicio__service');
 	var dtFinal = document.getElementById('fim__service');
@@ -104,12 +105,12 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 	var campVoucher = document.getElementById('voucher');
 	var valueServico = document.getElementById('cod__servico');
 	var retornoVoucher = document.getElementById('retorno__voucher');
+	var linkTuto = document.getElementById('link__tutorial');
 
 	nameService.innerHTML = nome_servico;
 	dtInicial.innerHTML = dataInicial;
 	dtFinal.innerHTML = dataFinal;
-
-
+	linkTuto.href = link_tutorial;
 
     document.getElementById('banner').style.backgroundImage = "url('"+ var_link +"')";
 	document.getElementById('shop__box--img').style.backgroundImage = "url('"+ var_link +"')";
@@ -122,7 +123,6 @@ function getImg (var_link, codigo, nome_servico, dataInicial, dataFinal, valorSe
 		campBtn.style.display = 'none';
 		campVoucher.style.display = 'flex';
 		// retornoVoucher.value = voucher; 
-
 	}
 	openShop();
 }

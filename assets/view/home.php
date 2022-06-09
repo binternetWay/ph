@@ -40,9 +40,9 @@ if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
 
     <div id="voucher" class="retorno__playhub" style="display: none;">
         <div class="retorno__line">
-            <span class="retorno__line--name">Voucher:</span>
+            <span class="retorno__line--name">Instruções de ativação:</span>
             <input id="retorno__voucher"class="retorno__line--voucher" value="" disabled="disabled" type="hidden">
-            <button id="click__copy" class="retorno__line--btn" onclick="clickCopy()" type="submit">Copiar Voucher</button>
+            <a style="width: 100%;" id="link__tutorial" href=""><button id="click__copy" class="retorno__line--btn" onclick="clickCopy()" type="submit">Tutorial</button></a>
         </div>
     </div>
 
