@@ -19,6 +19,6 @@
 
   $_SESSION['msg'] = $msg;
 
-  header('Location: /ph/login');
+  header('Location: login');
 
  ?>

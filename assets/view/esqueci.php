@@ -4,7 +4,6 @@ session_start();
 
 $token = md5(uniqid(rand(), true));
 $_SESSION['csrf'] = $token;
-
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +22,15 @@ $_SESSION['csrf'] = $token;
     
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        .container__login {
+            width: 40%;
+            height: 80%;
+            max-width: 400px;
+            max-height: 490px;
+        }
+    </style>
     
     <title>Login</title>
 </head>
@@ -41,19 +49,38 @@ $_SESSION['csrf'] = $token;
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
-                    <form method="POST" action="assets/controller/validar_contrato.php">
-                        <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" value="<?= @$_SESSION['cpf'] ?>" placeholder="Digite seu CPF" required="required"/></div>
-                        <?php
+                    <form method="POST" action="editar_senha">
 
-                        if (isset($_SESSION['parametro']) && $_SESSION['parametro'] === md5("seu pai de calcinha")) {
-                            include_once '../includes/usuarioexistente.php';
-                        }
-                        elseif (isset($_SESSION['condicao']) && $_SESSION['condicao'] == true) {
-                            include_once '../includes/novousuario.php';
-                        }
-                        ?>
+                        <div class="form__line">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="cpf" name="cpf" value="<?= @$_SESSION['cpf'] ?>" placeholder="Digite seu CPF" required="required"/>
+                        </div>
+
+                        <div class="form__line">
+                            <i class="far fa-calendar-alt"></i>
+                            <input type="date" id="data" name="data" placeholder="Data de nascimento" required="required" />
+                        </div>
+
+                        <div class="form__line">
+                            <i class="fas fa-file-contract"></i>
+                            <input type="number" id="contrato" name="contrato" placeholder="Contrato" required="required" />
+                        </div>
+
+                        <div class="form__line">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="senha" name="senha" placeholder="Senha" required="required" />
+                        </div>
+                        
+                        <div class="form__line">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="c_senha" name="c_senha" placeholder="Confirme a senha" required="required" />
+                        </div>
+
+                        <div class="form__line">
+                            <button type="submit" name="salvar" id="salvar">Salvar</button>
+                        </div>
                         <input type="hidden" name="csrf" value="<?= $token ?>" />
-                        <div class="form__line"><button class="btn__buscar" type="submit" name="search">Buscar Usuário</button></div>
+
                     </form>
                 </div>
             </div>
@@ -68,6 +95,28 @@ $_SESSION['csrf'] = $token;
     </svg>
 </body>
 <script src="assets/build/toastr.min.js"></script>
+
+<script>
+var primSenha = document.getElementById('senha');
+var segSenha = document.getElementById('c_senha');
+var btn = document.getElementById('salvar');
+
+function validePass () {
+    if (primSenha.value != '' && segSenha.value != ''){
+        if (primSenha.value == segSenha.value){
+            primSenha.style = "border: 3px solid var(--main-sucesse);";
+            segSenha.style = "border: 3px solid var(--main-sucesse);";
+            btn.disabled = false;
+        } else {
+            primSenha.style = "border: 3px solid var(--main-danger);";
+            segSenha.style = "border: 3px solid var(--main-danger);";
+            btn.disabled = true;
+        }
+    }
+}
+primSenha.onchange = function get() {validePass()};
+segSenha.onchange = function get() {validePass()};
+</script>
 
 <script>
     toastr.options = {
@@ -92,28 +141,8 @@ $_SESSION['csrf'] = $token;
     toastr.warning("Erro, usuário ou senha incorreta!");
   <?php endif ?>
 
-  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_usuario_nao'): ?>
-    toastr.warning("Erro, usuário não existe em nossa base!");
-  <?php endif ?>
-
-  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_contrato'): ?>
-    toastr.warning("Erro, CPF não localizado em nossa base!");
-  <?php endif ?>
-
-  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_senha'): ?>
-    toastr.warning("Erro, senhas não coincidem");
-  <?php endif ?>
-
-  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'erro_alt_senha'): ?>
-    toastr.warning("Erro, dados não coincidem");
-  <?php endif ?>
-
   <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'cadastro_realizado'): ?>
     toastr.success("Usuário cadastrado com sucesso!");
-  <?php endif ?>
-
-  <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == 'edit_success'): ?>
-    toastr.success("Senha alterada com sucesso!");
   <?php endif ?>
 
 

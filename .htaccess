@@ -19,6 +19,8 @@ RewriteRule ^logout$ assets/controller/logout.php [NC]
 RewriteRule ^contrato$ assets/view/contrato.php [NC]
 RewriteRule ^planos$ assets/view/planos.php [NC]
 RewriteRule ^alterar_plano$ assets/controller/planos.php [NC]
+RewriteRule ^editar_senha$ assets/controller/senha.php [NC]
+RewriteRule ^esqueci_senha$ assets/view/esqueci.php [NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
