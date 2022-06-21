@@ -283,7 +283,7 @@ class PH {
         $stmt->bindParam(':data_inicial', $data);
         $stmt->bindParam(':data_final', $vencimento);
         $stmt->bindParam(':valor_servico', $fatura);
-        $stmt->bindParam(':data_fatura', $contrato['prox_vencimento']);
+        $stmt->bindParam(':data_fatura', $contrato['prox_vencimento_original']);
         $stmt->bindParam(':valor_fatura', $fatura);
 
         $stmt->execute();

@@ -98,40 +98,40 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 $sht->execute();
 
                 if ($sht->rowCount() > 0 && $funcao->comparar_codigo_plano($lista) !== NULL) {
-                    header('Location: /ph/painel');
+                    header('Location: painel');
                 }
                 elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
                     $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
                     
-                    header('Location: /ph/planos');
+                    header('Location: planos');
                 }
                 else {
                     $_SESSION['msg'] = "erro_contrato";
         
-                    header('Location: /ph/logout');
+                    header('Location: logout');
                 }
             }
             elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
                 $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
                 
-                header('Location: /ph/planos');
+                header('Location: planos');
             }
             else {
                 $_SESSION['msg'] = "erro_contrato";
     
-                header('Location: /ph/logout');
+                header('Location: logout');
             }
         }
         else {
             $_SESSION['msg'] = "erro_usuario";
 
-            header('Location: /ph/logout');
+            header('Location: logout');
         }
     }
     else{
         $_SESSION['msg'] = "erro_usuario_nao";
         
-        header('Location: /ph/logout');
+        header('Location: logout');
     }
         
 }
@@ -175,7 +175,7 @@ elseif(isset($_POST['primeira__senha']) && isset($_POST['segunda__senha']) && $_
 
             $_SESSION['msg'] = "cadastro_realizado";
 
-            header('Location: /ph/logout');
+            header('Location: logout');
         }
         else{ 
             $_SESSION['msg'] = "erro_contrato";

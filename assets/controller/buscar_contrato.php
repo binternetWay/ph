@@ -35,15 +35,15 @@ if (isset($_POST['s_contrato']) && isset($_POST['contrato'])) {
     }
     
     if (isset($valor)) {
-        header('Location: /ph/painel');
+        header('Location: painel');
     }
     else{
-        header('Location: /ph/planos');
+        header('Location: planos');
     }
 
 }
 else {
     $_SESSION['msg'] = 'erro_contrato';
-    header('Location: /ph/logout');
+    header('Location: logout');
 }
 
