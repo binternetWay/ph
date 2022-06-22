@@ -55,6 +55,7 @@ if (isset($_POST['search']) && isset($_POST['cpf'])
 elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha']) 
             && !isset($_POST['primeira__senha'])){
     
+    
     $_POST['cpf'] = preg_replace('/[\@\.\;\/" "-]+/ ', '', $_POST['cpf']);
     $z = PDO_Conexao::getInstance()->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
     $z->execute(array(':cpf' => $_POST['cpf']));
@@ -65,6 +66,7 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
 
         // Verifica se a senha esta correta
         if (password_verify($_POST['senha'], $fetch['senha'])) {
+            
             $_SESSION['cpf'] = $fetch['cpf'];
             $_SESSION['token'] = md5($fetch['nome'].date('l jS \of F Y'));
             $_SESSION['nome'] = $fetch['nome'];
@@ -98,23 +100,24 @@ elseif (isset($_POST['iniciar']) && isset($_POST['cpf']) && isset($_POST['senha'
                 $sht->execute();
 
                 if ($sht->rowCount() > 0 && $funcao->comparar_codigo_plano($lista) !== NULL) {
+                    echo "Entrou1";
                     header('Location: painel');
                 }
                 elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
                     $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
                     
-                    header('Location: planos');
+                    //header('Location: planos');
                 }
                 else {
                     $_SESSION['msg'] = "erro_contrato";
         
-                    header('Location: logout');
+                    //header('Location: logout');
                 }
             }
             elseif (count($lista) > 0 && $funcao->comparar_codigo_plano($lista) == NULL) {
                 $_SESSION['token'] = md5($lista[0]['nome'].date('l jS \of F Y'));
                 
-                header('Location: planos');
+                //header('Location: planos');
             }
             else {
                 $_SESSION['msg'] = "erro_contrato";

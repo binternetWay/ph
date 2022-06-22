@@ -12,7 +12,7 @@ session_start();
 $csrf = isset($_POST['csrf']) ? $_POST['csrf'] : '';
 
 if ($_SESSION['csrf'] != $csrf) {
-    header('Location: logout');
+    header('Location: ../../logout');
 }
 
 if (isset($_POST['salvar'])) {
@@ -232,24 +232,24 @@ if (isset($_POST['salvar'])) {
             if ($stt->rowCount() > 0) {
                 $_SESSION['msg'] = 'edit_success';
 
-                header('Location: logout');
+                header('Location: ../../logout');
             }
             else{
                 $_SESSION['msg'] = 'erro_alt_senha';
         
-                header('Location: logout');
+                header('Location: ../../logout');
             }
         }
         else{
             $_SESSION['msg'] = 'erro_alt_senha';
     
-            header('Location: logout');
+            header('Location: ../../logout');
         }
     }
     else{
         $_SESSION['msg'] = 'erro_alt_senha';
 
-        header('Location: logout');
+        header('Location: ../../logout');
     }
 
 }

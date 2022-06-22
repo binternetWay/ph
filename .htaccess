@@ -21,6 +21,7 @@ RewriteRule ^planos$ assets/view/planos.php [NC]
 RewriteRule ^alterar_plano$ assets/controller/planos.php [NC]
 RewriteRule ^editar_senha$ assets/controller/senha.php [NC]
 RewriteRule ^esqueci_senha$ assets/view/esqueci.php [NC]
+RewriteRule ^validar_contrato$ assets/controller/validar_contrato.php [NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

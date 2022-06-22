@@ -41,7 +41,7 @@ $_SESSION['csrf'] = $token;
             </div>
             <div class="container__login-mid">
                 <div class="form__logins">
-                    <form method="POST" action="assets/controller/validar_contrato.php">
+                    <form method="POST" action="validar_contrato">
                         <div class="form__line"><i class="fa-solid fa-user"></i><input type="text" id="cpf" name="cpf" value="<?= @$_SESSION['cpf'] ?>" placeholder="Digite seu CPF" required="required"/></div>
                         <?php
 

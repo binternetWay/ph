@@ -7,7 +7,7 @@ require_once "../modal/Usuario.php";
 @session_name(md5('ph_primario'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 @session_start();
 if (!isset($_SESSION['codigo_plano']) && !isset($_SESSION['tipo_contrato'])) {
-    header('Location: ../logout');
+    header('Location: ../../logout');
 }
 $contrato = new Contratos();
 $stmt = PDO_Conexao::getInstance()->prepare("

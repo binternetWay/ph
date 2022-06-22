@@ -5,7 +5,7 @@ session_start();
 $hash = md5($_SESSION['nome'].date('l jS \of F Y'));
 
 if ($hash != $_SESSION['token'] || !isset($_SESSION['contrato'])) {
-    header('Location: logout');
+    //header('Location: logout');
 }
 
 ?>
